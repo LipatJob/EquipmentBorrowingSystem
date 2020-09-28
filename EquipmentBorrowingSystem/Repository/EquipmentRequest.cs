@@ -1,0 +1,70 @@
+﻿using JobLib;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EquipmentBorrowingSystem.Repository
+{
+    /// <summary>
+    /// Author: Job Lipat
+    /// Date: September 27, 2020
+    /// </summary>
+    class EquipmentRequest
+    {
+        public EquipmentRequest(int id, int borrowerID, int equipmentID, DateTime expectedReturnDate, DateTime dateBorrowed, DateTime dateReturned, string reason)
+        {
+            Id = id;
+            BorrowerID = borrowerID;
+            EquipmentID = equipmentID;
+            ExpectedReturnDate = expectedReturnDate;
+            DateBorrowed = dateBorrowed;
+            DateReturned = dateReturned;
+            Reason = reason;
+        }
+
+        int Id { get; set; }
+        int BorrowerID { get; set; }
+        int EquipmentID { get; set; }
+        DateTime ExpectedReturnDate { get; set; }
+        DateTime DateBorrowed { get; set; }
+        DateTime DateReturned { get; set; }
+        string Reason { get; set; }
+
+        public static Serializer<EquipmentRequest> GetSerializer()
+        {
+            return new EquipmentRequestSerializer();
+        }
+
+        private class EquipmentRequestSerializer : Serializer<EquipmentRequest>
+        {
+            public override EquipmentRequest Deserialize(string serializedItem)
+            {
+                string[] values = serializedItem.Split(RepositoryValues.DELIMITERC);
+                return new EquipmentRequest(
+                    int.Parse(values[0]),
+                    int.Parse(values[1]),
+                    int.Parse(values[2]),
+                    DateTime.Parse(values[3]),
+                    DateTime.Parse(values[4]),
+                    DateTime.Parse(values[5]),
+                    values[6]
+                    );
+            }
+
+            public override string ToSerializable(EquipmentRequest item)
+            {
+                return string.Join(RepositoryValues.DELIMITER, new string[] {
+                    item.Id.ToString(),
+                    item.BorrowerID.ToString(),
+                    item.EquipmentID.ToString(),
+                    item.ExpectedReturnDate.ToString(),
+                    item.DateBorrowed.ToString(),
+                    item.DateReturned.ToString(),
+                    item.Reason
+                });
+            }
+        }
+    }
+}

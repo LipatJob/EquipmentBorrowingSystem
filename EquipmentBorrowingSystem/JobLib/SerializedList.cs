@@ -18,7 +18,6 @@ namespace JobLib
     {
         protected string filename;
         protected string location;
-        protected string filedirectory;
 
         protected List<T> items;
         protected Serializer<T> serializer;
@@ -29,7 +28,7 @@ namespace JobLib
         /// <param name="filename">Name of the file to be saved</param>
         /// <param name="location"> The folder to save the file. Must end with a "/" </param>
         /// <param name="serializer"> The serializing strategy of the object </param>
-        public SerializedList(string filename, string location, Serializer<T> serializer)
+        public SerializedList(string filename, Serializer<T> serializer)
         {
             // Create file if file does not exist
             using (FileStream fileStream = File.Open(filename, FileMode.OpenOrCreate)) { }
@@ -37,11 +36,9 @@ namespace JobLib
             // Set members
             this.serializer = serializer;   
             this.filename = filename;
-            this.location = location;
             
             // Initialize Members
             this.items = new List<T>();
-            this.filedirectory = location + filename;
 
             // Retreieve Data from text file
             RetrieveState();
@@ -88,7 +85,7 @@ namespace JobLib
         {
             try
             {
-                using (StreamWriter streamWriter = File.AppendText(filedirectory))
+                using (StreamWriter streamWriter = File.AppendText(filename))
                 {
                     streamWriter.WriteLine(serializer.ToSerializable(item));
                 }
@@ -109,7 +106,7 @@ namespace JobLib
         {
             try
             {
-                using (StreamWriter fileStream = File.CreateText(filedirectory))
+                using (StreamWriter fileStream = File.CreateText(filename))
                 {
                     foreach (T item in items)
                     {
@@ -133,7 +130,7 @@ namespace JobLib
         {
             try
             {
-                using (StreamReader fileStream = File.OpenText(filedirectory))
+                using (StreamReader fileStream = File.OpenText(filename))
                 {
                     string line;
                     while ((line = fileStream.ReadLine()) != null)
@@ -162,9 +159,8 @@ namespace JobLib
             bool success = false;
             try
             {
-
                 int current = 0;
-                using (StreamWriter fileStream = File.CreateText(filedirectory))
+                using (StreamWriter fileStream = File.CreateText(filename))
                 {
                     foreach (T item in items)
                     {
@@ -192,9 +188,6 @@ namespace JobLib
         {
             return items.GetEnumerator();
         }
-
-        
-
         
     }
 }

@@ -49,9 +49,17 @@
     <Compile Include="JobLib\SerializedWrapper.cs" />
     <Compile Include="JobLib\Serializer.cs" />
     <Compile Include="JobLib\Storeable.cs" />
-    <Compile Include="Models\Equipment.cs" />
-    <Compile Include="Models\EquipmentRequest.cs" />
-    <Compile Include="Models\Borrower.cs" />
+    <Compile Include="Repository\BorrowerViolation.cs" />
+    <Compile Include="Repository\Equipment.cs" />
+    <Compile Include="Repository\EquipmentCondition.cs" />
+    <Compile Include="Repository\EquipmentRequest.cs" />
+    <Compile Include="Repository\User.cs" />
+    <Compile Include="Repository\EquipmentType.cs" />
+    <Compile Include="Repository\RepositoryState.cs" />
+    <Compile Include="Repository\RepositoryTests.cs" />
+    <Compile Include="Repository\RepositoryValues.cs" />
+    <Compile Include="Repository\UserType.cs" />
+    <Compile Include="Repository\Violation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
