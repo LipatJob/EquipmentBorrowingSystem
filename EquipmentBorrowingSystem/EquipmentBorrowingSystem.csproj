@@ -35,6 +35,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,28 +45,56 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Controller.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Director.cs" />
     <Compile Include="JobLib\JHelper.cs" />
     <Compile Include="JobLib\Serializable.cs" />
     <Compile Include="JobLib\SerializedList.cs" />
     <Compile Include="JobLib\SerializedWrapper.cs" />
     <Compile Include="JobLib\Serializer.cs" />
     <Compile Include="JobLib\Storeable.cs" />
-    <Compile Include="Repository\BorrowerViolation.cs" />
-    <Compile Include="Repository\Equipment.cs" />
-    <Compile Include="Repository\EquipmentCondition.cs" />
-    <Compile Include="Repository\EquipmentRequest.cs" />
-    <Compile Include="Repository\User.cs" />
-    <Compile Include="Repository\EquipmentType.cs" />
+    <Compile Include="Repository\Models\BorrowerViolation.cs" />
+    <Compile Include="Repository\Models\Equipment.cs" />
+    <Compile Include="Repository\Models\EquipmentCondition.cs" />
+    <Compile Include="Repository\Models\EquipmentRequest.cs" />
+    <Compile Include="Repository\Models\RequestStatus.cs" />
+    <Compile Include="Repository\Models\User.cs" />
+    <Compile Include="Repository\Models\EquipmentType.cs" />
+    <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\RepositoryState.cs" />
     <Compile Include="Repository\RepositoryTests.cs" />
     <Compile Include="Repository\RepositoryValues.cs" />
-    <Compile Include="Repository\UserType.cs" />
-    <Compile Include="Repository\Violation.cs" />
+    <Compile Include="Repository\Models\UserType.cs" />
+    <Compile Include="Repository\Models\Violation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\BorrowerRepository.cs" />
+    <Compile Include="Repository\StaffRepository.cs" />
+    <Compile Include="Repository\ViewModels\EquipmentViewModel.cs" />
+    <Compile Include="Views\Components\CLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EquipmentView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\EquipmentManagement\EquipmentView.resx">
+      <DependentUpon>EquipmentView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

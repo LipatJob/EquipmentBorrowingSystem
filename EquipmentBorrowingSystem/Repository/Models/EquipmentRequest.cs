@@ -13,24 +13,26 @@ namespace EquipmentBorrowingSystem.Repository
     /// </summary>
     class EquipmentRequest
     {
-        public EquipmentRequest(int id, int borrowerID, int equipmentID, DateTime expectedReturnDate, DateTime dateBorrowed, DateTime dateReturned, string reason)
+        public EquipmentRequest(int id, int borrowerID, int equipmentID, int requestStatusID, DateTime expectedReturnDate, DateTime dateBorrowed, DateTime dateReturned, string reason)
         {
             Id = id;
             BorrowerID = borrowerID;
             EquipmentID = equipmentID;
+            RequestStatusID = requestStatusID;
             ExpectedReturnDate = expectedReturnDate;
             DateBorrowed = dateBorrowed;
             DateReturned = dateReturned;
             Reason = reason;
         }
 
-        int Id { get; set; }
-        int BorrowerID { get; set; }
-        int EquipmentID { get; set; }
-        DateTime ExpectedReturnDate { get; set; }
-        DateTime DateBorrowed { get; set; }
-        DateTime DateReturned { get; set; }
-        string Reason { get; set; }
+        public int Id { get; set; }
+        public int BorrowerID { get; set; }
+        public int EquipmentID { get; set; }
+        public int RequestStatusID { get; set; }
+        public DateTime ExpectedReturnDate { get; set; }
+        public DateTime DateBorrowed { get; set; }
+        public DateTime DateReturned { get; set; }
+        public string Reason { get; set; }
 
         public static Serializer<EquipmentRequest> GetSerializer()
         {
@@ -46,10 +48,11 @@ namespace EquipmentBorrowingSystem.Repository
                     int.Parse(values[0]),
                     int.Parse(values[1]),
                     int.Parse(values[2]),
-                    DateTime.Parse(values[3]),
+                    int.Parse(values[3]),
                     DateTime.Parse(values[4]),
                     DateTime.Parse(values[5]),
-                    values[6]
+                    DateTime.Parse(values[6]),
+                    values[7]
                     );
             }
 

@@ -15,12 +15,14 @@ namespace EquipmentBorrowingSystem.Repository
         public const string DELIMITER = "|";
         public const char DELIMITERC = '|';
         public const string VALUE_FALSE = "False";
-        public const string BORROWERS_FILE_NAME             = "borrowers.txt";
+        public const string ACCOUNT_FILE_NAME              = "borrowers.txt";
         public const string BORROWER_VIOLATIONS_FILE_NAME   = "borrowers_violations.txt";
         public const string EQUIPMENTS_FILE_NAME            = "equipments.txt";
         public const string EQUIPMENT_CONDITIONS_FILE_NAME  = "equipment_conditions.txt";
         public const string EQUIPMENT_REQUESTS_FILE_NAME    = "equipment_requests.txt";
         public const string EQUIPMENT_TYPES_FILE_NAME       = "equipment_types.txt";
+        public const string REQUEST_STAUS_FILE_NAME         = "request_status.txt";
         public const string VIOLATIONS_FILE_NAME            = "violations.txt";
+        public const string USER_TYPES_FILE_NAME            = "user_types.txt";
     }
 }

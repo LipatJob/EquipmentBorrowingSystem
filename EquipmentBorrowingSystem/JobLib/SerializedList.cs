@@ -14,7 +14,7 @@ namespace JobLib
     ///  A list where the items of the list are to be serialized in one file.
     /// </summary>
     /// <typeparam name="T"> The type of object to serialize</typeparam>
-    class SerializedList<T> : IEnumerable<T>, Storeable
+    class SerializedList<T> : List<T>, Storeable
     {
         protected string filename;
         protected string location;

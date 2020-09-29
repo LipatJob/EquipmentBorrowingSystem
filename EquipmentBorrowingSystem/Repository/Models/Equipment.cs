@@ -21,10 +21,10 @@ namespace EquipmentBorrowingSystem.Repository
             Name = name;
         }
 
-        int Id { get; set; }
-        int EquipmentTypeID { get; set; }
-        int ConditionID { get; set; }
-        string Name { get; set; }
+        public int Id { get; set; }
+        public int EquipmentTypeID { get; set; }
+        public int ConditionID { get; set; }
+        public string Name { get; set; }
 
 
         public static Serializer<Equipment> GetSerializer()

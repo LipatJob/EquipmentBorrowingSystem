@@ -8,8 +8,11 @@ namespace EquipmentBorrowingSystem
 {
     class Program
     {
-        static void Main(string[] args)
+        [STAThread]
+        static void Maine(string[] args)
         {
+            
+            new Director();
         }
     }
 }
