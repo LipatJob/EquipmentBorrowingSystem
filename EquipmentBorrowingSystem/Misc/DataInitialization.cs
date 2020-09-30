@@ -17,10 +17,14 @@ namespace EquipmentBorrowingSystem.Misc
         {
             // Reset Data
             DirectoryInfo di = new DirectoryInfo(ModelValues.ROOT_FOLDER);
-            foreach (FileInfo file in di.GetFiles())
+            if(di.Exists)
             {
-                file.Delete();
+                foreach (FileInfo file in di.GetFiles())
+                {
+                    file.Delete();
+                }
             }
+            
 
             // Build Data
             var userTypes = new SerializedList<UserType>(ModelValues.USER_TYPES_FILE_NAME, UserType.GetSerializer());

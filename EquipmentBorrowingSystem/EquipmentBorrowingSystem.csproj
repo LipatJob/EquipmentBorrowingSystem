@@ -74,6 +74,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Backend\Logic\BorrowerLogic.cs" />
     <Compile Include="Backend\Logic\StaffLogic.cs" />
+    <Compile Include="ApplicationResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApplicationResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Borrower\LoginDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +102,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ApplicationResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ApplicationResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Resources;
 
 namespace EquipmentBorrowingSystem
 {
@@ -13,8 +14,12 @@ namespace EquipmentBorrowingSystem
         [STAThread]
         static void Main(string[] args)
         {
-            DataInitialization scaffold = new DataInitialization();
-            scaffold.Run();
+            string flag = ApplicationResources.ResourceManager.GetString("InitializeData");
+            if (flag == "true")
+            {
+                DataInitialization scaffold = new DataInitialization();
+                scaffold.Run();
+            }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
