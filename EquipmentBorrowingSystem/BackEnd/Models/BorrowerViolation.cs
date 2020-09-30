@@ -6,7 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.Repository
+namespace EquipmentBorrowingSystem.BackEnd.Models
 {
     /// <summary>
     /// Author: Job Lipat
@@ -14,18 +14,18 @@ namespace EquipmentBorrowingSystem.Repository
     /// </summary>
     class BorrowerViolation
     {
-        public BorrowerViolation(int id, int borrowedEquipmentID, int violationID, decimal amountCharged, bool resolved)
+        public BorrowerViolation(int id, int requestId, int violationID, decimal amountCharged, bool resolved)
         {
             Id = id;
-            BorrowedEquipmentID = borrowedEquipmentID;
-            ViolationID = violationID;
+            RequestId = requestId;
+            ViolationId = violationID;
             AmountCharged = amountCharged;
             Resolved = resolved;
         }
 
         public int Id { get; set; }
-        public int BorrowedEquipmentID { get; set; }
-        public int ViolationID { get; set; }
+        public int RequestId { get; set; }
+        public int ViolationId { get; set; }
         public decimal AmountCharged { get; set; }
         public bool Resolved { get; set; }
 
@@ -38,7 +38,7 @@ namespace EquipmentBorrowingSystem.Repository
         {
             public override BorrowerViolation Deserialize(string serializedItem)
             {
-                string[] values = serializedItem.Split(RepositoryValues.DELIMITERC);
+                string[] values = serializedItem.Split(ModelValues.DELIMITERC);
                 return new BorrowerViolation(
                     int.Parse(values[0]),
                     int.Parse(values[1]),
@@ -50,10 +50,10 @@ namespace EquipmentBorrowingSystem.Repository
 
             public override string ToSerializable(BorrowerViolation item)
             {
-                return string.Join(RepositoryValues.DELIMITER, new string[] {
+                return string.Join(ModelValues.DELIMITER, new string[] {
                     item.Id.ToString(), 
-                    item.BorrowedEquipmentID.ToString(), 
-                    item.ViolationID.ToString(),
+                    item.RequestId.ToString(), 
+                    item.ViolationId.ToString(),
                     item.AmountCharged.ToString(), 
                     item.Resolved.ToString() 
                 });

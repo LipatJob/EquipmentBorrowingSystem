@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EquipmentBorrowingSystem
 {
     class Program
     {
         [STAThread]
-        static void Maine(string[] args)
+        static void Main(string[] args)
         {
-            
-            new Director();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Director director = new Director();
+            director.ShowDisplay(director.borrowerController.Login());
         }
     }
 }

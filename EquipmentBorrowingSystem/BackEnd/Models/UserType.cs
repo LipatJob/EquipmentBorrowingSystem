@@ -5,23 +5,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.Repository.Models
+namespace EquipmentBorrowingSystem.BackEnd.Models
 {
-    class RequestStatus
+    class UserType
     {
+        public UserType(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
+
         public int Id { get; set; }
         public string Name { get; set; }
 
         public static Serializer<UserType> GetSerializer()
         {
-            return new RequestStatusSerializer();
+            return new UserTypeSerializer();
         }
 
-        private class RequestStatusSerializer : Serializer<UserType>
+        private class UserTypeSerializer : Serializer<UserType>
         {
             public override UserType Deserialize(string serializedItem)
             {
-                string[] values = serializedItem.Split(RepositoryValues.DELIMITERC);
+                string[] values = serializedItem.Split(ModelValues.DELIMITERC);
                 return new UserType(
                     int.Parse(values[0]),
                     values[1]);
@@ -29,7 +35,7 @@ namespace EquipmentBorrowingSystem.Repository.Models
 
             public override string ToSerializable(UserType item)
             {
-                return string.Join(RepositoryValues.DELIMITER, new string[] {
+                return string.Join(ModelValues.DELIMITER, new string[] {
                     item.Id.ToString(),
                     item.Name
                 });

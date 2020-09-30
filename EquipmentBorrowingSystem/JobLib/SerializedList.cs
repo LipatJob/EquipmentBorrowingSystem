@@ -19,7 +19,6 @@ namespace JobLib
         protected string filename;
         protected string location;
 
-        protected List<T> items;
         protected Serializer<T> serializer;
 
         /// <summary>
@@ -37,9 +36,6 @@ namespace JobLib
             this.serializer = serializer;   
             this.filename = filename;
             
-            // Initialize Members
-            this.items = new List<T>();
-
             // Retreieve Data from text file
             RetrieveState();
         }
@@ -48,9 +44,9 @@ namespace JobLib
         /// Append an item at the end of the list
         /// </summary>
         /// <param name="item"> item to be appended </param>
-        public void Append(T item)
+        public void Add(T item)
         {
-            items.Add(item);
+            base.Add(item);
             AppendEntity(item);
         }
 
@@ -61,8 +57,8 @@ namespace JobLib
         /// <returns> returns the item at index i</returns>
         public T this[int i] 
         {
-            get { return items[i]; }
-            set { items[i] = value; SaveState(); }
+            get { return base[i]; }
+            set { base[i] = value; SaveState(); }
         }
 
         /// <summary>
@@ -71,7 +67,7 @@ namespace JobLib
         /// <param name="index"> index of the item to be removed </param>
         public void RemoveAt(int index)
         {
-            items.RemoveAt(index);
+            base.RemoveAt(index);
             RemoveEntity(index);
 
         }
@@ -108,7 +104,7 @@ namespace JobLib
             {
                 using (StreamWriter fileStream = File.CreateText(filename))
                 {
-                    foreach (T item in items)
+                    foreach (T item in this)
                     {
                         fileStream.WriteLine(serializer.ToSerializable(item));
                     }
@@ -135,7 +131,7 @@ namespace JobLib
                     string line;
                     while ((line = fileStream.ReadLine()) != null)
                     {
-                        items.Add(serializer.Deserialize(line));
+                        base.Add(serializer.Deserialize(line));
                     }
                 }
             }
@@ -162,7 +158,7 @@ namespace JobLib
                 int current = 0;
                 using (StreamWriter fileStream = File.CreateText(filename))
                 {
-                    foreach (T item in items)
+                    foreach (T item in this)
                     {
                         if (current == index) { success = true;  continue; }
                         current++;
@@ -179,15 +175,6 @@ namespace JobLib
             return success;
         }
 
-        public IEnumerator<T> GetEnumerator()
-        {
-            return items.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return items.GetEnumerator();
-        }
         
     }
 }

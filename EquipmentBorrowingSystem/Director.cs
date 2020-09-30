@@ -1,7 +1,10 @@
-﻿using EquipmentBorrowingSystem.Repository;
+﻿using EquipmentBorrowingSystem.BackEnd;
+using EquipmentBorrowingSystem.Controllers;
+using EquipmentBorrowingSystem.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -10,18 +13,23 @@ namespace EquipmentBorrowingSystem
 {
     class Director
     {
-        private RepositoryState State { get; }
-        private User CurrentUser { get; set; }
+        public ApplicationState State { get; }
+        public BorrowerController borrowerController { get; }
         public Director()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            State = new ApplicationState();
+            borrowerController = new BorrowerController(this);
+        }
 
-            State = new RepositoryState();
-            Form window = new Form();
 
-            window.SetBounds(500, 500, 700, 700);
-            Application.Run(window);
+        public void ShowDisplay(Display display)
+        {
+            display.ShowDisplay();
+        }
+
+        public void ShowGuiView(GuiDisplay view)
+        {
+            view.ShowDialog();
         }
     }
 }

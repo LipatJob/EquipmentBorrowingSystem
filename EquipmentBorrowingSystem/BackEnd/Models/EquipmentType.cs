@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.Repository
+namespace EquipmentBorrowingSystem.BackEnd.Models
 {
     /// <summary>
     /// Author: Job Lipat
@@ -34,7 +34,7 @@ namespace EquipmentBorrowingSystem.Repository
         {
             public override EquipmentType Deserialize(string serializedItem)
             {
-                string[] values = serializedItem.Split(RepositoryValues.DELIMITERC);
+                string[] values = serializedItem.Split(ModelValues.DELIMITERC);
                 return new EquipmentType(
                     int.Parse(values[0]),
                     values[1],
@@ -44,7 +44,7 @@ namespace EquipmentBorrowingSystem.Repository
 
             public override string ToSerializable(EquipmentType item)
             {
-                return string.Join(RepositoryValues.DELIMITER, new string[] {
+                return string.Join(ModelValues.DELIMITER, new string[] {
                     item.Id.ToString(),
                     item.Name,
                     item.MaximumBorrowDurationHours.ToString()
