@@ -1,4 +1,5 @@
-﻿using JobLib;
+﻿using EquipmentBorrowingSystem.JobLib;
+using JobLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
     /// Author: Job Lipat
     /// Date: September 27, 2020
     /// </summary>
-    class EquipmentCondition
+    class EquipmentCondition : Keyed<int>
     {
         public EquipmentCondition(int id, string name)
         {
@@ -21,6 +22,11 @@ namespace EquipmentBorrowingSystem.Backend.Models
 
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public int GetKey()
+        {
+            return Id;
+        }
 
         public static Serializer<EquipmentCondition> GetSerializer()
         {

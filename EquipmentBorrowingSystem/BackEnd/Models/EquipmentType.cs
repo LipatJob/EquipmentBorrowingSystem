@@ -1,4 +1,5 @@
-﻿using JobLib;
+﻿using EquipmentBorrowingSystem.JobLib;
+using JobLib;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,7 +13,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
     /// Author: Job Lipat
     /// Date: September 27, 2020
     /// </summary>
-    class EquipmentType
+    class EquipmentType : Keyed<int>
     {
         public EquipmentType(int id, string name, int maximumBorrowDurationHours)
         {
@@ -24,6 +25,11 @@ namespace EquipmentBorrowingSystem.Backend.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int MaximumBorrowDurationHours {get;set;}
+
+        public int GetKey()
+        {
+            return Id;
+        }
 
         public static Serializer<EquipmentType> GetSerializer()
         {

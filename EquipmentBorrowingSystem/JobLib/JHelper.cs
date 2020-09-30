@@ -43,6 +43,8 @@ namespace JobLib
             return value;
         }
 
+        
+
         public static double InputDouble(string prompt = "", string parseErrorMessage = "> Please enter a valid value", Func<double, bool> validator = null)
         {
             double value = double.MinValue;
@@ -161,7 +163,7 @@ namespace JobLib
             return value;
         }
 
-        public static string InputString(string prompt = "", string parseErrorMessage = "> Please enter a valid value", Func<string, bool> validator = null)
+        public static string InputString(string prompt = "", string parseErrorMessage = "> Please enter a valid value", Func<string, bool> validator = null, bool toUpper = false)
         {
             string value = "";
             // While the input is invalid, loop
@@ -170,6 +172,8 @@ namespace JobLib
                 // Display prompt and ask for input
                 Console.Write(prompt);
                 value = Console.ReadLine();
+                if(toUpper) { value = value.ToUpper(); }
+
                 // Will continue loop if input is invalid
                 if (validator != null && !validator(value))
                 {
@@ -215,7 +219,13 @@ namespace JobLib
         public static void ExitPrompt()
         {
             Console.Write("\nPress Return Key to Exit...");
-            Console.Read();
+            Console.ReadLine();
+        }
+
+        public static void ContinuePrompt()
+        {
+            Console.Write("\nPress Return Key to Continue...");
+            Console.ReadLine();
         }
 
         public static bool In<T>(T obj, params T[] args)

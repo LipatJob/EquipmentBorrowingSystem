@@ -61,7 +61,7 @@ namespace EquipmentBorrowingSystem {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to true.
+        ///   Looks up a localized string similar to false.
         /// </summary>
         public static string InitializeData {
             get {

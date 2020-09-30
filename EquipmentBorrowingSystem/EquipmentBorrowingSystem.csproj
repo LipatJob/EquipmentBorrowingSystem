@@ -45,12 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Backend\Logic\Helpers\BorrowerHelper.cs" />
-    <Compile Include="Backend\Logic\Helpers\StaffHelper.cs" />
+    <Compile Include="Backend\Models\Model.cs" />
+    <Compile Include="Controllers\Template\EmptyController.cs" />
+    <Compile Include="Controllers\Staff\EquipmentManagementController.cs" />
+    <Compile Include="JobLib\Keyed.cs" />
+    <Compile Include="JobLib\SerializedDictionary.cs" />
     <Compile Include="Misc\DataInitialization.cs" />
     <Compile Include="Misc\Response.cs" />
     <Compile Include="Controllers\Controller.cs" />
-    <Compile Include="Controllers\BorrowerController.cs" />
     <Compile Include="Director.cs" />
     <Compile Include="JobLib\JHelper.cs" />
     <Compile Include="JobLib\Serializable.cs" />
@@ -79,15 +81,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ApplicationResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Borrower\LoginDisplay.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Views\Borrower\MenuDisplay.cs" />
     <Compile Include="Views\CliDisplay.cs" />
     <Compile Include="Views\Components\CLabel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Views\GuiDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Staff\EquipmentManagement\EquipmentDisplay.cs" />
+    <Compile Include="Views\Staff\EquipmentManagement\EquipmentList.cs" />
+    <Compile Include="Views\Staff\EquipmentManagement\EquipmentMenu.cs" />
+    <Compile Include="Views\Template\EmptyCliDisplay.cs" />
+    <Compile Include="Views\Template\EmptyGuiDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\TestForm.cs">
@@ -111,7 +117,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\Validators\" />
+    <Folder Include="Controllers\Borrower\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

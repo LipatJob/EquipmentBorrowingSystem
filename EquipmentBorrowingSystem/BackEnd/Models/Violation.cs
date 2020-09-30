@@ -1,4 +1,5 @@
-﻿using JobLib;
+﻿using EquipmentBorrowingSystem.JobLib;
+using JobLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,15 @@ namespace EquipmentBorrowingSystem.Backend.Models
     /// Author: Job Lipat
     /// Date: September 27, 2020
     /// </summary>
-    class Violation
+    class Violation : Keyed<int>
     {
         public int Id { get; set; }
         public string name { get; set; }
+
+        public int GetKey()
+        {
+            return Id;
+        }
 
         public Violation(int id, string name)
         {

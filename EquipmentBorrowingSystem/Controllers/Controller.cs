@@ -11,7 +11,7 @@ namespace EquipmentBorrowingSystem.Controllers
         protected Director Director { get; }
         public Controller(Director director)
         {
-            this.Director = director;
+            Director = director;
         }
     }
 }

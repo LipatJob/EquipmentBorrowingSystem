@@ -7,18 +7,20 @@ using System.Windows.Forms;
 
 namespace EquipmentBorrowingSystem.Views
 {
-    abstract class GuiDisplay : Form, Display
+    abstract class GuiDisplay<BaseModel> : Form, Display
     {
-        protected Director director;
+        protected Director Director;
+        protected BaseModel Model;
 
-        public GuiDisplay(Director director)
+        public GuiDisplay(Director director, BaseModel model)
         {
-            this.director = director;
+            this.Director = director;
+            Model = model;
         }
         
         public void ShowDisplay()
         {
-            director.ShowGuiView(this);
+            Director.ShowGuiView(this);
         }
     }
 }

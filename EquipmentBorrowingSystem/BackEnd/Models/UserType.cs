@@ -1,4 +1,5 @@
-﻿using JobLib;
+﻿using EquipmentBorrowingSystem.JobLib;
+using JobLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EquipmentBorrowingSystem.Backend.Models
 {
-    class UserType
+    class UserType : Keyed<int>
     {
         public UserType(int id, string name)
         {
@@ -17,6 +18,11 @@ namespace EquipmentBorrowingSystem.Backend.Models
 
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public int GetKey()
+        {
+            return Id;
+        }
 
         public static Serializer<UserType> GetSerializer()
         {

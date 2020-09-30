@@ -69,7 +69,6 @@ namespace JobLib
         {
             base.RemoveAt(index);
             RemoveEntity(index);
-
         }
 
         /// <summary>

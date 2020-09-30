@@ -13,12 +13,25 @@ namespace EquipmentBorrowingSystem
 {
     class Director
     {
+
+
         public ApplicationState State { get; }
-        public BorrowerController borrowerController { get; }
-        public Director()
+        public EquipmentManagementController EquipmentManagementController { get; }
+
+        // 1. Registering Controller:
+        // public <Name>Controller <Identifier>Controller { get; }
+        // See example below
+        public EmptyController EmptyController { get; }
+
+    public Director()
         {
             State = new ApplicationState();
-            borrowerController = new BorrowerController(this);
+            EquipmentManagementController = new EquipmentManagementController(this);
+
+            // 2. Registering Controller:
+            // <Identifier>Controller = new <Name>Controller(this);
+            // See example below
+            EmptyController = new EmptyController(this);
         }
 
 
@@ -27,7 +40,7 @@ namespace EquipmentBorrowingSystem
             display.ShowDisplay();
         }
 
-        public void ShowGuiView(GuiDisplay view)
+        public void ShowGuiView(Form view)
         {
             view.ShowDialog();
         }

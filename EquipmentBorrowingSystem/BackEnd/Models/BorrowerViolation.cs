@@ -1,4 +1,5 @@
-﻿using JobLib;
+﻿using EquipmentBorrowingSystem.JobLib;
+using JobLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
     /// Author: Job Lipat
     /// Date: September 27, 2020
     /// </summary>
-    class BorrowerViolation
+    class BorrowerViolation : Keyed<int>
     {
         public BorrowerViolation(int id, int requestId, int violationID, decimal amountCharged, bool resolved)
         {
@@ -28,6 +29,11 @@ namespace EquipmentBorrowingSystem.Backend.Models
         public int ViolationId { get; set; }
         public decimal AmountCharged { get; set; }
         public bool Resolved { get; set; }
+
+        public int GetKey()
+        {
+            return Id;
+        }
 
         public static Serializer<BorrowerViolation> GetSerializer()
         {

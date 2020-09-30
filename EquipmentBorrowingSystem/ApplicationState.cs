@@ -1,5 +1,6 @@
 ﻿using EquipmentBorrowingSystem.Backend;
 using EquipmentBorrowingSystem.Backend.Models;
+using EquipmentBorrowingSystem.JobLib;
 using JobLib;
 using System;
 using System.Collections.Generic;
@@ -16,27 +17,27 @@ namespace EquipmentBorrowingSystem
     class ApplicationState
     {
         public User LoggedInUser { get; set; }
-        public SerializedList<User> Users { get; }
-        public SerializedList<BorrowerViolation> BorrowerViolations { get; }
-        public SerializedList<Equipment> Equipments { get; }
-        public SerializedList<EquipmentCondition> EquipmentConditions { get; }
-        public SerializedList<EquipmentRequest> EquipmentRequests { get; }
-        public SerializedList<RequestStatus> RequestStatuses { get; }
-        public SerializedList<EquipmentType> EquipmentTypes { get; }
-        public SerializedList<Violation> Violations { get; }
-        public SerializedList<UserType> UserTypes { get; set; }
+        public SerializedDictionary<int, User> Users { get; }
+        public SerializedDictionary<int, BorrowerViolation> BorrowerViolations { get; }
+        public SerializedDictionary<int, Equipment> Equipments { get; }
+        public SerializedDictionary<int, EquipmentCondition> EquipmentConditions { get; }
+        public SerializedDictionary<int, EquipmentRequest> EquipmentRequests { get; }
+        public SerializedDictionary<int, RequestStatus> RequestStatuses { get; }
+        public SerializedDictionary<int, EquipmentType> EquipmentTypes { get; }
+        public SerializedDictionary<int, Violation> Violations { get; }
+        public SerializedDictionary<int, UserType> UserTypes { get; set; }
 
         public ApplicationState()
         {
-            Users               = new SerializedList<User>(ModelValues.ACCOUNT_FILE_NAME, User.GetSerializer());
-            BorrowerViolations  = new SerializedList<BorrowerViolation>(ModelValues.BORROWER_VIOLATIONS_FILE_NAME, BorrowerViolation.GetSerializer());
-            Equipments          = new SerializedList<Equipment>(ModelValues.EQUIPMENTS_FILE_NAME, Equipment.GetSerializer());
-            EquipmentConditions = new SerializedList<EquipmentCondition>(ModelValues.EQUIPMENT_CONDITIONS_FILE_NAME, EquipmentCondition.GetSerializer());
-            EquipmentRequests   = new SerializedList<EquipmentRequest>(ModelValues.EQUIPMENT_REQUESTS_FILE_NAME, EquipmentRequest.GetSerializer());
-            RequestStatuses     = new SerializedList<RequestStatus>(ModelValues.EQUIPMENT_STATUSES_FILE_NAME, RequestStatus.GetSerializer());
-            EquipmentTypes      = new SerializedList<EquipmentType>(ModelValues.EQUIPMENT_TYPES_FILE_NAME, EquipmentType.GetSerializer());
-            Violations          = new SerializedList<Violation>(ModelValues.VIOLATIONS_FILE_NAME, Violation.GetSerializer());
-            UserTypes           = new SerializedList<UserType>(ModelValues.USER_TYPES_FILE_NAME, UserType.GetSerializer());
+            Users               = new SerializedDictionary<int, User>(ModelValues.ACCOUNT_FILE_NAME, User.GetSerializer());
+            BorrowerViolations  = new SerializedDictionary<int, BorrowerViolation>(ModelValues.BORROWER_VIOLATIONS_FILE_NAME, BorrowerViolation.GetSerializer());
+            Equipments          = new SerializedDictionary<int, Equipment>(ModelValues.EQUIPMENTS_FILE_NAME, Equipment.GetSerializer());
+            EquipmentConditions = new SerializedDictionary<int, EquipmentCondition>(ModelValues.EQUIPMENT_CONDITIONS_FILE_NAME, EquipmentCondition.GetSerializer());
+            EquipmentRequests   = new SerializedDictionary<int, EquipmentRequest>(ModelValues.EQUIPMENT_REQUESTS_FILE_NAME, EquipmentRequest.GetSerializer());
+            RequestStatuses     = new SerializedDictionary<int, RequestStatus>(ModelValues.EQUIPMENT_STATUSES_FILE_NAME, RequestStatus.GetSerializer());
+            EquipmentTypes      = new SerializedDictionary<int, EquipmentType>(ModelValues.EQUIPMENT_TYPES_FILE_NAME, EquipmentType.GetSerializer());
+            Violations          = new SerializedDictionary<int, Violation>(ModelValues.VIOLATIONS_FILE_NAME, Violation.GetSerializer());
+            UserTypes           = new SerializedDictionary<int, UserType>(ModelValues.USER_TYPES_FILE_NAME, UserType.GetSerializer());
         
         }
     }
