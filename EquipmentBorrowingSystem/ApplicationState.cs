@@ -1,5 +1,5 @@
-﻿using EquipmentBorrowingSystem.BackEnd;
-using EquipmentBorrowingSystem.BackEnd.Models;
+﻿using EquipmentBorrowingSystem.Backend;
+using EquipmentBorrowingSystem.Backend.Models;
 using JobLib;
 using System;
 using System.Collections.Generic;
@@ -33,10 +33,11 @@ namespace EquipmentBorrowingSystem
             Equipments          = new SerializedList<Equipment>(ModelValues.EQUIPMENTS_FILE_NAME, Equipment.GetSerializer());
             EquipmentConditions = new SerializedList<EquipmentCondition>(ModelValues.EQUIPMENT_CONDITIONS_FILE_NAME, EquipmentCondition.GetSerializer());
             EquipmentRequests   = new SerializedList<EquipmentRequest>(ModelValues.EQUIPMENT_REQUESTS_FILE_NAME, EquipmentRequest.GetSerializer());
-            RequestStatuses     = new SerializedList<RequestStatus>(ModelValues.EQUIPMENT_REQUESTS_FILE_NAME, RequestStatus.GetSerializer());
+            RequestStatuses     = new SerializedList<RequestStatus>(ModelValues.EQUIPMENT_STATUSES_FILE_NAME, RequestStatus.GetSerializer());
             EquipmentTypes      = new SerializedList<EquipmentType>(ModelValues.EQUIPMENT_TYPES_FILE_NAME, EquipmentType.GetSerializer());
             Violations          = new SerializedList<Violation>(ModelValues.VIOLATIONS_FILE_NAME, Violation.GetSerializer());
             UserTypes           = new SerializedList<UserType>(ModelValues.USER_TYPES_FILE_NAME, UserType.GetSerializer());
+        
         }
     }
 }

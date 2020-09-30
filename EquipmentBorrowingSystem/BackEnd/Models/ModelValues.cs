@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace EquipmentBorrowingSystem.BackEnd.Models
+namespace EquipmentBorrowingSystem.Backend.Models
 {
     /// <summary>
     /// Author: Job Lipat
@@ -12,17 +13,19 @@ namespace EquipmentBorrowingSystem.BackEnd.Models
     /// </summary>
     class ModelValues
     {
+        public static string ROOT_FOLDER = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/data";
         public const string DELIMITER = "|";
         public const char DELIMITERC = '|';
         public const string VALUE_FALSE = "False";
-        public const string ACCOUNT_FILE_NAME               = "borrowers.txt";
-        public const string BORROWER_VIOLATIONS_FILE_NAME   = "borrowers_violations.txt";
-        public const string EQUIPMENTS_FILE_NAME            = "equipments.txt";
-        public const string EQUIPMENT_CONDITIONS_FILE_NAME  = "equipment_conditions.txt";
-        public const string EQUIPMENT_REQUESTS_FILE_NAME    = "equipment_requests.txt";
-        public const string EQUIPMENT_TYPES_FILE_NAME       = "equipment_types.txt";
-        public const string REQUEST_STAUS_FILE_NAME         = "request_status.txt";
-        public const string VIOLATIONS_FILE_NAME            = "violations.txt";
-        public const string USER_TYPES_FILE_NAME            = "user_types.txt";
+        public static string ACCOUNT_FILE_NAME               = ROOT_FOLDER + "/accounts.txt";
+        public static string BORROWER_VIOLATIONS_FILE_NAME   = ROOT_FOLDER + "/borrowers_violations.txt";
+        public static string EQUIPMENTS_FILE_NAME            = ROOT_FOLDER + "/equipments.txt";
+        public static string EQUIPMENT_CONDITIONS_FILE_NAME  = ROOT_FOLDER + "/equipment_conditions.txt";
+        public static string EQUIPMENT_REQUESTS_FILE_NAME    = ROOT_FOLDER + "/equipment_requests.txt";
+        public static string EQUIPMENT_TYPES_FILE_NAME       = ROOT_FOLDER + "/equipment_types.txt";
+        public static string EQUIPMENT_STATUSES_FILE_NAME    = ROOT_FOLDER + "/equipment_statuses.txt";
+        public static string REQUEST_STAUS_FILE_NAME         = ROOT_FOLDER + "/request_status.txt";
+        public static string VIOLATIONS_FILE_NAME            = ROOT_FOLDER + "/violations.txt";
+        public static string USER_TYPES_FILE_NAME            = ROOT_FOLDER + "/user_types.txt";
     }
 }

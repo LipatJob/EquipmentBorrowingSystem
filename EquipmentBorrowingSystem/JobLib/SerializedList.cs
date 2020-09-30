@@ -25,11 +25,11 @@ namespace JobLib
         /// 
         /// </summary>
         /// <param name="filename">Name of the file to be saved</param>
-        /// <param name="location"> The folder to save the file. Must end with a "/" </param>
         /// <param name="serializer"> The serializing strategy of the object </param>
         public SerializedList(string filename, Serializer<T> serializer)
         {
             // Create file if file does not exist
+            Directory.CreateDirectory(Path.GetDirectoryName(filename));
             using (FileStream fileStream = File.Open(filename, FileMode.OpenOrCreate)) { }
 
             // Set members

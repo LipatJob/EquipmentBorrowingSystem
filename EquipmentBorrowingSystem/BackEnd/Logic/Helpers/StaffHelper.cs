@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.BackEnd.Logic.Helpers
+namespace EquipmentBorrowingSystem.Backend.Logic.Helpers
 {
     class StaffHelper : BusinessLogic
     {

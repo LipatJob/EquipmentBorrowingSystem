@@ -1,4 +1,4 @@
-﻿using EquipmentBorrowingSystem.BackEnd.Models;
+﻿using EquipmentBorrowingSystem.Backend.Models;
 using EquipmentBorrowingSystem.Controllers;
 using System;
 using System.Collections.Generic;

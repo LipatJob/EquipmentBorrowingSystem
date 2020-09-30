@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.BackEnd.Models
+namespace EquipmentBorrowingSystem.Backend.Models
 {
     /// <summary>
     /// Author: Job Lipat

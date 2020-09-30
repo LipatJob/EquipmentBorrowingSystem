@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.BackEnd.Logic
+namespace EquipmentBorrowingSystem.Backend.Logic
 {
     abstract class BusinessLogic
     {
-        protected ApplicationState RepositoryState { get; }
+        protected ApplicationState ApplicationState { get; }
 
-        public BusinessLogic(ApplicationState repositoryState)
+        public BusinessLogic(ApplicationState applicationState)
         {
-            RepositoryState = repositoryState;
+            ApplicationState = applicationState;
         }
     }
 }

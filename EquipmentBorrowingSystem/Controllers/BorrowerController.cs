@@ -1,5 +1,5 @@
-﻿using EquipmentBorrowingSystem.BackEnd.Logic;
-using EquipmentBorrowingSystem.BackEnd.Models;
+﻿using EquipmentBorrowingSystem.Backend.Logic;
+using EquipmentBorrowingSystem.Backend.Models;
 using EquipmentBorrowingSystem.Views;
 using EquipmentBorrowingSystem.Views.Borrower;
 using System;

@@ -1,4 +1,4 @@
-﻿using EquipmentBorrowingSystem.BackEnd;
+﻿using EquipmentBorrowingSystem.Backend;
 using EquipmentBorrowingSystem.Controllers;
 using EquipmentBorrowingSystem.Views;
 using System;
