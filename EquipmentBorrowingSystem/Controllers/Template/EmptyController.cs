@@ -1,4 +1,5 @@
 ﻿using EquipmentBorrowingSystem.Backend.Logic;
+using EquipmentBorrowingSystem.Backend.Models;
 using EquipmentBorrowingSystem.Views;
 using EquipmentBorrowingSystem.Views.Template;
 using System;
@@ -31,12 +32,12 @@ namespace EquipmentBorrowingSystem.Controllers
 
             //                                   Replace with model
             //                                   VVVVVVVVVVVV
-            return new EmptyGuiDisplay(Director, new Object());
+            return new EmptyGuiDisplay(Director, new Empty());
         }
 
         //                                  Replace with model class
         //                                  VVVVVV
-        public Response SampleActionFunction(Object obj)
+        public Response SampleActionFunction(Empty obj)
         {
             // This Method does an action
             // For example, it may insert the object to the database

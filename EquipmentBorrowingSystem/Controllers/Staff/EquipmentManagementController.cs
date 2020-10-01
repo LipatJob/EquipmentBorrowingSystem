@@ -43,7 +43,7 @@ namespace EquipmentBorrowingSystem.Controllers
 
         public Display ViewEquipment(int id)
         {
-            return new EquipmentDisplay(Director, Logic.GetEquipment(id), EquipmentDisplay.ViewMode.VIEW);
+            return new EquipmentGuiDisplay(Director, Logic.GetEquipment(id));
         }
 
         public Response EditEquipment(Equipment equipment)

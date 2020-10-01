@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EquipmentBorrowingSystem.Backend.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,11 +10,11 @@ namespace EquipmentBorrowingSystem.Views.Template
 {
     //   Replace with class name       Replace with model class
     //   VVVVVVVVVVVVVVV               VVVVVV
-    class EmptyCliDisplay : CliDisplay<Object>
+    class EmptyCliDisplay : CliDisplay<Empty>
     {
         //   Replace with class name              Replace with model class
         //   VVVVVVVVVVVVVVV                      VVVVVV
-        public EmptyCliDisplay(Director director, Object model) : base(director, model)
+        public EmptyCliDisplay(Director director, Empty model) : base(director, model)
         {
 
         }
