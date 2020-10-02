@@ -10,6 +10,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
 {
     class UserType : Keyed<int>
     {
+        public UserType() { }
         public UserType(int id, string name)
         {
             Id = id;

@@ -18,6 +18,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
             return Id;
         }
 
+        public RequestStatus(){ }
         public RequestStatus(int id, string name)
         {
             Id = id;

@@ -15,6 +15,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
     /// </summary>
     class User : Keyed<int>
     {
+        public User() { }
         public User(int id, int userTypeId, string email, string password)
         {
             Id = id;

@@ -21,7 +21,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
         {
             return Id;
         }
-
+        public Violation() { }
         public Violation(int id, string name)
         {
             Id = id;

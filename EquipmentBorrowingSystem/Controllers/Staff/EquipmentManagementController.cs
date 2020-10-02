@@ -32,7 +32,7 @@ namespace EquipmentBorrowingSystem.Controllers
 
         public Display AddEquipment()
         {
-            return new EquipmentDisplay(Director, new Equipment(0, 0, 0, ""), EquipmentDisplay.ViewMode.ADD);
+            return new EquipmentDisplay(Director, new Equipment(), EquipmentDisplay.ViewMode.ADD);
         }
 
         public Response AddEquipment(Equipment equipment)

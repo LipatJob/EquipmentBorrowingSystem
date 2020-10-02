@@ -8,5 +8,9 @@ namespace EquipmentBorrowingSystem.Backend.Models
 {
     class Model
     {
+        public Model()
+        {
+
+        }
     }
 }

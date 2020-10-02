@@ -14,6 +14,8 @@ namespace EquipmentBorrowingSystem.Backend.Models
     /// </summary>
     class EquipmentRequest : Keyed<int>
     {
+        public EquipmentRequest() { }
+
         public EquipmentRequest(int id, int borrowerID, int equipmentID, int requestStatusID, DateTime expectedReturnDate, DateTime dateBorrowed, DateTime dateReturned, string reason)
         {
             Id = id;

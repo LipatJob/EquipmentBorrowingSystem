@@ -15,6 +15,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
     /// </summary>
     class EquipmentType : Keyed<int>
     {
+        public EquipmentType() { }
         public EquipmentType(int id, string name, int maximumBorrowDurationHours)
         {
             Id = id;

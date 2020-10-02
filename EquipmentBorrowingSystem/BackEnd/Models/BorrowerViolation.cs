@@ -15,6 +15,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
     /// </summary>
     class BorrowerViolation : Keyed<int>
     {
+        public BorrowerViolation() { }
         public BorrowerViolation(int id, int requestId, int violationID, decimal amountCharged, bool resolved)
         {
             Id = id;

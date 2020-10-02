@@ -14,6 +14,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
     /// </summary>
     class Equipment : Model, Keyed<int>
     {
+        public Equipment() { }
         public Equipment(int id, int equipmentTypeID, int conditionID, string name)
         {
             Id = id;
