@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Backend\Models\Empty.cs" />
     <Compile Include="Backend\Models\Model.cs" />
+    <Compile Include="Controllers\Borrower\EquipmentBorrowingController.cs" />
     <Compile Include="Controllers\Template\EmptyController.cs" />
     <Compile Include="Controllers\Staff\EquipmentManagementController.cs" />
     <Compile Include="JobLib\Keyed.cs" />
@@ -83,6 +84,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ApplicationResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Borrower\EquipmentBorrowing\BorrowingMenu.cs" />
+    <Compile Include="Views\Borrower\EquipmentBorrowing\RequestToBorrow.cs" />
+    <Compile Include="Views\Borrower\EquipmentBorrowing\ReturnEquipment.cs" />
+    <Compile Include="Views\Borrower\EquipmentBorrowing\SeeInfoAndStatus.cs" />
     <Compile Include="Views\Borrower\MenuDisplay.cs" />
     <Compile Include="Views\CliDisplay.cs" />
     <Compile Include="Views\Components\CLabel.cs">
@@ -119,8 +124,6 @@
       <DependentUpon>EmptyGuiDisplay.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\Borrower\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

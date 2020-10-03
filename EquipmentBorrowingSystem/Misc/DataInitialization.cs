@@ -44,6 +44,7 @@ namespace EquipmentBorrowingSystem.Misc
 
             var equipments = new SerializedList<Equipment>(ModelValues.EQUIPMENTS_FILE_NAME, Equipment.GetSerializer());
             equipments.Add(new Equipment(0, 0, 0, "Chair 1"));
+            equipments.Add(new Equipment(1, 0, 0, "Chair 2"));
 
             var requestStatuses = new SerializedList<RequestStatus>(ModelValues.EQUIPMENT_STATUSES_FILE_NAME, RequestStatus.GetSerializer());
             requestStatuses.Add(new RequestStatus(0, "Pending"));

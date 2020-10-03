@@ -34,11 +34,19 @@ namespace EquipmentBorrowingSystem.Backend.Logic
 
         public Response RequestToBorrowEquipment(EquipmentRequest request)
         {
-            int id = ApplicationState.EquipmentRequests.Values.OrderByDescending(e=>e.Id).First().Id + 1;
+            int id = 0;
+            if (ApplicationState.EquipmentRequests.Count() != 0)
+            {
+                id = ApplicationState.EquipmentRequests.Keys.Max() + 1;
+            }
+
             int pendingId = ApplicationState.RequestStatuses.Values.Where(e => e.Name == "Pending").First().Id;
             request.Id = id;
-            request.BorrowerID = ApplicationState.LoggedInUser.Id;
+            //request.BorrowerID = ApplicationState.LoggedInUser.Id;
             request.RequestStatusID = pendingId;
+            //temp var
+            request.DateReturned = DateTime.Now;
+            request.DateBorrowed = DateTime.Now;
             ApplicationState.EquipmentRequests[id] = request;
             ApplicationState.EquipmentRequests.SaveState();
             return new Response(true, "Success");

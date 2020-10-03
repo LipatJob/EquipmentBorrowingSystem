@@ -21,12 +21,15 @@ namespace EquipmentBorrowingSystem
         // 1. Registering Controller:
         // public <Name>Controller <Identifier>Controller { get; }
         // See example below
+
+        public EquipmentBorrowingController EquipmentBorrowingController { get; }
         public EmptyController EmptyController { get; }
 
     public Director()
         {
             State = new ApplicationState();
             EquipmentManagementController = new EquipmentManagementController(this);
+            EquipmentBorrowingController = new EquipmentBorrowingController(this);
 
             // 2. Registering Controller:
             // <Identifier>Controller = new <Name>Controller(this);
