@@ -14,7 +14,6 @@ namespace EquipmentBorrowingSystem.Views.Borrower.EquipmentBorrowing
         {
 
         }
-
         public override void ShowDisplay()
         {
             Console.Clear();
@@ -28,7 +27,7 @@ namespace EquipmentBorrowingSystem.Views.Borrower.EquipmentBorrowing
 
             if (choice.ToUpper() == "A") { Director.ShowDisplay(Director.EquipmentBorrowingController.RequestToBorrow()); }
             else if (choice.ToUpper() == "B") { Director.ShowDisplay(Director.EquipmentManagementController.EquipmentList()); }
-            else if (choice.ToUpper() == "C") { Director.ShowDisplay(Director.EquipmentManagementController.EquipmentList()); }
+            else if (choice.ToUpper() == "C") { Director.ShowDisplay(Director.EquipmentBorrowingController.ReturnEquipment()); }
         }
     }
 }

@@ -14,7 +14,6 @@ namespace EquipmentBorrowingSystem.Views.Staff.EquipmentManagement
         {
 
         }
-
         public override void ShowDisplay()
         {
             Console.Clear();

@@ -43,6 +43,12 @@ namespace EquipmentBorrowingSystem.Controllers
             return Logic.RequestToBorrowEquipment(request);
         }
 
+        //temporary (ReturnEquipment View)
+        public Display ReturnEquipment()
+        {
+            return new ReturnEquipment(Director, new EquipmentRequest());
+        }
+
         public Display SampleDisplayFunction()
         {
             // This method is used to change the display
