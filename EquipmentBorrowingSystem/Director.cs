@@ -29,6 +29,7 @@ namespace EquipmentBorrowingSystem
             // Registered Controllers
             EquipmentManagementController = new EquipmentManagementController();
             EquipmentBorrowingController = new EquipmentBorrowingController();
+            BorrowedEquipmentLogController = new BorrowedEquipmentLogController();
 
 
             // 2. Registering Controller:
@@ -37,13 +38,14 @@ namespace EquipmentBorrowingSystem
             EmptyController = new EmptyController();
         }
 
-        public EquipmentManagementController EquipmentManagementController { get; }
+
 
         // 1. Registering Controller:
         // public <Name>Controller <Identifier>Controller { get; }
         // See example below
-
+        public EquipmentManagementController EquipmentManagementController { get; }
         public EquipmentBorrowingController EquipmentBorrowingController { get; }
+        public BorrowedEquipmentLogController BorrowedEquipmentLogController { get; }
         public EmptyController EmptyController { get; }
 
 

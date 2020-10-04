@@ -1,4 +1,5 @@
 ﻿using EquipmentBorrowingSystem.Backend.Models;
+using EquipmentBorrowingSystem.Displays;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +23,8 @@ namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
 
         public void BindModelToView()
         {
-            EquipmentRequests = Model.ToList();
             
-            foreach (EquipmentRequest request in EquipmentRequests)
+            foreach (EquipmentRequest request in Model)
             {
                 RequestLog.Items.Add(new ListViewItem(new string[] { request.RequestStatusID.ToString(), request.Id.ToString()}));
             }
@@ -161,10 +161,11 @@ namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
     {
         //   Replace with class name              Replace with model class
         //   VVVVVVVVVVVVVVV                      VVVVVV
-        public BorrowedEquipmentLogGuiDisplay(Director director, IEnumerable<EquipmentRequest> model) 
-            : base(director, model)
+        public BorrowedEquipmentLogGuiDisplay(IEnumerable<EquipmentRequest> model) 
+            : base(model)
         {
             InitializeComponent();
+            BindModelToView();
         }
                    
         public BorrowedEquipmentLogGuiDisplay()

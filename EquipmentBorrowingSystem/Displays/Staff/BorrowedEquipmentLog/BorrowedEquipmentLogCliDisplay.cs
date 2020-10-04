@@ -6,12 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using EquipmentBorrowingSystem.Displays;
 
 namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
 {
     class BorrowedEquipmentLogCliDisplay : CliDisplay<Object>
     {
-        public BorrowedEquipmentLogCliDisplay(Director director, Object model) : base(director, model)
+        public BorrowedEquipmentLogCliDisplay(Object model) : base(model)
         {
 
         }

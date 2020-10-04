@@ -1,8 +1,8 @@
 ﻿using EquipmentBorrowingSystem.Backend.Logic;
 using EquipmentBorrowingSystem.Backend.Models;
+using EquipmentBorrowingSystem.Displays;
 using EquipmentBorrowingSystem.Views;
 using EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog;
-using EquipmentBorrowingSystem.Views.Template;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,40 +15,45 @@ namespace EquipmentBorrowingSystem.Controllers
     {
         private StaffLogic Logic;
 
-        public BorrowedEquipmentLogController(Director director) : base(director)
+        public BorrowedEquipmentLogController() : base()
         {
-            Logic = new StaffLogic(director.State);
+            Logic = new StaffLogic(ApplicationState.GetInstance());
+        }
+
+        public Display RequestsMenu()
+        {
+            return new BorrowedEquipmentLogCliDisplay(null);
         }
 
         public Display AllRequests()
         {
 
-            return new BorrowedEquipmentLogGuiDisplay(Director, Logic.SeeAllRequests());
+            return new BorrowedEquipmentLogGuiDisplay(Logic.SeeAllRequests());
         }
 
         public Display PendingRequests()
         {
-            return new BorrowedEquipmentLogGuiDisplay(Director, Logic.SeeAllPendingRequests());
+            return new BorrowedEquipmentLogGuiDisplay(Logic.SeeAllPendingRequests());
         }
 
         public Display DeniedRequests()
         {
-            return new BorrowedEquipmentLogGuiDisplay(Director, Logic.SeeAllDeniedRequests());
+            return new BorrowedEquipmentLogGuiDisplay(Logic.SeeAllDeniedRequests());
         }
 
         public Display ActiveRequests()
         {
-            return new BorrowedEquipmentLogGuiDisplay(Director, Logic.SeeAllActiveRequests());
+            return new BorrowedEquipmentLogGuiDisplay(Logic.SeeAllActiveRequests());
         }
 
         public Display CompleteRequests()
         {
-            return new BorrowedEquipmentLogGuiDisplay(Director, Logic.SeeAllCompleteRequests());
+            return new BorrowedEquipmentLogGuiDisplay(Logic.SeeAllCompleteRequests());
         }
 
         public Display OverdueRequests()
         {
-            return new BorrowedEquipmentLogGuiDisplay(Director, Logic.SeeAllOverdueRequests());
+            return new BorrowedEquipmentLogGuiDisplay(Logic.SeeAllOverdueRequests());
         }
 
     }
