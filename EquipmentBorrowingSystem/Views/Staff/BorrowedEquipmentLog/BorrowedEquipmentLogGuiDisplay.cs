@@ -18,13 +18,16 @@ namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
         private ListView RequestLog;
         private Label BELsub;
         private Button BackButton;
+        List<EquipmentRequest> EquipmentRequests;
 
         public void BindModelToView()
         {
-            // This class is called when you want to display your model
-
-            // Put Logic here to Put Values of Model to View
+            EquipmentRequests = Model.ToList();
             
+            foreach (EquipmentRequest request in EquipmentRequests)
+            {
+                RequestLog.Items.Add(new ListViewItem(new string[] { request.RequestStatusID.ToString(), request.Id.ToString()}));
+            }
 
         }
 
