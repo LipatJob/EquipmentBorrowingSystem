@@ -20,6 +20,12 @@ namespace EquipmentBorrowingSystem.Backend.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
+
+        // Reference Models
+        public IEnumerable<User> Users
+            { get { return ApplicationState.GetInstance().Users.Values.Where(e => e.UserTypeId == Id); } }
+
+
         public int GetKey()
         {
             return Id;

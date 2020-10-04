@@ -4,6 +4,7 @@ using EquipmentBorrowingSystem.JobLib;
 using JobLib;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,18 +17,18 @@ namespace EquipmentBorrowingSystem
     /// </summary>
     class ApplicationState
     {
-        public User LoggedInUser { get; set; }
-        public SerializedDictionary<int, User> Users { get; }
-        public SerializedDictionary<int, BorrowerViolation> BorrowerViolations { get; }
-        public SerializedDictionary<int, Equipment> Equipments { get; }
-        public SerializedDictionary<int, EquipmentCondition> EquipmentConditions { get; }
-        public SerializedDictionary<int, EquipmentRequest> EquipmentRequests { get; }
-        public SerializedDictionary<int, RequestStatus> RequestStatuses { get; }
-        public SerializedDictionary<int, EquipmentType> EquipmentTypes { get; }
-        public SerializedDictionary<int, Violation> Violations { get; }
-        public SerializedDictionary<int, UserType> UserTypes { get; set; }
+        private static ApplicationState Instance;
 
-        public ApplicationState()
+        public static ApplicationState GetInstance()
+        {
+            if(Instance == null)
+            {
+                Instance = new ApplicationState();
+            }
+            return Instance;
+        }
+
+        private ApplicationState()
         {
             Users               = new SerializedDictionary<int, User>(ModelValues.ACCOUNT_FILE_NAME, User.GetSerializer());
             BorrowerViolations  = new SerializedDictionary<int, BorrowerViolation>(ModelValues.BORROWER_VIOLATIONS_FILE_NAME, BorrowerViolation.GetSerializer());
@@ -40,5 +41,16 @@ namespace EquipmentBorrowingSystem
             UserTypes           = new SerializedDictionary<int, UserType>(ModelValues.USER_TYPES_FILE_NAME, UserType.GetSerializer());
         
         }
+
+        public User LoggedInUser { get; set; }
+        public SerializedDictionary<int, User> Users { get; }
+        public SerializedDictionary<int, BorrowerViolation> BorrowerViolations { get; }
+        public SerializedDictionary<int, Equipment> Equipments { get; }
+        public SerializedDictionary<int, EquipmentCondition> EquipmentConditions { get; }
+        public SerializedDictionary<int, EquipmentRequest> EquipmentRequests { get; }
+        public SerializedDictionary<int, RequestStatus> RequestStatuses { get; }
+        public SerializedDictionary<int, EquipmentType> EquipmentTypes { get; }
+        public SerializedDictionary<int, Violation> Violations { get; }
+        public SerializedDictionary<int, UserType> UserTypes { get; set; }
     }
 }

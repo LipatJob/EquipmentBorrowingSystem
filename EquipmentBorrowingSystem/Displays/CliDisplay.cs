@@ -5,16 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.Views
+namespace EquipmentBorrowingSystem.Displays
 {
     abstract class CliDisplay<BaseModel> : Display
     {
-        protected Director Director;
         protected BaseModel Model;
-
-        public CliDisplay(Director director, BaseModel model)
+        protected Director Director;
+        public CliDisplay(BaseModel model)
         {
-            this.Director = director;
+            this.Director = Director.GetInstance();
             this.Model = model;
         }
         public abstract void ShowDisplay();

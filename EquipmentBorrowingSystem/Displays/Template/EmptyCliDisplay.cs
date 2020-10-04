@@ -6,15 +6,16 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.Views.Template
+namespace EquipmentBorrowingSystem.Displays.Template
 {
     //   Replace with class name       Replace with model class
     //   VVVVVVVVVVVVVVV               VVVVVV
     class EmptyCliDisplay : CliDisplay<Empty>
     {
-        //   Replace with class name              Replace with model class
-        //   VVVVVVVVVVVVVVV                      VVVVVV
-        public EmptyCliDisplay(Director director, Empty model) : base(director, model)
+        //   Replace with class name              
+        //   VVVVVVVVVVVVVVV                      
+        public EmptyCliDisplay(Empty model) //<<< Replace with model class
+            : base(model)    
         {
 
         }

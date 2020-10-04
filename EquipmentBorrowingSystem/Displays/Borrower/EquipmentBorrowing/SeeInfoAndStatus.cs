@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.Views
+namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
 {
-    interface Display
+    class SeeInfoAndStatus
     {
-        void ShowDisplay();
     }
 }

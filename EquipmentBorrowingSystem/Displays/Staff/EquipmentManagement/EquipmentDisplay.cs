@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.Views.Staff.EquipmentManagement
+namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
 {
     class EquipmentDisplay : CliDisplay<Equipment>
     {
@@ -15,7 +15,7 @@ namespace EquipmentBorrowingSystem.Views.Staff.EquipmentManagement
 
         ViewMode selectedMode;
 
-        public EquipmentDisplay(Director director, Equipment model, ViewMode mode):base(director, model)
+        public EquipmentDisplay(Equipment model, ViewMode mode):base(model)
         {
             selectedMode = mode;
         }
@@ -64,8 +64,8 @@ namespace EquipmentBorrowingSystem.Views.Staff.EquipmentManagement
         {
             Console.WriteLine("" +
                 $"Name: {Model.Name}\n" +
-                $"Equipment Type: {Director.State.EquipmentTypes[Model.EquipmentTypeID].Name}\n" +
-                $"Condition: {Director.State.EquipmentConditions[Model.ConditionID].Name}");
+                $"Equipment Type: {Model.EquipmentType.Name}\n" +
+                $"Condition: {Model.EquipmentCondition.Name}");
         }
 
         private void AddEquipment()
@@ -82,7 +82,7 @@ namespace EquipmentBorrowingSystem.Views.Staff.EquipmentManagement
             int i = 1;
             Console.WriteLine();
             Console.WriteLine("Select Equipment Type");
-            List<EquipmentType> types = Director.State.EquipmentTypes.Values.ToList();
+            List<EquipmentType> types = ApplicationState.GetInstance().EquipmentTypes.Values.ToList();
             foreach (EquipmentType type in types)  { Console.WriteLine($"{i}. {type.Name}"); i++; }
             equipment.EquipmentTypeID = types[JHelper.InputInt("Enter Selection: ", validator: e => InRange(e, 1, types.Count)) - 1].Id;
 
@@ -90,7 +90,7 @@ namespace EquipmentBorrowingSystem.Views.Staff.EquipmentManagement
             i = 1;
             Console.WriteLine();
             Console.WriteLine("Select Equipment Condition");
-            List<EquipmentCondition> conditions = Director.State.EquipmentConditions.Values.ToList();
+            List<EquipmentCondition> conditions = ApplicationState.GetInstance().EquipmentConditions.Values.ToList();
             foreach (EquipmentCondition condition in conditions){ Console.WriteLine($"{i}. {condition.Name}"); i++; }
             equipment.ConditionID = conditions[JHelper.InputInt("Enter Selection: ", validator: e => InRange(e, 1, conditions.Count)) - 1].Id;
 
@@ -126,7 +126,7 @@ namespace EquipmentBorrowingSystem.Views.Staff.EquipmentManagement
                     // Edit Equipment Type
                     int i = 1;
                     Console.WriteLine("Select Equipment Type");
-                    List<EquipmentType> types = Director.State.EquipmentTypes.Values.ToList();
+                    List<EquipmentType> types = ApplicationState.GetInstance().EquipmentTypes.Values.ToList();
                     foreach (EquipmentType type in types) { Console.WriteLine($"{i}. {type.Name}"); i++; }
                     Model.EquipmentTypeID = types[JHelper.InputInt("Enter Selection: ", validator: e => InRange(e, 1, types.Count)) - 1].Id;
                 }
@@ -134,7 +134,7 @@ namespace EquipmentBorrowingSystem.Views.Staff.EquipmentManagement
                 {
                     int i = 1;
                     Console.WriteLine("Select Equipment Condition");
-                    List<EquipmentCondition> conditions = Director.State.EquipmentConditions.Values.ToList();
+                    List<EquipmentCondition> conditions = ApplicationState.GetInstance().EquipmentConditions.Values.ToList();
                     foreach (EquipmentCondition condition in conditions) { Console.WriteLine($"{i}. {condition.Name}"); i++; }
                     Model.ConditionID = conditions[JHelper.InputInt("Enter Selection: ", validator: e => InRange(e, 1, conditions.Count)) - 1].Id;
                 }

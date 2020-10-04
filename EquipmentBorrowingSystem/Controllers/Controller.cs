@@ -8,10 +8,5 @@ namespace EquipmentBorrowingSystem.Controllers
 {
     abstract class Controller
     {
-        protected Director Director { get; }
-        public Controller(Director director)
-        {
-            Director = director;
-        }
     }
 }

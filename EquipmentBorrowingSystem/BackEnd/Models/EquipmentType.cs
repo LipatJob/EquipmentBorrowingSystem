@@ -27,6 +27,11 @@ namespace EquipmentBorrowingSystem.Backend.Models
         public string Name { get; set; }
         public int MaximumBorrowDurationHours {get;set;}
 
+        // Reference Models
+        public IEnumerable<Equipment> Equipments
+            { get { return ApplicationState.GetInstance().Equipments.Values.Where(e => e.EquipmentTypeID == Id); } }
+
+
         public int GetKey()
         {
             return Id;

@@ -6,8 +6,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EquipmentBorrowingSystem.Views.Template
+namespace EquipmentBorrowingSystem.Displays.Template
 {
+    //   Replace with class name              Replace with model class
+    //   VVVVVVVVVVVVVVV                      VVVVVV
+    partial class EmptyGuiDisplay : GuiDisplay<Empty>
+    {
+        //   Replace with class name      
+        //   VVVVVVVVVVVVVVV                 
+        public EmptyGuiDisplay(Empty model) // <<< Replace with model class
+            : base(model)
+        {
+            // The GUI Stuff must be implemented in the partial class below
+            // Fold this Class after initializing
+            InitializeComponent();
+        }
+
+        //   Replace with class name              
+        //   VVVVVVVVVVVVVVV                      
+        public EmptyGuiDisplay()
+        {
+            // This Constructor allows you to use the designer. 
+        }
+
+        // put all GUI in the implementation of this method
+        partial void InitializeComponent();
+
+    }
 
     //            Replace with class name              
     //            VVVVVVVVVVVVVVV 
@@ -56,28 +81,6 @@ namespace EquipmentBorrowingSystem.Views.Template
 
     }
 
-    //   Replace with class name              Replace with model class
-    //   VVVVVVVVVVVVVVV                      VVVVVV
-    partial class EmptyGuiDisplay : GuiDisplay<Empty>
-    {
-        //   Replace with class name              Replace with model class
-        //   VVVVVVVVVVVVVVV                      VVVVVV
-        public EmptyGuiDisplay(Director director, Empty model) 
-            : base(director, model)
-        {
-            InitializeComponent();
-        }
-
-        //   Replace with class name              
-        //   VVVVVVVVVVVVVVV                      
-        public EmptyGuiDisplay()
-        {
-            // This Constructor allows you to use the designer
-        }
-
-        partial void InitializeComponent();
-
-    }
 
 
 }

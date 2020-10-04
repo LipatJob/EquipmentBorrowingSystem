@@ -6,13 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.Views.Staff.EquipmentManagement
+namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
 {
     class EquipmentList : CliDisplay<IEnumerable<Equipment>>
     {
-        public EquipmentList(Director director, IEnumerable<Equipment> model) : base(director, model)
+        public EquipmentList(IEnumerable<Equipment> model) : base(model)
         {
-
         }
 
         public override void ShowDisplay()
@@ -23,12 +22,12 @@ namespace EquipmentBorrowingSystem.Views.Staff.EquipmentManagement
                 Console.WriteLine("" +
                 $"Id: {equipment.Id}\n"+
                 $"Name: {equipment.Name}\n" +
-                $"Equipment Type: {Director.State.EquipmentTypes[equipment.EquipmentTypeID].Name}\n" +
-                $"Condition: {Director.State.EquipmentConditions[equipment.ConditionID].Name}");
+                $"Equipment Type: {ApplicationState.GetInstance().EquipmentTypes[equipment.EquipmentTypeID].Name}\n" +
+                $"Condition: {ApplicationState.GetInstance().EquipmentConditions[equipment.ConditionID].Name}");
                 Console.WriteLine();
             }
 
-            int id = JHelper.InputInt("Enter Id of equipment to select: ", validator: e => Director.State.Equipments.ContainsKey(e));
+            int id = JHelper.InputInt("Enter Id of equipment to select: ", validator: e => ApplicationState.GetInstance().Equipments.ContainsKey(e));
 
             Director.ShowDisplay(Director.EquipmentManagementController.ViewEquipment(id));
         }

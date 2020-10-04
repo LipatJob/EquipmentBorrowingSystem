@@ -8,14 +8,15 @@ using System.Threading.Tasks;
 using JobLib;
 using EquipmentBorrowingSystem.Controllers;
 
-namespace EquipmentBorrowingSystem.Views.Borrower.EquipmentBorrowing
+namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
 {
-    class ReturnEquipment : CliDisplay<EquipmentRequest>
+    class RequestToBorrow : CliDisplay<EquipmentRequest>
     {
-        public ReturnEquipment(Director director, EquipmentRequest model) : base(director, model)
+        public RequestToBorrow(EquipmentRequest model) : base(model)
         {
 
         }
+
         public override void ShowDisplay()
         {
             Console.Clear();
@@ -25,7 +26,7 @@ namespace EquipmentBorrowingSystem.Views.Borrower.EquipmentBorrowing
             //input Equipment ID
             int i = 1;
             Console.WriteLine("Select Equipment");
-            List<Equipment> equipments = Director.State.Equipments.Values.ToList();
+            List<Equipment> equipments = ApplicationState.GetInstance().Equipments.Values.ToList();
             foreach (Equipment equipment in equipments) { Console.WriteLine($"{i}. {equipment.Name}"); i++; }
             Model.EquipmentID = equipments[JHelper.InputInt("Enter Selection: ", validator: e => InRange(e, 1, equipments.Count)) - 1].Id;
 
@@ -38,7 +39,7 @@ namespace EquipmentBorrowingSystem.Views.Borrower.EquipmentBorrowing
             //go back to Borrowing Menu
             Director.ShowDisplay(Director.EquipmentBorrowingController.BorrowingMenu());
         }
-
+        
         //list of equipments
         private bool InRange(int value, int min, int max)
         {

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EquipmentBorrowingSystem.Views.Staff.EquipmentManagement
+namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
 {
     //            Replace with class name              
     //            VVVVVVVVVVVVVVV 
@@ -39,15 +39,15 @@ namespace EquipmentBorrowingSystem.Views.Staff.EquipmentManagement
         List<EquipmentCondition> conditions;
         public void BindModelToView()
         {
-            types = Director.State.EquipmentTypes.Values.ToList();
-            conditions = Director.State.EquipmentConditions.Values.ToList();
+            types = ApplicationState.GetInstance().EquipmentTypes.Values.ToList();
+            conditions = ApplicationState.GetInstance().EquipmentConditions.Values.ToList();
 
             idTextBox.Text = Model.Id.ToString();
             nameTextBox.Text = Model.Name.ToString();
             typeComboBox.Items.AddRange(types.Select(e => e.Name).ToArray());
             conditionComboBox.Items.AddRange(conditions.Select(e => e.Name).ToArray());
-            typeComboBox.SelectedItem = Director.State.EquipmentTypes[Model.EquipmentTypeID].Name;
-            conditionComboBox.SelectedItem = Director.State.EquipmentConditions[Model.ConditionID].Name;
+            typeComboBox.SelectedItem = Model.EquipmentType.Name;
+            conditionComboBox.SelectedItem = Model.EquipmentCondition.Name;
         }
 
         public void BindViewToModel()
@@ -394,8 +394,8 @@ namespace EquipmentBorrowingSystem.Views.Staff.EquipmentManagement
     {
         //   Replace with class name              Replace with model class
         //   VVVVVVVVVVVVVVV                      VVVVVV
-        public EquipmentGuiDisplay(Director director, Equipment model)
-            : base(director, model)
+        public EquipmentGuiDisplay(Equipment model)
+            : base(model)
         {
             InitializeComponent();
             BindModelToView();

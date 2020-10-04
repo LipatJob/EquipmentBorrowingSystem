@@ -1,6 +1,6 @@
 ﻿using EquipmentBorrowingSystem.Backend;
 using EquipmentBorrowingSystem.Controllers;
-using EquipmentBorrowingSystem.Views;
+using EquipmentBorrowingSystem.Displays;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,28 +14,39 @@ namespace EquipmentBorrowingSystem
     class Director
     {
 
+        private static Director Instance;
+        public static Director GetInstance()
+        {
+            if(Instance == null)
+            {
+                Instance = new Director();
+            }
+            return Instance;
+        }
 
-        public ApplicationState State { get; }
-        public EquipmentManagementController EquipmentManagementController { get; }
+        private Director()
+        {
+            // Registered Controllers
+            EquipmentManagementController = new EquipmentManagementController();
+            EquipmentBorrowingController = new EquipmentBorrowingController();
+            BorrowedEquipmentLogController = new BorrowedEquipmentLogController();
+
+
+            // 2. Registering Controller:
+            // <Identifier>Controller = new <Name>Controller();
+            // See example below
+            EmptyController = new EmptyController();
+        }
+
+
 
         // 1. Registering Controller:
         // public <Name>Controller <Identifier>Controller { get; }
         // See example below
-
+        public EquipmentManagementController EquipmentManagementController { get; }
         public EquipmentBorrowingController EquipmentBorrowingController { get; }
+        public BorrowedEquipmentLogController BorrowedEquipmentLogController { get; }
         public EmptyController EmptyController { get; }
-
-    public Director()
-        {
-            State = new ApplicationState();
-            EquipmentManagementController = new EquipmentManagementController(this);
-            EquipmentBorrowingController = new EquipmentBorrowingController(this);
-
-            // 2. Registering Controller:
-            // <Identifier>Controller = new <Name>Controller(this);
-            // See example below
-            EmptyController = new EmptyController(this);
-        }
 
 
         public void ShowDisplay(Display display)
@@ -47,5 +58,7 @@ namespace EquipmentBorrowingSystem
         {
             view.ShowDialog();
         }
+
+
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EquipmentBorrowingSystem.Views
+namespace EquipmentBorrowingSystem.Displays
 {
     class GuiDisplay<BaseModel> : Form, Display
     {
@@ -17,9 +17,9 @@ namespace EquipmentBorrowingSystem.Views
 
         }
 
-        public GuiDisplay(Director director, BaseModel model)
+        public GuiDisplay(BaseModel model)
         {
-            this.Director = director;
+            this.Director = Director.GetInstance();
             Model = model;
         }
         

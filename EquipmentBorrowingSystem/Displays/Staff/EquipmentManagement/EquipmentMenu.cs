@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EquipmentBorrowingSystem.Views.Staff.EquipmentManagement
+namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
 {
     class EquipmentMenu : CliDisplay<Object>
     {
-        public EquipmentMenu(Director director, Object model) : base(director, model)
+        public EquipmentMenu(Object model) : base(model)
         {
 
         }

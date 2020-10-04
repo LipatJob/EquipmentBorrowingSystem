@@ -8,15 +8,14 @@ using System.Threading.Tasks;
 using JobLib;
 using EquipmentBorrowingSystem.Controllers;
 
-namespace EquipmentBorrowingSystem.Views.Borrower.EquipmentBorrowing
+namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
 {
-    class RequestToBorrow : CliDisplay<EquipmentRequest>
+    class ReturnEquipment : CliDisplay<EquipmentRequest>
     {
-        public RequestToBorrow(Director director, EquipmentRequest model) : base(director, model)
+        public ReturnEquipment(Director director, EquipmentRequest model) : base(director, model)
         {
 
         }
-
         public override void ShowDisplay()
         {
             Console.Clear();
@@ -39,7 +38,7 @@ namespace EquipmentBorrowingSystem.Views.Borrower.EquipmentBorrowing
             //go back to Borrowing Menu
             Director.ShowDisplay(Director.EquipmentBorrowingController.BorrowingMenu());
         }
-        
+
         //list of equipments
         private bool InRange(int value, int min, int max)
         {
