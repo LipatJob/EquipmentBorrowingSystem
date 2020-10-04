@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Backend\Models\Empty.cs" />
     <Compile Include="Backend\Models\Model.cs" />
+    <Compile Include="Controllers\Staff\BorrowedEquipmentLogController.cs" />
     <Compile Include="Controllers\Template\EmptyController.cs" />
     <Compile Include="Controllers\Staff\EquipmentManagementController.cs" />
     <Compile Include="JobLib\Keyed.cs" />
@@ -92,6 +93,10 @@
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Views\Staff\BorrowedEquipmentLog\BorrowedEquipmentLogCliDisplay.cs" />
+    <Compile Include="Views\Staff\BorrowedEquipmentLog\BorrowedEquipmentLogGuiDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\Staff\EquipmentManagement\EquipmentDisplay.cs" />
     <Compile Include="Views\Staff\EquipmentManagement\EquipmentGuiDisplay.cs">
       <SubType>Form</SubType>
@@ -111,6 +116,9 @@
     <EmbeddedResource Include="ApplicationResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ApplicationResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Staff\BorrowedEquipmentLog\BorrowedEquipmentLogGuiDisplay.resx">
+      <DependentUpon>BorrowedEquipmentLogGuiDisplay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Staff\EquipmentManagement\EquipmentGuiDisplay.resx">
       <DependentUpon>EquipmentGuiDisplay.cs</DependentUpon>
