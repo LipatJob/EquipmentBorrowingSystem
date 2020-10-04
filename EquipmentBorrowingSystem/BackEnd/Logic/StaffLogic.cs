@@ -46,7 +46,7 @@ namespace EquipmentBorrowingSystem.Backend.Logic
 
         public IEnumerable<Equipment> SeeAllEquipments()
         {
-            return ApplicationState.Equipments.Values.AsEnumerable();
+            return ApplicationState.Equipments.Values;
         }
 
         public IEnumerable<EquipmentRequest> SeeAllRequests()

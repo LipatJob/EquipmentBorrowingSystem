@@ -29,6 +29,15 @@ namespace EquipmentBorrowingSystem.Backend.Models
         public string Email { get; set; }
         public string Password { get; set; }
 
+
+        // Foreign Models
+        public UserType UserType  {  get { return ApplicationState.GetInstance().UserTypes[UserTypeId]; } }
+
+        // Reference Models
+        public IEnumerable<EquipmentRequest> EquipmentRequests
+            { get { return ApplicationState.GetInstance().EquipmentRequests.Values.Where(e => e.BorrowerID == Id); } }
+
+
         public int GetKey()
         {
             return Id;

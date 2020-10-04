@@ -37,6 +37,17 @@ namespace EquipmentBorrowingSystem.Backend.Models
         public DateTime DateReturned { get; set; }
         public string Reason { get; set; }
 
+
+        // Foreign Models
+        public User Borrower { get { return ApplicationState.GetInstance().Users[BorrowerID]; } }
+        public Equipment Equipment { get { return ApplicationState.GetInstance().Equipments[EquipmentID]; } }
+        public RequestStatus RequestStatus { get { return ApplicationState.GetInstance().RequestStatuses[RequestStatusID]; } }
+
+        // Reference Models
+        public IEnumerable<BorrowerViolation> BorrowerViolations 
+            { get { return ApplicationState.GetInstance().BorrowerViolations.Values.Where(e => e.RequestId == Id); } }
+
+
         public int GetKey()
         {
             return Id;

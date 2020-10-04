@@ -31,6 +31,12 @@ namespace EquipmentBorrowingSystem.Backend.Models
         public decimal AmountCharged { get; set; }
         public bool Resolved { get; set; }
 
+
+        // Foreign Models
+        public EquipmentRequest EquipmentRequest { get { return ApplicationState.GetInstance().EquipmentRequests[RequestId]; } }
+        public Violation Violation { get { return ApplicationState.GetInstance().Violations[ViolationId]; } }
+
+
         public int GetKey()
         {
             return Id;

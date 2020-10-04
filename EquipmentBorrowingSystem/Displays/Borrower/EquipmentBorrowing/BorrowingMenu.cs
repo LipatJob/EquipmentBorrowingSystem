@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.Views.Borrower.EquipmentBorrowing
+namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
 {
     class BorrowingMenu : CliDisplay<Object>
     {
-        public BorrowingMenu(Director director, Object model) : base(director, model)
+        public BorrowingMenu(Object model) : base(model)
         {
 
         }

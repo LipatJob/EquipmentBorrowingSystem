@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.Views.Borrower.EquipmentBorrowing
+namespace EquipmentBorrowingSystem.Displays
 {
-    class ReturnEquipment
+    interface Display
     {
+        void ShowDisplay();
+
     }
 }

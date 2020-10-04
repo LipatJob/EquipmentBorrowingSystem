@@ -24,6 +24,12 @@ namespace EquipmentBorrowingSystem.Backend.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
+
+        // Reference Models
+        public IEnumerable<Equipment> Equipment
+        { get { return ApplicationState.GetInstance().Equipments.Values.Where(e => e.ConditionID == Id); } }
+
+
         public int GetKey()
         {
             return Id;

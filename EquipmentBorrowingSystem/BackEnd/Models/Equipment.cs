@@ -28,6 +28,15 @@ namespace EquipmentBorrowingSystem.Backend.Models
         public int ConditionID { get; set; }
         public string Name { get; set; }
 
+
+        // Foreign Models
+        public EquipmentType EquipmentType { get { return ApplicationState.GetInstance().EquipmentTypes[EquipmentTypeID]; } }
+        public EquipmentCondition EquipmentCondition { get { return ApplicationState.GetInstance().EquipmentConditions[ConditionID]; } }
+
+        // Reference Models
+        public IEnumerable<EquipmentRequest> EquipmentRequests
+            { get { return ApplicationState.GetInstance().EquipmentRequests.Values.Where(e => e.EquipmentID == Id); } }
+
         public int GetKey()
         {
             return Id;

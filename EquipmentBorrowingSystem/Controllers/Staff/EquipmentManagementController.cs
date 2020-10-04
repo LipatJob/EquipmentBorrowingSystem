@@ -1,9 +1,9 @@
 ﻿using EquipmentBorrowingSystem.Backend.Logic;
 using EquipmentBorrowingSystem.Backend.Models;
-using EquipmentBorrowingSystem.Views;
-using EquipmentBorrowingSystem.Views.Borrower;
-using EquipmentBorrowingSystem.Views.Staff;
-using EquipmentBorrowingSystem.Views.Staff.EquipmentManagement;
+using EquipmentBorrowingSystem.Displays;
+using EquipmentBorrowingSystem.Displays.Borrower;
+using EquipmentBorrowingSystem.Displays.Staff;
+using EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,24 +15,24 @@ namespace EquipmentBorrowingSystem.Controllers
     class EquipmentManagementController : Controller
     {
         private StaffLogic Logic;
-        public EquipmentManagementController(Director director) : base(director)
+        public EquipmentManagementController()
         {
-            Logic = new StaffLogic(director.State);
+            Logic = new StaffLogic(ApplicationState.GetInstance());
         }
 
         public Display EquipmentMenu()
         {
-            return new EquipmentMenu(Director, null);
+            return new EquipmentMenu(null);
         }
 
         public Display EquipmentList()
         {
-            return new EquipmentList(Director, Logic.SeeAllEquipments());
+            return new EquipmentList(Logic.SeeAllEquipments());
         }
 
         public Display AddEquipment()
         {
-            return new EquipmentDisplay(Director, new Equipment(), EquipmentDisplay.ViewMode.ADD);
+            return new EquipmentDisplay(new Equipment(), EquipmentDisplay.ViewMode.ADD);
         }
 
         public Response AddEquipment(Equipment equipment)
@@ -43,7 +43,7 @@ namespace EquipmentBorrowingSystem.Controllers
 
         public Display ViewEquipment(int id)
         {
-            return new EquipmentGuiDisplay(Director, Logic.GetEquipment(id));
+            return new EquipmentGuiDisplay(Logic.GetEquipment(id));
         }
 
         public Response EditEquipment(Equipment equipment)

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.Views.Borrower.EquipmentBorrowing
+namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
 {
-    class SeeInfoAndStatus
+    class ReturnEquipment
     {
     }
 }

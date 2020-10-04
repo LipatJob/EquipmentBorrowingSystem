@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.Views.Borrower
+namespace EquipmentBorrowingSystem.Displays.Borrower
 {
     class MenuDisplay : CliDisplay<Object>
     {
-        public MenuDisplay(Director director, Object model) : base(director, model)
+        public MenuDisplay(Object model) : base(model)
         {
 
         }

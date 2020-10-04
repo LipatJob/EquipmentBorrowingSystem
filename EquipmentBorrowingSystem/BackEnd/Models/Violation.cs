@@ -14,18 +14,24 @@ namespace EquipmentBorrowingSystem.Backend.Models
     /// </summary>
     class Violation : Keyed<int>
     {
-        public int Id { get; set; }
-        public string name { get; set; }
-
-        public int GetKey()
-        {
-            return Id;
-        }
         public Violation() { }
         public Violation(int id, string name)
         {
             Id = id;
             this.name = name;
+        }
+
+        public int Id { get; set; }
+        public string name { get; set; }
+
+
+        // Reference Models
+        public IEnumerable<BorrowerViolation> BorrowerViolations
+            { get { return ApplicationState.GetInstance().BorrowerViolations.Values.Where(e => e.ViolationId == Id); } }
+
+        public int GetKey()
+        {
+            return Id;
         }
 
         public static Serializer<Violation> GetSerializer()

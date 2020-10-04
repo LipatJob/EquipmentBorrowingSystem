@@ -84,30 +84,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ApplicationResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Borrower\EquipmentBorrowing\BorrowingMenu.cs" />
-    <Compile Include="Views\Borrower\EquipmentBorrowing\RequestToBorrow.cs" />
-    <Compile Include="Views\Borrower\EquipmentBorrowing\ReturnEquipment.cs" />
-    <Compile Include="Views\Borrower\EquipmentBorrowing\SeeInfoAndStatus.cs" />
-    <Compile Include="Views\Borrower\MenuDisplay.cs" />
-    <Compile Include="Views\CliDisplay.cs" />
-    <Compile Include="Views\Components\CLabel.cs">
+    <Compile Include="Displays\Borrower\EquipmentBorrowing\BorrowingMenu.cs" />
+    <Compile Include="Displays\Borrower\EquipmentBorrowing\RequestToBorrow.cs" />
+    <Compile Include="Displays\Borrower\EquipmentBorrowing\ReturnEquipment.cs" />
+    <Compile Include="Displays\Borrower\EquipmentBorrowing\SeeInfoAndStatus.cs" />
+    <Compile Include="Displays\Borrower\MenuDisplay.cs" />
+    <Compile Include="Displays\CliDisplay.cs" />
+    <Compile Include="Displays\Components\CLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Views\GuiDisplay.cs">
+    <Compile Include="Displays\GuiDisplay.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Views\Staff\EquipmentManagement\EquipmentDisplay.cs" />
-    <Compile Include="Views\Staff\EquipmentManagement\EquipmentGuiDisplay.cs">
+    <Compile Include="Displays\Staff\EquipmentManagement\EquipmentDisplay.cs" />
+    <Compile Include="Displays\Staff\EquipmentManagement\EquipmentGuiDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Staff\EquipmentManagement\EquipmentList.cs" />
-    <Compile Include="Views\Staff\EquipmentManagement\EquipmentMenu.cs" />
-    <Compile Include="Views\Template\EmptyCliDisplay.cs" />
-    <Compile Include="Views\Template\EmptyGuiDisplay.cs">
+    <Compile Include="Displays\Staff\EquipmentManagement\EquipmentList.cs" />
+    <Compile Include="Displays\Staff\EquipmentManagement\EquipmentMenu.cs" />
+    <Compile Include="Displays\Template\EmptyCliDisplay.cs" />
+    <Compile Include="Displays\Template\EmptyGuiDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Display.cs" />
+    <Compile Include="Displays\Display.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -117,10 +117,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ApplicationResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Staff\EquipmentManagement\EquipmentGuiDisplay.resx">
+    <EmbeddedResource Include="Displays\Staff\EquipmentManagement\EquipmentGuiDisplay.resx">
       <DependentUpon>EquipmentGuiDisplay.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Template\EmptyGuiDisplay.resx">
+    <EmbeddedResource Include="Displays\Template\EmptyGuiDisplay.resx">
       <DependentUpon>EmptyGuiDisplay.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
