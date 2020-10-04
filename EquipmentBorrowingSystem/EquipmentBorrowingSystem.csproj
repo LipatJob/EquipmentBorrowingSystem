@@ -49,8 +49,13 @@
     <Compile Include="Backend\Models\Empty.cs" />
     <Compile Include="Backend\Models\Model.cs" />
     <Compile Include="Controllers\Borrower\EquipmentBorrowingController.cs" />
+    <Compile Include="Controllers\Staff\BorrowedEquipmentLogController.cs" />
     <Compile Include="Controllers\Template\EmptyController.cs" />
     <Compile Include="Controllers\Staff\EquipmentManagementController.cs" />
+    <Compile Include="Displays\Staff\BorrowedEquipmentLog\BorrowedEquipmentLogCliDisplay.cs" />
+    <Compile Include="Displays\Staff\BorrowedEquipmentLog\BorrowedEquipmentLogGuiDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="JobLib\Keyed.cs" />
     <Compile Include="JobLib\SerializedDictionary.cs" />
     <Compile Include="Misc\DataInitialization.cs" />
@@ -116,6 +121,9 @@
     <EmbeddedResource Include="ApplicationResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ApplicationResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Displays\Staff\BorrowedEquipmentLog\BorrowedEquipmentLogGuiDisplay.resx">
+      <DependentUpon>BorrowedEquipmentLogGuiDisplay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Displays\Staff\EquipmentManagement\EquipmentGuiDisplay.resx">
       <DependentUpon>EquipmentGuiDisplay.cs</DependentUpon>

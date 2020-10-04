@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace EquipmentBorrowingSystem.Misc
 {
@@ -45,6 +46,10 @@ namespace EquipmentBorrowingSystem.Misc
             var equipments = new SerializedList<Equipment>(ModelValues.EQUIPMENTS_FILE_NAME, Equipment.GetSerializer());
             equipments.Add(new Equipment(0, 0, 0, "Chair 1"));
             equipments.Add(new Equipment(1, 0, 0, "Chair 2"));
+
+            var equipmentRequets = new SerializedList<EquipmentRequest>(ModelValues.EQUIPMENT_REQUESTS_FILE_NAME, EquipmentRequest.GetSerializer());
+            equipmentRequets.Add(new EquipmentRequest(0, 0, 0, 0,DateTime.Now, DateTime.Now, DateTime.Now, "Hello World"));
+
 
             var requestStatuses = new SerializedList<RequestStatus>(ModelValues.EQUIPMENT_STATUSES_FILE_NAME, RequestStatus.GetSerializer());
             requestStatuses.Add(new RequestStatus(0, "Pending"));

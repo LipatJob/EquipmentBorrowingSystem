@@ -2,6 +2,7 @@
 using JobLib;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,6 +61,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
 
         private class EquipmentRequestSerializer : Serializer<EquipmentRequest>
         {
+
             public override EquipmentRequest Deserialize(string serializedItem)
             {
                 string[] values = serializedItem.Split(ModelValues.DELIMITERC);
@@ -68,9 +70,9 @@ namespace EquipmentBorrowingSystem.Backend.Models
                     int.Parse(values[1]),
                     int.Parse(values[2]),
                     int.Parse(values[3]),
-                    DateTime.Parse(values[4]),
-                    DateTime.Parse(values[5]),
-                    DateTime.Parse(values[6]),
+                    DateTime.ParseExact(values[4], "yyyyMMdd-HHmmss", CultureInfo.InvariantCulture),
+                    DateTime.ParseExact(values[5], "yyyyMMdd-HHmmss", CultureInfo.InvariantCulture),
+                    DateTime.ParseExact(values[6], "yyyyMMdd-HHmmss", CultureInfo.InvariantCulture),
                     values[7]
                     );
             }
@@ -81,9 +83,10 @@ namespace EquipmentBorrowingSystem.Backend.Models
                     item.Id.ToString(),
                     item.BorrowerID.ToString(),
                     item.EquipmentID.ToString(),
-                    item.ExpectedReturnDate.ToString(),
-                    item.DateBorrowed.ToString(),
-                    item.DateReturned.ToString(),
+                    item.RequestStatusID.ToString(),
+                    item.ExpectedReturnDate.ToString("yyyyMMdd-HHmmss"),
+                    item.DateBorrowed.ToString("yyyyMMdd-HHmmss"),
+                    item.DateReturned.ToString("yyyyMMdd-HHmmss"),
                     item.Reason
                 });
             }
