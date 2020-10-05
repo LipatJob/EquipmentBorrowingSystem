@@ -46,7 +46,7 @@ namespace EquipmentBorrowingSystem.Controllers
         //temporary (ReturnEquipment View)
         public Display ReturnEquipment()
         {
-            return new ReturnEquipment(Director, new EquipmentRequest());
+            return new ReturnEquipment(new EquipmentRequest());
         }
 
         public Display SampleDisplayFunction()

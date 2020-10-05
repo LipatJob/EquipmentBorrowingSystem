@@ -12,7 +12,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
 {
     class ReturnEquipment : CliDisplay<EquipmentRequest>
     {
-        public ReturnEquipment(Director director, EquipmentRequest model) : base(director, model)
+        public ReturnEquipment(EquipmentRequest model) : base( model)
         {
 
         }
@@ -25,7 +25,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
             //input Equipment ID
             int i = 1;
             Console.WriteLine("Select Equipment");
-            List<Equipment> equipments = Director.State.Equipments.Values.ToList();
+            List<Equipment> equipments = ApplicationState.GetInstance().Equipments.Values.ToList();
             foreach (Equipment equipment in equipments) { Console.WriteLine($"{i}. {equipment.Name}"); i++; }
             Model.EquipmentID = equipments[JHelper.InputInt("Enter Selection: ", validator: e => InRange(e, 1, equipments.Count)) - 1].Id;
 
