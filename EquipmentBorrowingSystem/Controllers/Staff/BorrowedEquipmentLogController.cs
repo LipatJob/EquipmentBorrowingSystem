@@ -1,6 +1,7 @@
 ﻿using EquipmentBorrowingSystem.Backend.Logic;
 using EquipmentBorrowingSystem.Backend.Models;
 using EquipmentBorrowingSystem.Displays;
+using EquipmentBorrowingSystem.Displays.Template;
 using EquipmentBorrowingSystem.Views;
 using EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog;
 using System;
@@ -54,6 +55,14 @@ namespace EquipmentBorrowingSystem.Controllers
         public Display OverdueRequests()
         {
             return new BorrowedEquipmentLogGuiDisplay(Logic.SeeAllOverdueRequests());
+        }
+
+        //Edited by: Mark Anthony Mamauag
+        //Message: I added one part, thanks.
+
+        public Display RequestInformation(int id)
+        {
+            return new RequestInformationGuiDisplay(Logic.SeeRequestInformation(id));
         }
 
     }

@@ -57,9 +57,5 @@ namespace EquipmentBorrowingSystem.Controllers
             Logic.DeleteEquipment(id);
             return new Response(true, "Equipment Edited", null);
         }
-
-
-
-
     }
 }

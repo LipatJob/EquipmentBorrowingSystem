@@ -13,8 +13,6 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
     //            VVVVVVVVVVVVVVV 
     partial class EquipmentGuiDisplay
     {
-
-
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 
         List<EquipmentType> types;
@@ -56,6 +54,8 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             Model.EquipmentTypeID = types[typeComboBox.SelectedIndex].Id;
             Model.ConditionID = conditions[conditionComboBox.SelectedIndex].Id;
         }
+
+        //baka I need to put yung InitializeComponent sa labas ng method?
 
         private void saveAction(object sender, EventArgs e)
         {
@@ -372,8 +372,6 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
         {
 
         }
-
-
 
         private void label5_Click(object sender, EventArgs e)
         {

@@ -20,17 +20,17 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
         public override void ShowDisplay()
         {
             Console.Clear();
-            Model.BorrowerID = 0; //to be edited later
+            Model.BorrowerID = 0; //to be edited later (No Login Module)
 
             //dipslay list of equipments
             //input Equipment ID
             int i = 1;
-            Console.WriteLine("Select Equipment");
+            Console.WriteLine("---- Select Equipment ----");
             List<Equipment> equipments = ApplicationState.GetInstance().Equipments.Values.ToList();
             foreach (Equipment equipment in equipments) { Console.WriteLine($"{i}. {equipment.Name}"); i++; }
             Model.EquipmentID = equipments[JHelper.InputInt("Enter Selection: ", validator: e => InRange(e, 1, equipments.Count)) - 1].Id;
 
-            Model.ExpectedReturnDate = DateTime.Parse(JHelper.InputString("Enter Expected Return Date: ", validator: ValidateReturnDate));
+            Model.ExpectedReturnDate = DateTime.Parse(JHelper.InputString("\nEnter Expected Return Date: ", validator: ValidateReturnDate));
             Model.Reason = JHelper.InputString("Enter Reason: ", validator: e => e.Length != 0);
 
             //go to Response (Controller)
@@ -45,7 +45,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
         {
             if (value > max || value < min)
             {
-                Console.WriteLine("> The equipment you entered does not exist <");
+                Console.WriteLine("\n>> The equipment you entered does not exist <<\n");
                 return false;
             }
             return true;
@@ -62,7 +62,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
             }
             else
             {
-                Console.WriteLine("> Invalid Date Format <");
+                Console.WriteLine("\n>> Invalid Date Format <<\n");
                 return false;
             }
         }

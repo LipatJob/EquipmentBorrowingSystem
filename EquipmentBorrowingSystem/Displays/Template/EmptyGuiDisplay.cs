@@ -34,6 +34,10 @@ namespace EquipmentBorrowingSystem.Displays.Template
 
     }
 
+    //okay so basically nothing sa taas
+    //sa baba lahat ng objects
+    //ok ok
+
     //            Replace with class name              
     //            VVVVVVVVVVVVVVV 
     partial class EmptyGuiDisplay
@@ -42,11 +46,13 @@ namespace EquipmentBorrowingSystem.Displays.Template
 
         public void BindModelToView()
         {
-            // This class is called when you want to display your model
-
-            // Put Logic here to Put Values of Model to View
             emptyTextBox.Text = Model.Name;
         }
+
+        //pwede ko ba resize yung objects ko sa design na lang?
+        //would it change something sa code?
+        //for example, naglagay na ako ng objects sa InitializeComponent(), tapos iniba ko yung size sa design
+        //AH okay gegege
 
         public void BindViewToModel()
         {
@@ -58,27 +64,8 @@ namespace EquipmentBorrowingSystem.Displays.Template
 
         partial void InitializeComponent()
         {
-            this.emptyTextBox = new System.Windows.Forms.TextBox();
-            this.SuspendLayout();
-            // 
-            // emptyTextBox
-            // 
-            this.emptyTextBox.Location = new System.Drawing.Point(12, 12);
-            this.emptyTextBox.Name = "emptyTextBox";
-            this.emptyTextBox.Size = new System.Drawing.Size(100, 20);
-            this.emptyTextBox.TabIndex = 0;
-            // 
-            // EmptyGuiDisplay
-            // 
-            this.ClientSize = new System.Drawing.Size(282, 253);
-            this.Controls.Add(this.emptyTextBox);
-            this.Name = "EmptyGuiDisplay";
-            this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
-
-
     }
 
 
