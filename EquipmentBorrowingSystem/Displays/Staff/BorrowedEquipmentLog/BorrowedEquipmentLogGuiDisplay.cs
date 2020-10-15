@@ -147,9 +147,13 @@ namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
 
         }
 
+        //Latest Edit: Mark Anthony Mamauag
+        //Description: Modified functionality of Back Button Event
+
         private void BackButton_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            this.Hide();
+            Director.ShowDisplay(Director.BorrowedEquipmentLogController.RequestsMenu());
         }
 
         private void MCLHeader_Click(object sender, EventArgs e)
@@ -158,27 +162,18 @@ namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
         }
     }
 
-    //   Replace with class name              Replace with model class
-    //   VVVVVVVVVVVVVVV                      VVVVVV
     partial class BorrowedEquipmentLogGuiDisplay : GuiDisplay<IEnumerable<EquipmentRequest>>
     {
-        //   Replace with class name              Replace with model class
-        //   VVVVVVVVVVVVVVV                      VVVVVV
         public BorrowedEquipmentLogGuiDisplay(IEnumerable<EquipmentRequest> model) 
             : base(model)
         {
             InitializeComponent();
             BindModelToView();
-        }
-                   
+        }                
         public BorrowedEquipmentLogGuiDisplay()
         {
-            // This Constructor allows you to use the designer
+
         }
-
         partial void InitializeComponent();
-
     }
-
-
 }

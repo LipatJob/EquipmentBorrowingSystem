@@ -43,7 +43,7 @@ namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
             else if (selection == "D") { Director.ShowDisplay(Director.BorrowedEquipmentLogController.ActiveRequests()); }
             else if (selection == "E") { Director.ShowDisplay(Director.BorrowedEquipmentLogController.CompleteRequests()); }
             else if (selection == "F") { Director.ShowDisplay(Director.BorrowedEquipmentLogController.OverdueRequests()); }
-            else if (selection == "G") { int val = RequestID(); Director.ShowDisplay(Director.BorrowedEquipmentLogController.RequestInformation(val)); } 
+            else if (selection == "G") { int val = RequestID(); Director.ShowDisplay(Director.BorrowedEquipmentLogController.RequestInformation(val)); }       
             else if (selection == "X") { JHelper.ExitPrompt(); }
         }
 

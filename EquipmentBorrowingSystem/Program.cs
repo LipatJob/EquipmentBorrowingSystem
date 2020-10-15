@@ -51,7 +51,7 @@ namespace EquipmentBorrowingSystem
             if (flag == "true")
             {
                 DataInitialization scaffold = new DataInitialization();
-                scaffold.Run();
+                //scaffold.Run();
             }
 
             Application.EnableVisualStyles();
@@ -63,4 +63,3 @@ namespace EquipmentBorrowingSystem
         }
     }
 }
-// wait lang nagloload yan 

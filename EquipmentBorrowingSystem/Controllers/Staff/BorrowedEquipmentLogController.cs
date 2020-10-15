@@ -1,6 +1,7 @@
 ﻿using EquipmentBorrowingSystem.Backend.Logic;
 using EquipmentBorrowingSystem.Backend.Models;
 using EquipmentBorrowingSystem.Displays;
+//using EquipmentBorrowingSystem.Displays.Staff.BorrowedEquipmentLog;
 using EquipmentBorrowingSystem.Displays.Template;
 using EquipmentBorrowingSystem.Views;
 using EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog;
@@ -65,5 +66,16 @@ namespace EquipmentBorrowingSystem.Controllers
             return new RequestInformationGuiDisplay(Logic.SeeRequestInformation(id));
         }
 
+        public Response ApproveRequest(int id)
+        {
+            Logic.ApproveRequest(id);
+            return new Response(true, "Requst Approved!", null);
+        }
+
+        public Response DenyRequest(int id)
+        {
+            Logic.DenyRequest(id);
+            return new Response(true, "Requst Denied!", null);
+        }
     }
 }

@@ -93,7 +93,16 @@ namespace EquipmentBorrowingSystem.Backend.Logic
 
         public Response ApproveRequest(int id)
         {
-            int approvedID = ApplicationState.RequestStatuses.Values.Where(e => e.Name == "Approved").First().Id;
+            int approvedID = ApplicationState.RequestStatuses.Values.Where(e => e.Name == "Active").First().Id;
+            ApplicationState.EquipmentRequests[id].RequestStatusID = approvedID;
+            ApplicationState.EquipmentRequests.SaveState();
+
+            return new Response(true, "Success");
+        }
+
+        public Response DenyRequest(int id)
+        {
+            int approvedID = ApplicationState.RequestStatuses.Values.Where(e => e.Name == "Denied").First().Id;
             ApplicationState.EquipmentRequests[id].RequestStatusID = approvedID;
             ApplicationState.EquipmentRequests.SaveState();
 
