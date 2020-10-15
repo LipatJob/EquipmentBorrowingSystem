@@ -51,7 +51,7 @@ namespace EquipmentBorrowingSystem
             if (flag == "true")
             {
                 DataInitialization scaffold = new DataInitialization();
-                scaffold.Run();
+                //scaffold.Run();
             }
 
             Application.EnableVisualStyles();

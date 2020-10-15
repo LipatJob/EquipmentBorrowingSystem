@@ -56,6 +56,9 @@
     <Compile Include="Displays\Staff\BorrowedEquipmentLog\BorrowedEquipmentLogGuiDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Displays\Staff\BorrowedEquipmentLog\RequestInformationGuiDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="JobLib\Keyed.cs" />
     <Compile Include="JobLib\SerializedDictionary.cs" />
     <Compile Include="Misc\DataInitialization.cs" />
@@ -125,6 +128,9 @@
     <EmbeddedResource Include="Displays\Staff\BorrowedEquipmentLog\BorrowedEquipmentLogGuiDisplay.resx">
       <DependentUpon>BorrowedEquipmentLogGuiDisplay.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Displays\Staff\BorrowedEquipmentLog\RequestInformationGuiDisplay.resx">
+      <DependentUpon>RequestInformationGuiDisplay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Displays\Staff\EquipmentManagement\EquipmentGuiDisplay.resx">
       <DependentUpon>EquipmentGuiDisplay.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +138,8 @@
       <DependentUpon>EmptyGuiDisplay.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Displays\Staff\BorrowRequest\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,11 +8,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using EquipmentBorrowingSystem.Displays;
 
+//Latest Edit: Mark Anthony Mamauag
+
 namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
 {
-    class BorrowedEquipmentLogCliDisplay : CliDisplay<Object>
+    class BorrowedEquipmentLogCliDisplay : CliDisplay<EquipmentRequest>
     {
-        public BorrowedEquipmentLogCliDisplay(Object model) : base(model)
+        public BorrowedEquipmentLogCliDisplay(EquipmentRequest model) : base(model)
         {
 
         }
@@ -30,9 +32,10 @@ namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
                               "D. Active Requests\n" +
                               "E. Completed Requests\n" +
                               "F. Overdue Requests\n" +
+                              "G. See Specific Request Information\n" +
                               "X. Exit\n");
 
-            string selection = JHelper.InputString("Enter a Selection: ", toUpper: true, validator: e => JHelper.In(e, "A", "B", "C", "D", "E", "F", "X"));
+            string selection = JHelper.InputString("Enter a Selection: ", toUpper: true, validator: e => JHelper.In(e, "A", "B", "C", "D", "E", "F", "G", "X"));
 
                  if (selection == "A") { Director.ShowDisplay(Director.BorrowedEquipmentLogController.AllRequests()); }
             else if (selection == "B") { Director.ShowDisplay(Director.BorrowedEquipmentLogController.PendingRequests()); }
@@ -40,7 +43,24 @@ namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
             else if (selection == "D") { Director.ShowDisplay(Director.BorrowedEquipmentLogController.ActiveRequests()); }
             else if (selection == "E") { Director.ShowDisplay(Director.BorrowedEquipmentLogController.CompleteRequests()); }
             else if (selection == "F") { Director.ShowDisplay(Director.BorrowedEquipmentLogController.OverdueRequests()); }
+            else if (selection == "G") { int val = RequestID(); Director.ShowDisplay(Director.BorrowedEquipmentLogController.RequestInformation(val)); }       
             else if (selection == "X") { JHelper.ExitPrompt(); }
+        }
+
+        public int RequestID()
+        {
+            List<EquipmentRequest> request = ApplicationState.GetInstance().EquipmentRequests.Values.ToList();
+            return request[JHelper.InputInt("Enter Request ID: ", validator: e => InRange(e, 1, request.Count)) - 1].Id;
+        }
+
+        private bool InRange(int value, int min, int max)
+        {
+            if (value > max || value < min)
+            {
+                Console.WriteLine("\n>> ERROR: The ID entered does not exist <<\n");
+                return false;
+            }
+            return true;
         }
     }
 }

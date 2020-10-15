@@ -19,18 +19,13 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
         public override void ShowDisplay()
         {
             Console.Clear();
-            Model.BorrowerID = 0; //to be edited later
+            Model.BorrowerID = 0; //to be edited later (there's still no Login Module)
 
-            //dipslay list of equipments
             //input Equipment ID
             int i = 1;
-            Console.WriteLine("Select Equipment");
+            Console.WriteLine("Enter Equipment ID: ");
             List<Equipment> equipments = ApplicationState.GetInstance().Equipments.Values.ToList();
-            foreach (Equipment equipment in equipments) { Console.WriteLine($"{i}. {equipment.Name}"); i++; }
             Model.EquipmentID = equipments[JHelper.InputInt("Enter Selection: ", validator: e => InRange(e, 1, equipments.Count)) - 1].Id;
-
-            Model.ExpectedReturnDate = DateTime.Parse(JHelper.InputString("Enter Expected Return Date: ", validator: ValidateReturnDate));
-            Model.Reason = JHelper.InputString("Enter Reason: ", validator: e => e.Length != 0);
 
             //go to Response (Controller)
             Director.EquipmentBorrowingController.RequestToBorrow(Model);
@@ -38,6 +33,9 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
             //go back to Borrowing Menu
             Director.ShowDisplay(Director.EquipmentBorrowingController.BorrowingMenu());
         }
+
+        //Note: I didnt delete the code below because I might ruin something. Please leave it for now.
+        //(If you guys think that there's no complications, then feel free to delete the code below.)
 
         //list of equipments
         private bool InRange(int value, int min, int max)
