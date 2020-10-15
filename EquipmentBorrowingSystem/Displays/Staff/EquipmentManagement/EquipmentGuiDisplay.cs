@@ -35,15 +35,20 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.Label label4;
         List<EquipmentCondition> conditions;
-        public void BindModelToView()
+
+        public void InitializeComboBoxes()
         {
             types = ApplicationState.GetInstance().EquipmentTypes.Values.ToList();
             conditions = ApplicationState.GetInstance().EquipmentConditions.Values.ToList();
-
-            idTextBox.Text = Model.Id.ToString();
-            nameTextBox.Text = Model.Name.ToString();
             typeComboBox.Items.AddRange(types.Select(e => e.Name).ToArray());
             conditionComboBox.Items.AddRange(conditions.Select(e => e.Name).ToArray());
+        }
+        public void BindModelToView()
+        {
+            
+            idTextBox.Text = Model.Id.ToString();
+            nameTextBox.Text = Model.Name.ToString();
+            
             typeComboBox.SelectedItem = Model.EquipmentType.Name;
             conditionComboBox.SelectedItem = Model.EquipmentCondition.Name;
         }
@@ -427,14 +432,14 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             : base(model)
         {
             InitializeComponent();
-            BindModelToView();
-
+            InitializeComboBoxes();
             if (mode == ViewMode.ADD)
             {
                 SetAddMode();
             }
             else
             {
+                BindModelToView();
                 SetViewMode();
             }
         }
