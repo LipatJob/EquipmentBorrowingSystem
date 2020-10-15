@@ -39,13 +39,8 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
         List<EquipmentCondition> conditions;
         public void BindModelToView()
         {
-            types = ApplicationState.GetInstance().EquipmentTypes.Values.ToList();
-            conditions = ApplicationState.GetInstance().EquipmentConditions.Values.ToList();
-
-            idTextBox.Text = Model.Id.ToString();
+a            idTextBox.Text = Model.Id.ToString();
             nameTextBox.Text = Model.Name.ToString();
-            typeComboBox.Items.AddRange(types.Select(e => e.Name).ToArray());
-            conditionComboBox.Items.AddRange(conditions.Select(e => e.Name).ToArray());
             typeComboBox.SelectedItem = Model.EquipmentType.Name;
             conditionComboBox.SelectedItem = Model.EquipmentCondition.Name;
         }
@@ -57,22 +52,51 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             Model.ConditionID = conditions[conditionComboBox.SelectedIndex].Id;
         }
 
-        private void saveAction(object sender, EventArgs e)
+        private void InitializeDropdown()
         {
-            BindViewToModel();
-            Response response = Director.EquipmentManagementController.EditEquipment(Model);
+            types = ApplicationState.GetInstance().EquipmentTypes.Values.ToList();
+            conditions = ApplicationState.GetInstance().EquipmentConditions.Values.ToList();
 
-            if (response.Success)
+            typeComboBox.Items.AddRange(types.Select(e => e.Name).ToArray());
+            conditionComboBox.Items.AddRange(conditions.Select(e => e.Name).ToArray());
+        }
+
+        private void SaveAction(object sender, EventArgs e)
+        {
+            
+            BindViewToModel();
+            if (mode == ViewMode.ADD)
             {
-                MessageBox.Show("Edit Success", "Equipment has been edited");
-                this.Hide();
-                this.Close();
-                Director.ShowDisplay(Director.EquipmentManagementController.EquipmentMenu());
+                Response response = Director.EquipmentManagementController.AddEquipment(Model);
+                if (response.Success)
+                {
+                    MessageBox.Show("Add Success", "Equipment has been aded");
+                    this.Hide();
+                    this.Close();
+                    Director.ShowDisplay(Director.EquipmentManagementController.EquipmentMenu());
+                }
+                else
+                {
+                    MessageBox.Show("Adding Failed", "Something went wrong Please try again.");
+                }
             }
             else
             {
-                MessageBox.Show("Edit Failed", "Something went wrong Please try again.");
+                Response response = Director.EquipmentManagementController.EditEquipment(Model);
+
+                if (response.Success)
+                {
+                    MessageBox.Show("Edit Success", "Equipment has been edited");
+                    this.Hide();
+                    this.Close();
+                    Director.ShowDisplay(Director.EquipmentManagementController.EquipmentMenu());
+                }
+                else
+                {
+                    MessageBox.Show("Edit Failed", "Something went wrong Please try again.");
+                }
             }
+            
         }
 
 
@@ -93,12 +117,12 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             saveButton.Enabled = true;
         }
 
-        private void editAction(object sender, EventArgs e)
+        private void EditAction(object sender, EventArgs e)
         {
             SetEditMode();
         }
 
-        private void deleteAction(object sender, EventArgs e)
+        private void DeleteAction(object sender, EventArgs e)
         {
             BindViewToModel();
             Response response = Director.EquipmentManagementController.DeleteEquipment(Model.Id);
@@ -115,6 +139,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
                 MessageBox.Show("Delete Failed", "Something went wrong Please try again.");
             }
         }
+
 
 
 
@@ -191,7 +216,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             this.saveButton.TabIndex = 1;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveAction);
+            this.saveButton.Click += new System.EventHandler(this.SaveAction);
             // 
             // panel2
             // 
@@ -233,7 +258,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             this.button3.TabIndex = 2;
             this.button3.Text = "Edit";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.editAction);
+            this.button3.Click += new System.EventHandler(this.EditAction);
             // 
             // button1
             // 
@@ -243,7 +268,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             this.button1.TabIndex = 0;
             this.button1.Text = "Delete";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.deleteAction);
+            this.button1.Click += new System.EventHandler(this.DeleteAction);
             // 
             // panel3
             // 
@@ -385,21 +410,35 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
 
         }
 
-        
+
     }
+
+
 
     //   Replace with class name              Replace with model class
     //   VVVVVVVVVVVVVVV                      VVVVVV
     partial class EquipmentGuiDisplay : GuiDisplay<Equipment>
     {
+        public enum ViewMode { ADD, VIEW }
+
+        private ViewMode mode;
+
         //   Replace with class name              Replace with model class
         //   VVVVVVVVVVVVVVV                      VVVVVV
-        public EquipmentGuiDisplay(Equipment model)
+        public EquipmentGuiDisplay(Equipment model, ViewMode mode)
             : base(model)
         {
             InitializeComponent();
-            BindModelToView();
             SetViewMode();
+            InitializeDropdown();
+            if (mode == ViewMode.VIEW)
+            {
+                BindModelToView();
+            }
+            else
+            {
+                SetEditMode();
+            }
         }
 
         //   Replace with class name              

@@ -37,10 +37,11 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
 
                     // Display Selection
                     Console.WriteLine(
-                    "Actions:\n" +
-                    "A. Edit\n" +
+                    "Actions:\n"  +
+                    "A. Edit\n"   +
                     "B. Delete\n" +
                     "X. Return to Menu\n");
+
                     string selection = JHelper.InputString("Enter Selection: ", toUpper: true, validator: e => InSelection(e, "A", "B", "X"));
                     Console.WriteLine("\n");
 

@@ -57,9 +57,9 @@ namespace EquipmentBorrowingSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Director director = Director.GetInstance();
-            //director.ShowDisplay(director.EquipmentManagementController.EquipmentMenu());
+            director.ShowDisplay(director.EquipmentManagementController.EquipmentMenu());
             //director.ShowDisplay(director.EquipmentBorrowingController.BorrowingMenu());
-            director.ShowDisplay(director.BorrowedEquipmentLogController.RequestsMenu());
+            // director.ShowDisplay(director.BorrowedEquipmentLogController.RequestsMenu());
         }
     }
 }
