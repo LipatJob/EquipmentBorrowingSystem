@@ -1,21 +1,21 @@
 ﻿using EquipmentBorrowingSystem.Backend.Models;
+using EquipmentBorrowingSystem.Displays;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.Displays.Template
+namespace EquipmentBorrowingSystem.Displays.Staff.StaffAccount
 {
-    //   Replace with class name       Replace with model class
-    //   VVVVVVVVVVVVVVV               VVVVVV
-    class EmptyCliDisplay : CliDisplay<Empty>
+    
+
+    class BorrowersListDisplay : CliDisplay<IEnumerable<User>>
     {
         //   Replace with class name              
         //   VVVVVVVVVVVVVVV                      
-        public EmptyCliDisplay(Empty model) //<<< Replace with model class
-            : base(model)    
+        public BorrowersListDisplay(IEnumerable<User> model) //<<< Replace with model class
+            : base(model)
         {
 
         }
@@ -36,12 +36,6 @@ namespace EquipmentBorrowingSystem.Displays.Template
             // SampleDisplayFunction() is a display function
             Director.ShowDisplay(Director.EmptyController.SampleDisplayFunction());
         }
-
-        private void PassModelToController()
-        {
-            // Example of passing the model to the controller
-            Director.EmptyController.SampleActionFunction(Model);
-        }
     }
-
 }
+

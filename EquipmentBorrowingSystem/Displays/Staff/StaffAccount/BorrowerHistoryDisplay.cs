@@ -3,19 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.Displays.Template
+namespace EquipmentBorrowingSystem.Displays.Staff.StaffAccount
 {
-    //   Replace with class name       Replace with model class
-    //   VVVVVVVVVVVVVVV               VVVVVV
-    class EmptyCliDisplay : CliDisplay<Empty>
+    class BorrowerHistoryDisplay : CliDisplay<IEnumerable<EquipmentRequest>>
     {
         //   Replace with class name              
         //   VVVVVVVVVVVVVVV                      
-        public EmptyCliDisplay(Empty model) //<<< Replace with model class
-            : base(model)    
+        public BorrowerHistoryDisplay(IEnumerable<EquipmentRequest> model) //<<< Replace with model class
+            : base(model)
         {
 
         }
@@ -36,12 +33,5 @@ namespace EquipmentBorrowingSystem.Displays.Template
             // SampleDisplayFunction() is a display function
             Director.ShowDisplay(Director.EmptyController.SampleDisplayFunction());
         }
-
-        private void PassModelToController()
-        {
-            // Example of passing the model to the controller
-            Director.EmptyController.SampleActionFunction(Model);
-        }
     }
-
 }

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Resources;
+using JobLib;
 
 namespace EquipmentBorrowingSystem
 {
@@ -57,9 +58,16 @@ namespace EquipmentBorrowingSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Director director = Director.GetInstance();
-            director.ShowDisplay(director.EquipmentManagementController.EquipmentMenu());
-            //director.ShowDisplay(director.EquipmentBorrowingController.BorrowingMenu());
-            // director.ShowDisplay(director.BorrowedEquipmentLogController.RequestsMenu());
+            string selection = JHelper.InputString("Enter `A` for Staff. Enter Anything else for Borrower", toUpper: true);
+
+            if (selection == "A")
+            {
+                Director.GetInstance().ShowDisplay(Director.GetInstance().StaffMainController.StaffMenu());
+            }
+            else
+            {
+                Director.GetInstance().ShowDisplay(Director.GetInstance().BorrowerMainController.BorrowerMenu());
+            }
         }
     }
 }

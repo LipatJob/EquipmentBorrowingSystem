@@ -1,26 +1,26 @@
 ﻿using EquipmentBorrowingSystem.Backend.Logic;
 using EquipmentBorrowingSystem.Backend.Models;
 using EquipmentBorrowingSystem.Displays;
+using EquipmentBorrowingSystem.Displays.Borrower.BorrowerAccount;
 using EquipmentBorrowingSystem.Displays.Template;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.Controllers
+namespace EquipmentBorrowingSystem.Controllers.Borrower
 {
-    //    Change Class Name
-    //    VVVVVVVVVVVVVVV
-    class EmptyController : Controller
+    class BorrowerAccountController : Controller
     {
         // Select One:
-        // private BorrowerLogic Logic;
+        private BorrowerLogic Logic;
         // private StaffLogic Logic;
 
         //     Change Class Name
         //     VVVVVVVVVVVVVVV
-        public EmptyController()
+        public BorrowerAccountController()
         {
             // Each controller must be registered in the director
             // To Register controller:
@@ -29,8 +29,30 @@ namespace EquipmentBorrowingSystem.Controllers
             // See Director.cs for example
 
             // Select One:
-            // Logic = new BorrowerLogic(ApplicationState.GetInstance());
-            // Logic = new StaffLogic(ApplicationState.GetInstance());
+            Logic = new BorrowerLogic(ApplicationState.GetInstance());
+        }
+
+
+        public Display Login()
+        {
+            return new BorrowerLoginDisplay(new User());
+        }
+
+        public Response Login(User user)
+        {
+            User loggedinUser = Logic.Login(user);
+            if(loggedinUser == null)
+            {
+                return new Response(false, "Login Failed. Check Username or Password");
+            }
+
+            ApplicationState.GetInstance().LoggedInUser  = loggedinUser;
+            return new Response(true, "User now logged in");
+        }
+
+        public Display SeeBorrowHistory()
+        {
+            return new BorrowHistoryDisplay(Logic.SeeBorrowHistory());
         }
 
         public Display SampleDisplayFunction()
@@ -58,5 +80,4 @@ namespace EquipmentBorrowingSystem.Controllers
 
 
     }
-
 }

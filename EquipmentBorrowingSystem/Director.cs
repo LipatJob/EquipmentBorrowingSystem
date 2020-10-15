@@ -1,5 +1,7 @@
 ﻿using EquipmentBorrowingSystem.Backend;
 using EquipmentBorrowingSystem.Controllers;
+using EquipmentBorrowingSystem.Controllers.Borrower;
+using EquipmentBorrowingSystem.Controllers.Staff;
 using EquipmentBorrowingSystem.Displays;
 using System;
 using System.Collections.Generic;
@@ -13,7 +15,6 @@ namespace EquipmentBorrowingSystem
 {
     class Director
     {
-
         private static Director Instance;
         public static Director GetInstance()
         {
@@ -24,13 +25,36 @@ namespace EquipmentBorrowingSystem
             return Instance;
         }
 
+        // 1. Registering Controller:
+        // public <Name>Controller <Identifier>Controller { get; }
+        // See example below
+
+        // Staff Controllers
+        public StaffMainController StaffMainController { get; }
+        public StaffAccountController StaffAccountController { get; }
+        public BorrowedEquipmentLogController BorrowedEquipmentLogController { get; }
+        public EquipmentManagementController EquipmentManagementController { get; }
+
+        // Borrower Controllers
+        public BorrowerMainController BorrowerMainController { get; }
+        public BorrowerAccountController BorrowerAccountController { get; }
+        public EquipmentBorrowingController EquipmentBorrowingController { get; }
+        
+        
+        public EmptyController EmptyController { get; }
+
         private Director()
         {
             // Registered Controllers
-            EquipmentManagementController = new EquipmentManagementController();
-            EquipmentBorrowingController = new EquipmentBorrowingController();
+            // Staff
+            StaffMainController = new StaffMainController();
+            StaffAccountController = new StaffAccountController();
             BorrowedEquipmentLogController = new BorrowedEquipmentLogController();
-
+            EquipmentManagementController = new EquipmentManagementController();
+            // Borrower
+            EquipmentBorrowingController = new EquipmentBorrowingController();
+            BorrowerMainController = new BorrowerMainController();
+            BorrowerAccountController = new BorrowerAccountController();
 
             // 2. Registering Controller:
             // <Identifier>Controller = new <Name>Controller();
@@ -39,14 +63,7 @@ namespace EquipmentBorrowingSystem
         }
 
 
-
-        // 1. Registering Controller:
-        // public <Name>Controller <Identifier>Controller { get; }
-        // See example below
-        public EquipmentManagementController EquipmentManagementController { get; }
-        public EquipmentBorrowingController EquipmentBorrowingController { get; }
-        public BorrowedEquipmentLogController BorrowedEquipmentLogController { get; }
-        public EmptyController EmptyController { get; }
+        
 
 
         public void ShowDisplay(Display display)

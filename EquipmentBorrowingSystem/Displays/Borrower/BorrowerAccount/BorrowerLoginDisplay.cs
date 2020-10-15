@@ -1,21 +1,20 @@
 ﻿using EquipmentBorrowingSystem.Backend.Models;
+using JobLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace EquipmentBorrowingSystem.Displays.Template
+namespace EquipmentBorrowingSystem.Displays.Borrower.BorrowerAccount
 {
-    //   Replace with class name       Replace with model class
-    //   VVVVVVVVVVVVVVV               VVVVVV
-    class EmptyCliDisplay : CliDisplay<Empty>
+
+    class BorrowerLoginDisplay : CliDisplay<User>
     {
         //   Replace with class name              
         //   VVVVVVVVVVVVVVV                      
-        public EmptyCliDisplay(Empty model) //<<< Replace with model class
-            : base(model)    
+        public BorrowerLoginDisplay(User model) //<<< Replace with model class
+            : base(model)
         {
 
         }
@@ -28,6 +27,19 @@ namespace EquipmentBorrowingSystem.Displays.Template
             // Director.ShowDisplay(Director.<Your Controller>.<Your Method>());
             // Make sure <Your Method> returns a display
             // Your may pass the model to the arguments of the method
+
+            while(true)
+            {
+                Model.Email = JHelper.InputString("Enter Email: ");
+                Model.Password = JHelper.InputString("Enter Password: ");
+
+                if(Director.BorrowerAccountController.Login(Model).Success)
+                {
+                    break;
+                }
+            }
+
+            Director.ShowDisplay(Director.BorrowerMainController.BorrowerMenu());
         }
 
         private void ChangeDisplay()
@@ -36,12 +48,5 @@ namespace EquipmentBorrowingSystem.Displays.Template
             // SampleDisplayFunction() is a display function
             Director.ShowDisplay(Director.EmptyController.SampleDisplayFunction());
         }
-
-        private void PassModelToController()
-        {
-            // Example of passing the model to the controller
-            Director.EmptyController.SampleActionFunction(Model);
-        }
     }
-
 }

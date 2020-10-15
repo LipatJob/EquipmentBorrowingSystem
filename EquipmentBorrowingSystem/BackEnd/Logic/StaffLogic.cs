@@ -14,6 +14,13 @@ namespace EquipmentBorrowingSystem.Backend.Logic
         {
         }
 
+        public User Login(User user)
+        {
+            int usertypeId = ApplicationState.UserTypes.Values.Where(e => e.Name == "Staff").FirstOrDefault().Id;
+            return ApplicationState.Users.Values.Where(e => e.Email == user.Email && e.Password == user.Password && e.UserTypeId == usertypeId).FirstOrDefault();
+        }
+
+
         public Response ChangePassword(User user)
         {
             ApplicationState.Users[user.Id] = user;
@@ -120,6 +127,11 @@ namespace EquipmentBorrowingSystem.Backend.Logic
             return new Response(true, "Success");
         }
 
+        public IEnumerable<EquipmentRequest> SeeBorrowHistory(int id)
+        {
+            return ApplicationState.EquipmentRequests.Values.Where(e => e.BorrowerID == id);
+        }
+
         public IEnumerable<BorrowerViolation> SeeUnresolvedViolations()
         {
             return ApplicationState.BorrowerViolations.Values.Where(e => !e.Resolved);
@@ -128,6 +140,12 @@ namespace EquipmentBorrowingSystem.Backend.Logic
         public IEnumerable<BorrowerViolation> SeeAllViolations()
         {
             return ApplicationState.BorrowerViolations.Values;
+        }
+
+        public IEnumerable<User> SeeBorrowersList()
+        {
+            int borrowerTypeId = ApplicationState.UserTypes.Values.Where(e => e.Name == "Borrower").FirstOrDefault().Id;
+            return ApplicationState.Users.Values.Where(e => e.UserTypeId == borrowerTypeId);
         }
 
     }

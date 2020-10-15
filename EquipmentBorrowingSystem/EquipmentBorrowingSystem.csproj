@@ -48,10 +48,17 @@
   <ItemGroup>
     <Compile Include="Backend\Models\Empty.cs" />
     <Compile Include="Backend\Models\Model.cs" />
+    <Compile Include="Controllers\Borrower\BorrowerAccountController.cs" />
     <Compile Include="Controllers\Borrower\EquipmentBorrowingController.cs" />
+    <Compile Include="Controllers\Borrower\BorrowerMainController.cs" />
     <Compile Include="Controllers\Staff\BorrowedEquipmentLogController.cs" />
+    <Compile Include="Controllers\Staff\StaffAccountController.cs" />
+    <Compile Include="Controllers\Staff\StaffMainController.cs" />
     <Compile Include="Controllers\Template\EmptyController.cs" />
     <Compile Include="Controllers\Staff\EquipmentManagementController.cs" />
+    <Compile Include="Displays\Borrower\BorrowerAccount\BorrowerLoginDisplay.cs" />
+    <Compile Include="Displays\Borrower\BorrowerAccount\BorrowHistoryDisplay.cs" />
+    <Compile Include="Displays\Borrower\Main\BorrowerMenuDisplay.cs" />
     <Compile Include="Displays\Staff\BorrowedEquipmentLog\BorrowedEquipmentLogCliDisplay.cs" />
     <Compile Include="Displays\Staff\BorrowedEquipmentLog\BorrowedEquipmentLogGuiDisplay.cs">
       <SubType>Form</SubType>
@@ -59,6 +66,12 @@
     <Compile Include="Displays\Staff\BorrowedEquipmentLog\RequestInformationGuiDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Displays\Staff\Main\StaffMenuDisplay.cs" />
+    <Compile Include="Displays\Staff\StaffAccount\BorrowerHistoryDisplay.cs" />
+    <Compile Include="Displays\Staff\StaffAccount\StaffLoginDisplay.cs" />
+    <Compile Include="Displays\Staff\StaffAccount\BorrowersListDisplay.cs" />
+    <Compile Include="Displays\Staff\StaffAccount\CreateBorrowerAccountDisplay.cs" />
+    <Compile Include="Displays\Staff\StaffAccount\StaffAccountMenu.cs" />
     <Compile Include="JobLib\Keyed.cs" />
     <Compile Include="JobLib\SerializedDictionary.cs" />
     <Compile Include="Misc\DataInitialization.cs" />
@@ -98,9 +111,6 @@
     <Compile Include="Displays\Borrower\EquipmentBorrowing\SeeInfoAndStatus.cs" />
     <Compile Include="Displays\Borrower\MenuDisplay.cs" />
     <Compile Include="Displays\CliDisplay.cs" />
-    <Compile Include="Displays\Components\CLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Displays\GuiDisplay.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
