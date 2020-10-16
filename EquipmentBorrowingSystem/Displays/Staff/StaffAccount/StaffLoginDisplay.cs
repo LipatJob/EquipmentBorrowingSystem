@@ -39,7 +39,6 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.BorrowerAccount
                 }
             }
 
-            Director.ShowDisplay(Director.StaffMainController.StaffMenu());
         }
 
     }

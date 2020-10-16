@@ -45,7 +45,6 @@ namespace EquipmentBorrowingSystem.Controllers.Borrower
             {
                 return new Response(false, "Login Failed. Check Username or Password");
             }
-
             ApplicationState.GetInstance().LoggedInUser  = loggedinUser;
             return new Response(true, "User now logged in");
         }

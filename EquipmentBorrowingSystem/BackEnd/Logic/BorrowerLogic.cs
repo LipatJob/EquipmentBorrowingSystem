@@ -16,7 +16,10 @@ namespace EquipmentBorrowingSystem.Backend.Logic
         public User Login(User user)
         {
             int usertypeId = ApplicationState.UserTypes.Values.Where(e => e.Name == "Borrower").FirstOrDefault().Id;
-            return ApplicationState.Users.Values.Where(e => e.Email == user.Email && e.Password == user.Password && e.UserTypeId == usertypeId).FirstOrDefault();
+            return ApplicationState.Users.Values.Where(e =>
+               e.Email.ToUpper() == user.Email.ToUpper() &&
+               e.Password == user.Password &&
+               e.UserTypeId == usertypeId).FirstOrDefault();
         }
 
         public IEnumerable<EquipmentRequest> SeeBorrowHistory()

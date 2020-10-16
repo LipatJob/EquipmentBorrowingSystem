@@ -1,4 +1,5 @@
-﻿using EquipmentBorrowingSystem.Backend.Models;
+﻿using EquipmentBorrowingSystem.Backend.Logic;
+using EquipmentBorrowingSystem.Backend.Models;
 using JobLib;
 using System;
 using System.Collections.Generic;
@@ -32,14 +33,15 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.BorrowerAccount
             {
                 Model.Email = JHelper.InputString("Enter Email: ");
                 Model.Password = JHelper.InputString("Enter Password: ");
+                Response response = Director.BorrowerAccountController.Login(Model);
 
-                if(Director.BorrowerAccountController.Login(Model).Success)
+                Console.WriteLine(response.Message);
+
+                if (response.Success)
                 {
                     break;
                 }
             }
-
-            Director.ShowDisplay(Director.BorrowerMainController.BorrowerMenu());
         }
 
         private void ChangeDisplay()
