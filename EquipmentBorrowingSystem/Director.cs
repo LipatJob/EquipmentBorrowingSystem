@@ -3,6 +3,7 @@ using EquipmentBorrowingSystem.Controllers;
 using EquipmentBorrowingSystem.Controllers.Borrower;
 using EquipmentBorrowingSystem.Controllers.Staff;
 using EquipmentBorrowingSystem.Displays;
+using JobLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;

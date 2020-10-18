@@ -51,7 +51,7 @@ namespace EquipmentBorrowingSystem.Controllers.Borrower
 
         public Display SeeBorrowHistory()
         {
-            return new BorrowHistoryDisplay(Logic.SeeBorrowHistory());
+            return new BorrowerHistoryDisplay(Logic.SeeBorrowHistory());
         }
 
         public Display SampleDisplayFunction()

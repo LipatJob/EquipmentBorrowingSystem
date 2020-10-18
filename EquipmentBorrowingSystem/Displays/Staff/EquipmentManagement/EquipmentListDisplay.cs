@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
 {
-    class EquipmentList : CliDisplay<IEnumerable<Equipment>>
+    class EquipmentListDisplay : CliDisplay<IEnumerable<Equipment>>
     {
-        public EquipmentList(IEnumerable<Equipment> model) : base(model)
+        public EquipmentListDisplay(IEnumerable<Equipment> model) : base(model)
         {
         }
 

@@ -52,7 +52,7 @@ namespace EquipmentBorrowingSystem
             if (flag == "true")
             {
                 DataInitialization scaffold = new DataInitialization();
-                //scaffold.Run();
+                scaffold.Run();
             }
 
             Application.EnableVisualStyles();
@@ -62,11 +62,11 @@ namespace EquipmentBorrowingSystem
 
             if (selection == "A")
             {
-                Director.GetInstance().ShowDisplay(Director.GetInstance().StaffMainController.StaffMenu());
+                Director.GetInstance().ShowDisplay(Director.GetInstance().StaffAccountController.Login());
             }
             else
             {
-                Director.GetInstance().ShowDisplay(Director.GetInstance().BorrowerMainController.BorrowerMenu());
+                Director.GetInstance().ShowDisplay(Director.GetInstance().BorrowerAccountController.Login());
             }
         }
     }

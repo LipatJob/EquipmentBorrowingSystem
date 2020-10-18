@@ -57,7 +57,9 @@
     <Compile Include="Controllers\Template\EmptyController.cs" />
     <Compile Include="Controllers\Staff\EquipmentManagementController.cs" />
     <Compile Include="Displays\Borrower\BorrowerAccount\BorrowerLoginDisplay.cs" />
-    <Compile Include="Displays\Borrower\BorrowerAccount\BorrowHistoryDisplay.cs" />
+    <Compile Include="Displays\Template\BorrowHistoryDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Displays\Borrower\Main\BorrowerMenuDisplay.cs" />
     <Compile Include="Displays\Staff\BorrowedEquipmentLog\BorrowedEquipmentLogCliDisplay.cs" />
     <Compile Include="Displays\Staff\BorrowedEquipmentLog\BorrowedEquipmentLogGuiDisplay.cs">
@@ -67,14 +69,21 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Displays\Staff\Main\StaffMenuDisplay.cs" />
-    <Compile Include="Displays\Staff\StaffAccount\BorrowerHistoryDisplay.cs" />
-    <Compile Include="Displays\Staff\StaffAccount\StaffLoginDisplay.cs" />
+    <Compile Include="Displays\Staff\StaffAccount\StaffLoginDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Displays\Staff\StaffAccount\BorrowersListDisplay.cs" />
-    <Compile Include="Displays\Staff\StaffAccount\CreateBorrowerAccountDisplay.cs" />
+    <Compile Include="Displays\Staff\StaffAccount\CreateBorrowerAccountDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Displays\Staff\StaffAccount\StaffAccountMenu.cs" />
+    <Compile Include="Displays\Template\LoginDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="JobLib\Keyed.cs" />
     <Compile Include="JobLib\SerializedDictionary.cs" />
     <Compile Include="Misc\DataInitialization.cs" />
+    <Compile Include="Misc\PositionHandler.cs" />
     <Compile Include="Misc\Response.cs" />
     <Compile Include="Controllers\Controller.cs" />
     <Compile Include="Director.cs" />
@@ -119,7 +128,7 @@
     <Compile Include="Displays\Staff\EquipmentManagement\EquipmentGuiDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Displays\Staff\EquipmentManagement\EquipmentList.cs" />
+    <Compile Include="Displays\Staff\EquipmentManagement\EquipmentListDisplay.cs" />
     <Compile Include="Displays\Staff\EquipmentManagement\EquipmentMenu.cs" />
     <Compile Include="Displays\Template\EmptyCliDisplay.cs" />
     <Compile Include="Displays\Template\EmptyGuiDisplay.cs">
@@ -134,6 +143,9 @@
     <EmbeddedResource Include="ApplicationResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ApplicationResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Displays\Template\BorrowHistoryDisplay.resx">
+      <DependentUpon>BorrowHistoryDisplay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Displays\Staff\BorrowedEquipmentLog\BorrowedEquipmentLogGuiDisplay.resx">
       <DependentUpon>BorrowedEquipmentLogGuiDisplay.cs</DependentUpon>

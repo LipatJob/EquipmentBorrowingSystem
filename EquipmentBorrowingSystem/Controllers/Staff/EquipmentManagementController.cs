@@ -27,7 +27,7 @@ namespace EquipmentBorrowingSystem.Controllers
 
         public Display EquipmentList()
         {
-            return new EquipmentList(Logic.SeeAllEquipments());
+            return new EquipmentListDisplay(Logic.SeeAllEquipments());
         }
 
         public Display AddEquipment()

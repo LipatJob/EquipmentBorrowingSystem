@@ -16,6 +16,7 @@ namespace EquipmentBorrowingSystem.Displays
             this.Director = Director.GetInstance();
             this.Model = model;
         }
+
         public abstract void ShowDisplay();
     }
 }

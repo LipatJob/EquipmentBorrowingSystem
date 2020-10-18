@@ -48,7 +48,7 @@ namespace EquipmentBorrowingSystem.Misc
             equipments.Add(new Equipment(1, 0, 0, "Chair 2"));
 
             var equipmentRequets = new SerializedList<EquipmentRequest>(ModelValues.EQUIPMENT_REQUESTS_FILE_NAME, EquipmentRequest.GetSerializer());
-            equipmentRequets.Add(new EquipmentRequest(0, 0, 0, 0,DateTime.Now, DateTime.Now, DateTime.Now, "Hello World"));
+            equipmentRequets.Add(new EquipmentRequest(0, 1, 0, 0,DateTime.Now, DateTime.Now, DateTime.Now, "Hello World"));
 
 
             var requestStatuses = new SerializedList<RequestStatus>(ModelValues.EQUIPMENT_STATUSES_FILE_NAME, RequestStatus.GetSerializer());

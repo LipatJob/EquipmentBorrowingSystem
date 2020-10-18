@@ -14,7 +14,6 @@ namespace EquipmentBorrowingSystem.Displays
 
         public GuiDisplay()
         {
-
         }
 
         public GuiDisplay(BaseModel model)
@@ -28,9 +27,9 @@ namespace EquipmentBorrowingSystem.Displays
             Director.ShowGuiView(this);
         }
 
-        public void BindModelToView() { }
+        public virtual void BindModelToView() { }
 
-        public void BindViewToModel() { }
+        public virtual void BindViewToModel() { }
 
 
     }

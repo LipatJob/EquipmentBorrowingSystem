@@ -35,7 +35,6 @@ namespace EquipmentBorrowingSystem.Controllers.Staff
 
         public Display BorrowerMenu()
         {
-            Director.GetInstance().ShowDisplay(Director.GetInstance().BorrowerAccountController.Login());
             return new BorrowerMenuDisplay(new Empty());
         }
 
