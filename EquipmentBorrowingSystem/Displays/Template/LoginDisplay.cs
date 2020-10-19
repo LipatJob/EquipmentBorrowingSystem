@@ -87,7 +87,7 @@ namespace EquipmentBorrowingSystem.Displays.Template
 
 
             // Layout Components
-            PositionHandler handler = new PositionHandler(5, 5, 75, 25);
+            LocationHandler handler = new LocationHandler(5, 5, 75, 25);
             emailLb.Location = handler.GetPosition();
             passwordLb.Location = handler.Down().GetPosition();
 

@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace EquipmentBorrowingSystem.Misc
 {
-    class PositionHandler
+    class LocationHandler
     {
         public int X { get; private set; }
         public int Y { get; private set; }
         public int AmountX { get; set; }
         public int AmountY { get; set; }
 
-        public PositionHandler(int x, int y, int amountX, int amountY)
+        public LocationHandler(int x, int y, int amountX, int amountY)
         {
             X = x;
             Y = y;
@@ -29,25 +29,25 @@ namespace EquipmentBorrowingSystem.Misc
             return new Point(X, Y);
         }
 
-        public PositionHandler Up()
+        public LocationHandler Up()
         {
             Y -= AmountY;
             return this;
         }
 
-        public PositionHandler Down()
+        public LocationHandler Down()
         {
             Y += AmountY;
             return this;
         }
 
-        public PositionHandler Left()
+        public LocationHandler Left()
         {
             X -= AmountX;
             return this;
         }
 
-        public PositionHandler Right()
+        public LocationHandler Right()
         {
             X += AmountX;
             return this;

@@ -79,7 +79,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.StaffAccount
             Controls.AddRange(new Control[] { emailLb, passwordLb, passwordConfirmLb, emailTb, passwordTb, passwordConfirmTb, createButton });
 
             // Layout Components
-            PositionHandler handler = new PositionHandler(5, 5, 100, 25);
+            LocationHandler handler = new LocationHandler(5, 5, 100, 25);
             emailLb.Location = handler.GetPosition();
             passwordLb.Location = handler.Down().GetPosition();
             passwordConfirmLb.Location = handler.Down().GetPosition();

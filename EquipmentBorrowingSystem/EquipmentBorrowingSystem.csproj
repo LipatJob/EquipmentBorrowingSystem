@@ -83,7 +83,7 @@
     <Compile Include="JobLib\Keyed.cs" />
     <Compile Include="JobLib\SerializedDictionary.cs" />
     <Compile Include="Misc\DataInitialization.cs" />
-    <Compile Include="Misc\PositionHandler.cs" />
+    <Compile Include="Misc\LocationHandler.cs" />
     <Compile Include="Misc\Response.cs" />
     <Compile Include="Controllers\Controller.cs" />
     <Compile Include="Director.cs" />
