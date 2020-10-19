@@ -30,14 +30,14 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Main
                 Console.Clear();
                 Console.WriteLine(
                     "A. Manage and View Borrowed Equipment\n" +
-                    "B. Manage and View Violations\n" +
+                    "B. View Violations\n" +
                     "C. See Borrow History\n" +
                     "X. Exit");
             
                 string selection = JHelper.InputString("Enter a Selection: ", toUpper: true, validator: e => JHelper.In(e, "A", "B", "C", "X"));
 
                 if (selection == "A") { Director.ShowDisplay(Director.EquipmentBorrowingController.BorrowingMenu()); }
-                else if (selection == "B") { Director.ShowDisplay(Director.EquipmentManagementController.AddEquipment()); } // TO DO
+                else if (selection == "B") { Director.ShowDisplay(Director.BorrowerViolationsController.SeeViolations()); } // TO DO
                 else if (selection == "C") { Director.ShowDisplay(Director.BorrowerAccountController.SeeBorrowHistory()); } // TO DO
                 else if (selection == "X") { break; }
             }

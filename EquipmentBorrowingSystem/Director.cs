@@ -35,13 +35,16 @@ namespace EquipmentBorrowingSystem
         public StaffAccountController StaffAccountController { get; }
         public BorrowedEquipmentLogController BorrowedEquipmentLogController { get; }
         public EquipmentManagementController EquipmentManagementController { get; }
+        public ViolationManagementController ViolationManagementController { get; }
 
         // Borrower Controllers
         public BorrowerMainController BorrowerMainController { get; }
         public BorrowerAccountController BorrowerAccountController { get; }
         public EquipmentBorrowingController EquipmentBorrowingController { get; }
-        
-        
+        public BorrowerViolationsController BorrowerViolationsController { get; }
+
+
+
         public EmptyController EmptyController { get; }
 
         private Director()
@@ -52,10 +55,13 @@ namespace EquipmentBorrowingSystem
             StaffAccountController = new StaffAccountController();
             BorrowedEquipmentLogController = new BorrowedEquipmentLogController();
             EquipmentManagementController = new EquipmentManagementController();
+            ViolationManagementController = new ViolationManagementController();
+
             // Borrower
             EquipmentBorrowingController = new EquipmentBorrowingController();
             BorrowerMainController = new BorrowerMainController();
             BorrowerAccountController = new BorrowerAccountController();
+            BorrowerViolationsController = new BorrowerViolationsController();
 
             // 2. Registering Controller:
             // <Identifier>Controller = new <Name>Controller();

@@ -15,10 +15,8 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
     //            VVVVVVVVVVVVVVV 
     partial class EquipmentGuiDisplay
     {
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 
-        
-        public void BindModelToView()
+        public override void BindModelToView()
         {
             
             idTb.Text = Model.Id.ToString();
@@ -28,11 +26,11 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             conditionCb.SelectedItem = Model.EquipmentCondition.Name;
         }
 
-        public void BindViewToModel()
+        public override void BindViewToModel()
         {
             Model.Name = nameTb.Text;
-            Model.EquipmentTypeID = types[typeCb.SelectedIndex].Id;
-            Model.ConditionID = conditions[conditionCb.SelectedIndex].Id;
+            Model.EquipmentTypeID = (int)typeCb.SelectedValue;
+            Model.ConditionID = (int)typeCb.SelectedValue;
         }
 
 
@@ -162,6 +160,8 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
         {
             // Initialize Components
             int tbWidth = 75;
+            types = ApplicationState.GetInstance().EquipmentTypes.Values.ToList();
+            conditions = ApplicationState.GetInstance().EquipmentConditions.Values.ToList();
             idLb = new Label { Text = "ID", TextAlign = ContentAlignment.MiddleRight, Width = tbWidth };
             nameLb = new Label { Text = "Name", TextAlign = ContentAlignment.MiddleRight, Width = tbWidth };
             typeLb = new Label { Text = "Type", TextAlign = ContentAlignment.MiddleRight, Width = tbWidth };
@@ -179,11 +179,14 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             Controls.AddRange(new Control[] { nameTb, typeCb, conditionCb, nameLb, typeLb, conditionLb, idTb, idLb, saveBtn, deleteBtn, editBtn});
 
             // Initialize Values
-            types = ApplicationState.GetInstance().EquipmentTypes.Values.ToList();
-            conditions = ApplicationState.GetInstance().EquipmentConditions.Values.ToList();
-            typeCb.Items.AddRange(types.Select(e => e.Name).ToArray());
-            conditionCb.Items.AddRange(conditions.Select(e => e.Name).ToArray());
+            typeCb.DataSource = types;
+            typeCb.ValueMember = "Id";
+            typeCb.DisplayMember = "Name";
             typeCb.SelectedIndex = 0;
+
+            conditionCb.DataSource = conditions;
+            conditionCb.ValueMember = "Id";
+            conditionCb.DisplayMember = "Name";
             conditionCb.SelectedIndex = 0;
 
             // Set Mode

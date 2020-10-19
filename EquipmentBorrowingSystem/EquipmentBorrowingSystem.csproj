@@ -49,14 +49,22 @@
     <Compile Include="Backend\Models\Empty.cs" />
     <Compile Include="Backend\Models\Model.cs" />
     <Compile Include="Controllers\Borrower\BorrowerAccountController.cs" />
+    <Compile Include="Controllers\Borrower\BorrowerViolationsController.cs" />
     <Compile Include="Controllers\Borrower\EquipmentBorrowingController.cs" />
     <Compile Include="Controllers\Borrower\BorrowerMainController.cs" />
     <Compile Include="Controllers\Staff\BorrowedEquipmentLogController.cs" />
     <Compile Include="Controllers\Staff\StaffAccountController.cs" />
     <Compile Include="Controllers\Staff\StaffMainController.cs" />
+    <Compile Include="Controllers\Staff\ViolationManagementController.cs" />
     <Compile Include="Controllers\Template\EmptyController.cs" />
     <Compile Include="Controllers\Staff\EquipmentManagementController.cs" />
     <Compile Include="Displays\Borrower\BorrowerAccount\BorrowerLoginDisplay.cs" />
+    <Compile Include="Displays\Borrower\Violations\ViolationsDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Displays\Staff\ViolationManagement\ViolationManagementDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Displays\Template\BorrowHistoryDisplay.cs">
       <SubType>Form</SubType>
     </Compile>

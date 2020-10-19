@@ -46,9 +46,18 @@ namespace EquipmentBorrowingSystem.Misc
             var equipments = new SerializedList<Equipment>(ModelValues.EQUIPMENTS_FILE_NAME, Equipment.GetSerializer());
             equipments.Add(new Equipment(0, 0, 0, "Chair 1"));
             equipments.Add(new Equipment(1, 0, 0, "Chair 2"));
+            equipments.Add(new Equipment(2, 0, 0, "Chair 3"));
+            equipments.Add(new Equipment(3, 0, 0, "Chair 4"));
+            equipments.Add(new Equipment(4, 0, 0, "Chair 5"));
+            equipments.Add(new Equipment(5, 0, 0, "Chair 6"));
+
 
             var equipmentRequets = new SerializedList<EquipmentRequest>(ModelValues.EQUIPMENT_REQUESTS_FILE_NAME, EquipmentRequest.GetSerializer());
             equipmentRequets.Add(new EquipmentRequest(0, 1, 0, 0,DateTime.Now, DateTime.Now, DateTime.Now, "Hello World"));
+            equipmentRequets.Add(new EquipmentRequest(1, 1, 1, 0, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World"));
+            equipmentRequets.Add(new EquipmentRequest(2, 1, 2, 0, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World"));
+            equipmentRequets.Add(new EquipmentRequest(3, 1, 3, 0, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World"));
+            equipmentRequets.Add(new EquipmentRequest(4, 1, 4, 0, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World"));
 
 
             var requestStatuses = new SerializedList<RequestStatus>(ModelValues.EQUIPMENT_STATUSES_FILE_NAME, RequestStatus.GetSerializer());
@@ -60,6 +69,13 @@ namespace EquipmentBorrowingSystem.Misc
             var violations = new SerializedList<Violation>(ModelValues.VIOLATIONS_FILE_NAME, Violation.GetSerializer());
             violations.Add(new Violation(0, "Overdue"));
             violations.Add(new Violation(1, "Broken"));
+
+            var borrowerViolations = new SerializedList<BorrowerViolation>(ModelValues.BORROWER_VIOLATIONS_FILE_NAME, BorrowerViolation.GetSerializer());
+            borrowerViolations.Add(new BorrowerViolation(0, 0, 0, 0, false));
+            borrowerViolations.Add(new BorrowerViolation(1, 1, 0, 0, false));
+            borrowerViolations.Add(new BorrowerViolation(2, 2, 1, 0, true));
+            borrowerViolations.Add(new BorrowerViolation(3, 3, 1, 0, false));
+
 
 
         }
