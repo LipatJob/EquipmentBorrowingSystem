@@ -26,7 +26,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
             string choice = Console.ReadLine();
 
             if (choice.ToUpper() == "A") { Director.ShowDisplay(Director.EquipmentBorrowingController.RequestToBorrow()); }
-            else if (choice.ToUpper() == "B") { Director.ShowDisplay(Director.EquipmentManagementController.EquipmentList()); }
+            else if (choice.ToUpper() == "B") { Director.ShowDisplay(Director.EquipmentBorrowingController.SeeCurrentRequests()); }
             else if (choice.ToUpper() == "C") { Director.ShowDisplay(Director.EquipmentBorrowingController.ReturnEquipment()); }
         }
     }

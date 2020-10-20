@@ -59,6 +59,9 @@
     <Compile Include="Controllers\Template\EmptyController.cs" />
     <Compile Include="Controllers\Staff\EquipmentManagementController.cs" />
     <Compile Include="Displays\Borrower\BorrowerAccount\BorrowerLoginDisplay.cs" />
+    <Compile Include="Displays\Borrower\EquipmentBorrowing\SeeInfoAndStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Displays\Borrower\Violations\ViolationsDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,7 +134,6 @@
     <Compile Include="Displays\Borrower\EquipmentBorrowing\BorrowingMenu.cs" />
     <Compile Include="Displays\Borrower\EquipmentBorrowing\RequestToBorrow.cs" />
     <Compile Include="Displays\Borrower\EquipmentBorrowing\ReturnEquipment.cs" />
-    <Compile Include="Displays\Borrower\EquipmentBorrowing\SeeInfoAndStatus.cs" />
     <Compile Include="Displays\Borrower\MenuDisplay.cs" />
     <Compile Include="Displays\CliDisplay.cs" />
     <Compile Include="Displays\GuiDisplay.cs">

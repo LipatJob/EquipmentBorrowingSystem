@@ -49,26 +49,9 @@ namespace EquipmentBorrowingSystem.Controllers
             return new ReturnEquipment(new EquipmentRequest());
         }
 
-        public Display SampleDisplayFunction()
+        public Display SeeCurrentRequests()
         {
-            // This method is used to change the display
-            // Return the Display that you want to go to next
-
-            //                                   Replace with model
-            //                                   VVVVVVVVVVVV
-            return new EmptyGuiDisplay(new Empty());
-        }
-        //                                  Replace with model class
-        //                                  VVVVVV
-        public Response SampleActionFunction(Empty obj)
-        {
-            // This Method does an action
-            // For example, it may insert the object to the database
-
-
-            //                  is action Successful
-            //                  VVVV
-            return new Response(true, "Your Message Here");
+            return new SeeInfoAndStatus(Logic.SeeCurrentRequests());
         }
     }
 }
