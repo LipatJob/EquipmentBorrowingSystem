@@ -88,6 +88,12 @@
     <Compile Include="Displays\Template\LoginDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Displays\Template\Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Displays\Template\Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
     <Compile Include="JobLib\Keyed.cs" />
     <Compile Include="JobLib\SerializedDictionary.cs" />
     <Compile Include="Misc\DataInitialization.cs" />
@@ -151,6 +157,7 @@
     <EmbeddedResource Include="ApplicationResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ApplicationResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Displays\Template\BorrowHistoryDisplay.resx">
       <DependentUpon>BorrowHistoryDisplay.cs</DependentUpon>
@@ -166,6 +173,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Displays\Template\EmptyGuiDisplay.resx">
       <DependentUpon>EmptyGuiDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Displays\Template\LoginDisplay.resx">
+      <DependentUpon>LoginDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Displays\Template\Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

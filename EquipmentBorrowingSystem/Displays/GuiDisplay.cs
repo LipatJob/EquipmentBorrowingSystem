@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace EquipmentBorrowingSystem.Displays
 
         public GuiDisplay(BaseModel model)
         {
+            BackColor = Color.White;
             this.Director = Director.GetInstance();
             Model = model;
         }

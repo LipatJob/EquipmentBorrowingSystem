@@ -3,6 +3,7 @@ using EquipmentBorrowingSystem.Backend.Models;
 using EquipmentBorrowingSystem.Misc;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,29 +11,7 @@ using System.Windows.Forms;
 
 namespace EquipmentBorrowingSystem.Displays.Template
 {
-    partial class LoginDisplay : GuiDisplay<User>
-    {
-        //   Replace with class name      
-        //   VVVVVVVVVVVVVVV                 
-        public LoginDisplay(User model) // <<< Replace with model class
-            : base(model)
-        {
-            // The GUI Stuff must be implemented in the partial class below
-            // Fold this Class after initializing
-            InitializeComponent();
-        }
-
-        //   Replace with class name              
-        //   VVVVVVVVVVVVVVV                      
-        public LoginDisplay()
-        {
-            // This Constructor allows you to use the designer. 
-        }
-
-        // put all GUI in the implementation of this method
-        partial void InitializeComponent();
-
-    }
+   
 
     //okay so basically nothing sa taas
     //sa baba lahat ng objects
@@ -43,11 +22,11 @@ namespace EquipmentBorrowingSystem.Displays.Template
     partial class LoginDisplay
     {
 
-        public void BindModelToView()
+        public override void BindModelToView()
         {
         }
 
-        public void BindViewToModel()
+        public override void BindViewToModel()
         {
             // This class is called when you want to save the values in your view
             Model.Email = emailTb.Text;
@@ -57,44 +36,75 @@ namespace EquipmentBorrowingSystem.Displays.Template
 
         Label emailLb;
         Label passwordLb;
-        protected TextBox emailTb;
-        protected TextBox passwordTb;
+        public TextBox emailTb;
+        public TextBox passwordTb;
         Button loginBtn;
+        Panel titlePl;
+        Label loginLb;
+
         partial void InitializeComponent()
         {
-            emailLb = new Label();
-            passwordLb = new Label();
-            emailTb = new TextBox();
-            passwordTb = new TextBox();
-            loginBtn = new Button();
+            Height = 400;
+            Width = 700;
 
-            Controls.AddRange(new Control[] { emailLb, passwordLb, emailTb, passwordTb, loginBtn });
+            int tempWidth = Width;
+            titlePl = new Panel() {
+                Dock = DockStyle.Top,
+                Width = tempWidth,
+                Height = 80,
+                BackColor = Color.FromArgb(0, 33, 78),
+            };
 
-            // Style Components
-            emailLb.Text = "Email";
-            passwordLb.Text = "Password";
-            loginBtn.Text = "Login";
+            var mclLb = new Label() {
+                Text = "MCL Equipment Borrowing System",
+                Font = new Font(FontFamily.GenericSansSerif, 18),
+                Dock = DockStyle.Bottom,
+                ForeColor = Color.White,
+                Size =  new Size(400,40)
+                
+                };
 
-            emailLb.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            passwordLb.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            titlePl.Controls.Add(mclLb);
 
-            emailTb.Width = 125;
-            passwordTb.Width = 125;
-            emailLb.Width = 75;
-            passwordLb.Width = 75;
+            loginLb = new Label()
+            {
+                Text = "Borrower Login",
+                Font = new Font(FontFamily.GenericSansSerif, 14),
+                Location = new Point(150, 110),
+                Size = new Size(400, 40)
+
+            };
+
+            emailLb = new Label() { 
+                Text = "Email",
+                Location = new Point(150, 150),
+                Font = new Font(FontFamily.GenericSansSerif, 12)};
+
+            passwordLb = new Label() { 
+                Text = "Password", 
+                Location = new Point(150, 200), 
+                Font = new Font(FontFamily.GenericSansSerif, 12) };
+
+            emailTb = new TextBox() { 
+                Location = new Point(280, 150), 
+                Size = new Size(259, 30), 
+                Font = new Font(FontFamily.GenericSansSerif, 12) };
+
+            passwordTb = new TextBox()
+            {
+                Location = new Point(280, 200),
+                Size = new Size(259, 30),
+                Font = new Font(FontFamily.GenericSansSerif, 12)  };
+
+            loginBtn = new Button() { 
+                Text = "Login",
+                Size = new Size(100, 35),
+                Location = new Point(350, 250), 
+                Font = new Font(FontFamily.GenericSansSerif, 12) };
+
+            Controls.AddRange(new Control[] { emailLb, passwordLb, emailTb, passwordTb, loginBtn, titlePl, loginLb});
 
             passwordTb.PasswordChar = '*';
-
-
-            // Layout Components
-            LocationHandler handler = new LocationHandler(5, 5, 75, 25);
-            emailLb.Location = handler.GetPosition();
-            passwordLb.Location = handler.Down().GetPosition();
-
-            emailTb.Location = handler.Up().Right().GetPosition();
-            passwordTb.Location = handler.Down().GetPosition();
-
-            loginBtn.Location = handler.Down().GetPosition();
 
             // Add Action Handlers
             loginBtn.Click += LoginPressed;
@@ -127,7 +137,29 @@ namespace EquipmentBorrowingSystem.Displays.Template
             return null;
         }
 
+    }
 
+    partial class LoginDisplay : GuiDisplay<User>
+    {
+        //   Replace with class name      
+        //   VVVVVVVVVVVVVVV                 
+        public LoginDisplay(User model) // <<< Replace with model class
+            : base(model)
+        {
+            // The GUI Stuff must be implemented in the partial class below
+            // Fold this Class after initializing
+            InitializeComponent();
+        }
+
+        //   Replace with class name              
+        //   VVVVVVVVVVVVVVV                      
+        public LoginDisplay()
+        {
+            // This Constructor allows you to use the designer. 
+        }
+
+        // put all GUI in the implementation of this method
+        partial void InitializeComponent();
 
     }
 }
