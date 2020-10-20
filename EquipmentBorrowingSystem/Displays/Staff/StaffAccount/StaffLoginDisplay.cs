@@ -18,6 +18,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.BorrowerAccount
         {
             emailTb.Text = "staff@mcl.edu.ph";
             passwordTb.Text = "qwerty";
+            loginLb.Text = "Staff Login";
         }
         public override void NextAction()
         {

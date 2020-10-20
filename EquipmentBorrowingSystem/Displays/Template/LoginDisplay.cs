@@ -39,70 +39,55 @@ namespace EquipmentBorrowingSystem.Displays.Template
         public TextBox emailTb;
         public TextBox passwordTb;
         Button loginBtn;
-        Panel titlePl;
-        Label loginLb;
+        public Label loginLb;
 
         partial void InitializeComponent()
         {
-            Height = 400;
-            Width = 700;
-
-            int tempWidth = Width;
-            titlePl = new Panel() {
-                Dock = DockStyle.Top,
-                Width = tempWidth,
-                Height = 80,
-                BackColor = Color.FromArgb(0, 33, 78),
+            var itemsPanel = new Panel() { 
+                Location = new Point(90, 110),
+                AutoSize = true
             };
 
-            var mclLb = new Label() {
-                Text = "MCL Equipment Borrowing System",
-                Font = new Font(FontFamily.GenericSansSerif, 18),
-                Dock = DockStyle.Bottom,
-                ForeColor = Color.White,
-                Size =  new Size(400,40)
-                
-                };
-
-            titlePl.Controls.Add(mclLb);
 
             loginLb = new Label()
             {
                 Text = "Borrower Login",
                 Font = new Font(FontFamily.GenericSansSerif, 14),
-                Location = new Point(150, 110),
+                Location = new Point(0, 0),
                 Size = new Size(400, 40)
 
             };
 
             emailLb = new Label() { 
                 Text = "Email",
-                Location = new Point(150, 150),
+                Location = new Point(0, 40),
                 Font = new Font(FontFamily.GenericSansSerif, 12)};
 
             passwordLb = new Label() { 
                 Text = "Password", 
-                Location = new Point(150, 200), 
+                Location = new Point(0, 90), 
                 Font = new Font(FontFamily.GenericSansSerif, 12) };
 
             emailTb = new TextBox() { 
-                Location = new Point(280, 150), 
+                Location = new Point(130, 40), 
                 Size = new Size(259, 30), 
                 Font = new Font(FontFamily.GenericSansSerif, 12) };
 
             passwordTb = new TextBox()
             {
-                Location = new Point(280, 200),
+                Location = new Point(130, 90),
                 Size = new Size(259, 30),
                 Font = new Font(FontFamily.GenericSansSerif, 12)  };
 
             loginBtn = new Button() { 
                 Text = "Login",
                 Size = new Size(100, 35),
-                Location = new Point(350, 250), 
+                Location = new Point(200, 140), 
                 Font = new Font(FontFamily.GenericSansSerif, 12) };
 
-            Controls.AddRange(new Control[] { emailLb, passwordLb, emailTb, passwordTb, loginBtn, titlePl, loginLb});
+            itemsPanel.Controls.AddRange(new Control[]{ loginLb,  emailLb, passwordLb, emailTb, passwordTb, loginBtn });
+
+            Controls.AddRange(new Control[] { itemsPanel});
 
             passwordTb.PasswordChar = '*';
 

@@ -15,6 +15,7 @@ namespace EquipmentBorrowingSystem.Displays
 
         public GuiDisplay()
         {
+
         }
 
         public GuiDisplay(BaseModel model)
@@ -22,6 +23,31 @@ namespace EquipmentBorrowingSystem.Displays
             BackColor = Color.White;
             this.Director = Director.GetInstance();
             Model = model;
+
+            Height = 400;
+            Width = 600;
+
+            int tempWidth = Width;
+            var titlePl = new Panel()
+            {
+                Dock = DockStyle.Top,
+                Width = tempWidth,
+                Height = 80,
+                BackColor = Color.FromArgb(0, 33, 78),
+            };
+
+            var mclLb = new Label()
+            {
+                Text = "MCL Equipment Borrowing System",
+                Font = new Font(FontFamily.GenericSansSerif, 18),
+                Dock = DockStyle.Bottom,
+                ForeColor = Color.White,
+                Size = new Size(400, 40)
+            };
+
+            titlePl.Controls.Add(mclLb);
+
+            Controls.Add(titlePl);
         }
         
         public void ShowDisplay()
