@@ -80,7 +80,10 @@ namespace EquipmentBorrowingSystem
 
         public void ShowGuiView(Form view)
         {
+            Console.Clear();
+            Console.WriteLine("Please See the GUI");
             view.ShowDialog();
+            Console.Clear();
         }
 
 

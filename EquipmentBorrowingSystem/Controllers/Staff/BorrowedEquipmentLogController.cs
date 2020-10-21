@@ -30,7 +30,7 @@ namespace EquipmentBorrowingSystem.Controllers
         public Display AllRequests()
         {
 
-            return new BorrowedEquipmentLogGuiDisplay(Logic.SeeAllRequests());
+            return new BorrowedEquipmentLog2GuiDisplay(Logic.SeeAllRequests());
         }
 
         public Display PendingRequests()
@@ -76,6 +76,11 @@ namespace EquipmentBorrowingSystem.Controllers
         {
             Logic.DenyRequest(id);
             return new Response(true, "Requst Denied!", null);
+        }
+
+        internal IEnumerable<EquipmentRequest> GetOverdueRequests()
+        {
+            return Logic.SeeAllOverdueRequests();
         }
     }
 }

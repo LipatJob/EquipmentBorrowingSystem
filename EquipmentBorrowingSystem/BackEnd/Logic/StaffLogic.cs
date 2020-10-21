@@ -1,4 +1,5 @@
 ﻿using EquipmentBorrowingSystem.Backend.Models;
+using JobLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,9 +52,36 @@ namespace EquipmentBorrowingSystem.Backend.Logic
             return new Response(true, "Success");
         }
 
+        public Response DeleteViolation(int id)
+        {
+            try
+            {
+                ApplicationState.BorrowerViolations.Remove(id);
+            }
+            catch (Exception)
+            {
+                return new Response(false, "Something went wrong. Try again");
+            }
+            return new Response(true, "Success");
+        }
+
+
         public IEnumerable<Equipment> SeeAllEquipments()
         {
             return ApplicationState.Equipments.Values;
+        }
+
+        public Response AddViolation(BorrowerViolation model)
+        {
+            int id = JHelper.GetNewKey(ApplicationState.BorrowerViolations.Keys);
+            ApplicationState.BorrowerViolations[id] = model;
+            return new Response(true, "Success");
+        }
+
+        public Response EditViolation(BorrowerViolation model)
+        {
+            ApplicationState.BorrowerViolations[model.Id] = model;
+            return new Response(true, "Success");
         }
 
         public IEnumerable<EquipmentRequest> SeeAllRequests()
@@ -146,6 +174,11 @@ namespace EquipmentBorrowingSystem.Backend.Logic
         {
             int borrowerTypeId = ApplicationState.UserTypes.Values.Where(e => e.Name == "Borrower").FirstOrDefault().Id;
             return ApplicationState.Users.Values.Where(e => e.UserTypeId == borrowerTypeId);
+        }
+
+        public BorrowerViolation GetViolation(int id)
+        {
+            return ApplicationState.BorrowerViolations[id];
         }
 
     }

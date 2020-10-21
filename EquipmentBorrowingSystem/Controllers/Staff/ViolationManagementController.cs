@@ -1,4 +1,5 @@
 ﻿using EquipmentBorrowingSystem.Backend.Logic;
+using EquipmentBorrowingSystem.Backend.Models;
 using EquipmentBorrowingSystem.Displays;
 using EquipmentBorrowingSystem.Displays.Borrower.Violations;
 using System;
@@ -35,5 +36,29 @@ namespace EquipmentBorrowingSystem.Controllers.Staff
             return new ViolationManagementDisplay(Logic.SeeAllViolations());
         }
 
+        public Display DisplayViolation(int id)
+        {
+            return new ViolationDisplay(Logic.GetViolation(id), ViolationDisplay.Modes.VIEW);
+        }
+
+        public Response DeleteViolation(int id)
+        {
+            return Logic.DeleteViolation(id);
+        }
+
+        public Display AddViolation(int borrowerId, int requestId)
+        {
+            return new ViolationDisplay(new BorrowerViolation(borrowerId, requestId, 0, 0, false), ViolationDisplay.Modes.ADD);
+        }
+
+        public Response AddViolation(BorrowerViolation model)
+        {
+            return Logic.AddViolation(model);
+        }
+
+        public Response EditViolation(BorrowerViolation model)
+        {
+            return Logic.EditViolation(model);
+        }
     }
 }

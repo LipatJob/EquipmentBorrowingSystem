@@ -34,7 +34,7 @@ namespace EquipmentBorrowingSystem.Controllers.Borrower
 
         public Display SeeViolations()
         {
-            return new ViolationsDisplay(Logic.SeeViolationHistory());
+            return new ViolationListDisplay(Logic.SeeViolationHistory());
         }
 
     }

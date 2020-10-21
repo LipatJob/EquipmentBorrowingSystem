@@ -43,11 +43,6 @@ namespace EquipmentBorrowingSystem.Displays.Template
 
         partial void InitializeComponent()
         {
-            var itemsPanel = new Panel() { 
-                Location = new Point(90, 110),
-                AutoSize = true
-            };
-
 
             loginLb = new Label()
             {
@@ -85,10 +80,13 @@ namespace EquipmentBorrowingSystem.Displays.Template
                 Location = new Point(200, 140), 
                 Font = new Font(FontFamily.GenericSansSerif, 12) };
 
-            itemsPanel.Controls.AddRange(new Control[]{ loginLb,  emailLb, passwordLb, emailTb, passwordTb, loginBtn });
+            var tempPanel = new Panel();
+            tempPanel.Width = 420;
+            tempPanel.AutoSize = true;
+            tempPanel.Controls.AddRange(new Control[]{ loginLb,  emailLb, passwordLb, emailTb, passwordTb, loginBtn });
+            tempPanel.Location = new Point((itemPanel.Width - tempPanel.Width) / 2, 30);
 
-            Controls.AddRange(new Control[] { itemsPanel});
-
+            itemPanel.Controls.Add(tempPanel);
             passwordTb.PasswordChar = '*';
 
             // Add Action Handlers

@@ -126,18 +126,18 @@ namespace EquipmentBorrowingSystem.Displays.Template
             this.DenyButton.Text = "Deny";
 
             //RequestInformationGuiDisplay
-            this.ClientSize = new System.Drawing.Size(398, 322);
-            this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.ApproveButton);
-            this.Controls.Add(this.DenyButton);
-            this.Controls.Add(this.ReasonLabel);
-            this.Controls.Add(this.BorrowedDateLabel);
-            this.Controls.Add(this.ReturnDateLabel);
-            this.Controls.Add(this.NameLabel);
-            this.Controls.Add(this.NameTextBox);
-            this.Controls.Add(this.ReturnDateTextBox);
-            this.Controls.Add(this.BorrowedDateTextBox);
-            this.Controls.Add(this.ReasonTextBox);
+            this.ClientSize = new System.Drawing.Size(398, 400);
+            this.itemPanel.Controls.Add(this.CancelButton);
+            this.itemPanel.Controls.Add(this.ApproveButton);
+            this.itemPanel.Controls.Add(this.DenyButton);
+            this.itemPanel.Controls.Add(this.ReasonLabel);
+            this.itemPanel.Controls.Add(this.BorrowedDateLabel);
+            this.itemPanel.Controls.Add(this.ReturnDateLabel);
+            this.itemPanel.Controls.Add(this.NameLabel);
+            this.itemPanel.Controls.Add(this.NameTextBox);
+            this.itemPanel.Controls.Add(this.ReturnDateTextBox);
+            this.itemPanel.Controls.Add(this.BorrowedDateTextBox);
+            this.itemPanel.Controls.Add(this.ReasonTextBox);
             this.Name = "RequestInformationGuiDisplay";
             this.ResumeLayout(false);
             this.PerformLayout();

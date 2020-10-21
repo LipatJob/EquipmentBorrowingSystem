@@ -12,6 +12,8 @@ using System.Windows.Forms;
 namespace EquipmentBorrowingSystem.Displays.Staff.StaffAccount
 {
 
+
+
     partial class CreateBorrowerAccountDisplay : GuiDisplay<User>
     {
         //   Replace with class name      
@@ -60,6 +62,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.StaffAccount
         Label emailLb;
         Label passwordLb;
         Label passwordConfirmLb;
+        Label titleLb;
 
         protected TextBox emailTb;
         protected TextBox passwordTb;
@@ -68,27 +71,71 @@ namespace EquipmentBorrowingSystem.Displays.Staff.StaffAccount
         Button createButton;
         partial void InitializeComponent()
         {
-            emailLb             = new Label { Text = "Email", TextAlign = ContentAlignment.MiddleRight };
-            passwordLb          = new Label { Text = "Password", TextAlign = ContentAlignment.MiddleRight };
-            passwordConfirmLb   = new Label { Text = "Confirm Password", TextAlign = ContentAlignment.MiddleRight };
-            emailTb             = new TextBox { Width = 125};
-            passwordTb          = new TextBox { Width = 125, PasswordChar = '*' };
-            passwordConfirmTb   = new TextBox { Width = 125, PasswordChar = '*' };
-            createButton        = new Button { Text = "Create Borrower"};
 
-            Controls.AddRange(new Control[] { emailLb, passwordLb, passwordConfirmLb, emailTb, passwordTb, passwordConfirmTb, createButton });
+            titleLb = new Label()
+            {
+                Text = "Create Borrower Account",
+                Font = new Font(FontFamily.GenericSansSerif, 14),
+                Location = new Point(0, 0),
+                Size = new Size(400, 40)
 
-            // Layout Components
-            LocationHandler handler = new LocationHandler(5, 5, 100, 25);
-            emailLb.Location = handler.GetPosition();
-            passwordLb.Location = handler.Down().GetPosition();
-            passwordConfirmLb.Location = handler.Down().GetPosition();
+            };
 
-            emailTb.Location = handler.Up().Up().Right().GetPosition();
-            passwordTb.Location = handler.Down().GetPosition();
-            passwordConfirmTb.Location = handler.Down().GetPosition();
+            emailLb = new Label()
+            {
+                Text = "Email",
+                Location = new Point(0, 40),
+                Font = new Font(FontFamily.GenericSansSerif, 12)
+            };
 
-            createButton.Location = handler.Down().GetPosition();
+            passwordLb = new Label()
+            {
+                Text = "Password",
+                Location = new Point(0, 80),
+                Font = new Font(FontFamily.GenericSansSerif, 12)
+            };
+
+            passwordConfirmLb = new Label()
+            {
+                Text = "Confirm Password",
+                Location = new Point(0, 120),
+                AutoSize = true,
+                Font = new Font(FontFamily.GenericSansSerif, 12)
+            };
+
+            emailTb = new TextBox()
+            {
+                Location = new Point(170, 40),
+                Size = new Size(259, 30),
+                Font = new Font(FontFamily.GenericSansSerif, 12)
+            };
+
+            passwordTb = new TextBox()
+            {
+                Location = new Point(170, 80),
+                Size = new Size(259, 30),
+                Font = new Font(FontFamily.GenericSansSerif, 12)
+            };
+
+            passwordConfirmTb = new TextBox()
+            {
+                Location = new Point(170, 120),
+                Size = new Size(259, 30),
+                Font = new Font(FontFamily.GenericSansSerif, 12)
+            };
+
+            createButton = new Button()
+            {
+                Text = "Login",
+                Size = new Size(100, 35),
+                Location = new Point(200, 160),
+                Font = new Font(FontFamily.GenericSansSerif, 12)
+            };
+
+            itemPanel.Controls.AddRange(new Control[] { titleLb, emailLb, passwordLb, emailTb, passwordTb, passwordConfirmLb, passwordConfirmTb, createButton });
+
+            passwordTb.PasswordChar = '*';
+            passwordConfirmTb.PasswordChar = '*';
 
             // Add Action Handlers
             createButton.Click += CreateBorrowerPressed;

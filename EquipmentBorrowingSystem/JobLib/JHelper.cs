@@ -16,6 +16,15 @@ namespace JobLib
     /// </summary>
     class JHelper
     {
+        public static int GetNewKey(ICollection<int> dict)
+        {
+            if(dict.Count == 0)
+            {
+                return 0;
+            }
+            return dict.Max();
+        }
+
         public static int InputInt(string prompt = "", string parseErrorMessage = "> Please enter a valid value", Func<int, bool> validator = null)
         {
             int value = Int32.MinValue;

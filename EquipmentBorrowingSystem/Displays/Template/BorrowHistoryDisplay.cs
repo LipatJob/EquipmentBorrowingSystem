@@ -1,6 +1,7 @@
 ﻿using EquipmentBorrowingSystem.Backend.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,12 +41,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.BorrowerAccount
 
         partial void InitializeComponent()
         {
-            Height = 300;
-            Width = 500;
-
-            borrowHistory = new ListView { Width = 200, Height = 200, View = View.Details};
-            borrowHistory.Width = this.Width;
-            borrowHistory.Height = this.Height;
+            borrowHistory = new ListView {Dock = DockStyle.Fill, View = View.Details};
 
             borrowHistory.Columns.AddRange(new[] {
                 new ColumnHeader{ Text = "Equipment ID" , TextAlign = HorizontalAlignment.Left, Width = 100},
@@ -54,10 +50,9 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.BorrowerAccount
                 new ColumnHeader{ Text = "Equipment Type" , TextAlign = HorizontalAlignment.Left, Width = 100},
                 new ColumnHeader{ Text = "Date Borrowed" , TextAlign = HorizontalAlignment.Left, Width = 100},
                 new ColumnHeader{ Text = "Date Returned" , TextAlign = HorizontalAlignment.Left, Width = 100},
-
             });
 
-            Controls.AddRange(new[] { borrowHistory });
+            itemPanel.Controls.Add(borrowHistory);
             BindModelToView();
         }
     }

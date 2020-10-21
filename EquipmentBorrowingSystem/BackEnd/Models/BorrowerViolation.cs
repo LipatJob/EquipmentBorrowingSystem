@@ -32,6 +32,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
         public bool Resolved { get; set; }
 
 
+
         // Foreign Models
         public EquipmentRequest EquipmentRequest { get { return ApplicationState.GetInstance().EquipmentRequests[RequestId]; } }
         public Violation Violation { get { return ApplicationState.GetInstance().Violations[ViolationId]; } }
@@ -57,7 +58,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
                     int.Parse(values[1]),
                     int.Parse(values[2]),
                     decimal.Parse(values[3]),
-                     values[4] == bool.TrueString
+                    values[4] == bool.TrueString
                     );
             }
 
@@ -68,7 +69,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
                     item.RequestId.ToString(), 
                     item.ViolationId.ToString(),
                     item.AmountCharged.ToString(), 
-                    item.Resolved.ToString() 
+                    item.Resolved.ToString(),
                 });
             }
         }

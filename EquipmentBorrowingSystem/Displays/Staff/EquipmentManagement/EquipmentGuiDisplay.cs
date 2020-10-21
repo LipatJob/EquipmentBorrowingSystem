@@ -36,6 +36,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
 
         private void SetAddMode()
         {
+            titleLb.Text = "Add Equipment";
             idTb.Enabled = false;
             nameTb.Enabled = true;
             typeCb.Enabled = true;
@@ -48,6 +49,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
         private void SetViewMode()
         {
             BindModelToView();
+            titleLb.Text = "View Equipment";
             idTb.Enabled = false;
             nameTb.Enabled = false;
             typeCb.Enabled = false;
@@ -59,6 +61,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
 
         private void SetEditMode()
         {
+            titleLb.Text = "Edit Equipment";
             idTb.Enabled = false;
             nameTb.Enabled = true;
             typeCb.Enabled = true;
@@ -138,7 +141,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             }
         }
 
-
+        Label titleLb;
         Label idLb;
         Label nameLb;
         Label typeLb;
@@ -159,58 +162,67 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
         partial void InitializeComponent()
         {
             // Initialize Components
-            int tbWidth = 75;
+            int tbWidth = 190;
+            int lbWidth = 100;
+            Font font = new Font(FontFamily.GenericSansSerif, 10);
             types = ApplicationState.GetInstance().EquipmentTypes.Values.ToList();
             conditions = ApplicationState.GetInstance().EquipmentConditions.Values.ToList();
-            idLb = new Label { Text = "ID", TextAlign = ContentAlignment.MiddleRight, Width = tbWidth };
-            nameLb = new Label { Text = "Name", TextAlign = ContentAlignment.MiddleRight, Width = tbWidth };
-            typeLb = new Label { Text = "Type", TextAlign = ContentAlignment.MiddleRight, Width = tbWidth };
-            conditionLb = new Label { Text = "Condition", TextAlign = ContentAlignment.MiddleRight, Width = tbWidth };
 
-            idTb = new TextBox();
-            nameTb = new TextBox();
-            typeCb = new ComboBox();
-            conditionCb = new ComboBox();
+            titleLb = new Label { Text = "Add Equipment", Width = 260, Font = new Font(FontFamily.GenericSansSerif, 14) };
+            idLb = new Label { Text = "ID", Width = lbWidth, Font = font};
+            nameLb = new Label { Text = "Name", Width = lbWidth, Font = font };
+            typeLb = new Label { Text = "Type", Width = lbWidth, Font = font };
+            conditionLb = new Label { Text = "Condition", Width = lbWidth, Font = font };
 
-            saveBtn = new Button { Text = "Save" };
-            editBtn = new Button { Text = "Edit" };
-            deleteBtn = new Button { Text = "Delete" };
 
-            Controls.AddRange(new Control[] { nameTb, typeCb, conditionCb, nameLb, typeLb, conditionLb, idTb, idLb, saveBtn, deleteBtn, editBtn});
+            idTb = new TextBox { Font = font, Width = tbWidth};
+            nameTb = new TextBox { Font = font, Width = tbWidth };
+            typeCb = new ComboBox { Font = font, Width = tbWidth };
+            conditionCb = new ComboBox { Font = font, Width = tbWidth };
+
+            saveBtn = new Button { Font = font, Text = "Save", Size = new Size(75, 30) };
+            editBtn = new Button { Font = font, Text = "Edit", Size = new Size(75, 30) };
+            deleteBtn = new Button { Font = font, Text = "Delete", Size = new Size(75, 30) };
+
 
             // Initialize Values
             typeCb.DataSource = types;
             typeCb.ValueMember = "Id";
             typeCb.DisplayMember = "Name";
-            typeCb.SelectedIndex = 0;
 
             conditionCb.DataSource = conditions;
             conditionCb.ValueMember = "Id";
             conditionCb.DisplayMember = "Name";
-            conditionCb.SelectedIndex = 0;
 
             // Set Mode
             if (mode == ViewMode.ADD) { SetAddMode(); }
             else if (mode == ViewMode.VIEW) { SetViewMode(); }
 
             // Layout Components
-            LocationHandler handler = new LocationHandler(5, 5, 100, 25);
-            deleteBtn.Location = handler.Right().Right().GetPosition();
-            editBtn.Location = handler.Down().GetPosition();
-            handler.Left().Left().Up().AmountX = tbWidth;
+            LocationHandler handler = new LocationHandler(0, 0, lbWidth, 40);
+            titleLb.Location = handler.GetPosition();
             idLb.Location           = handler.Down().GetPosition();
             nameLb.Location         = handler.Down().GetPosition();
             typeLb.Location         = handler.Down().GetPosition();
             conditionLb.Location    = handler.Down().GetPosition();
 
             handler.Up().Up().Up().Up().Right();
+            handler.AmountX = tbWidth;
 
             idTb.Location           = handler.Down().GetPosition();
             nameTb.Location         = handler.Down().GetPosition();
             typeCb.Location         = handler.Down().GetPosition();
             conditionCb.Location    = handler.Down().GetPosition();
 
-            saveBtn.Location        = handler.Down().GetPosition();
+            handler.X = 0;
+            handler.AmountX = 80;
+            handler.AmountY += 10;
+            deleteBtn.Location = handler.Down().GetPosition();
+            editBtn.Location = handler.Right().Right().GetPosition();
+            saveBtn.Location = handler.Right().GetPosition();
+            itemPanel.Controls.AddRange(new Control[] { nameTb, typeCb, conditionCb, nameLb, typeLb, conditionLb, idTb, idLb, saveBtn, deleteBtn, editBtn , titleLb});
+
+            Height = 500;
         }
 
 

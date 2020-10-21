@@ -117,7 +117,7 @@ namespace EquipmentBorrowingSystem.Displays.Template
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(500, 492);
-            this.Controls.Add(this.tbLayout);
+            itemPanel.Controls.Add(this.tbLayout);
             this.Name = "SeeInfoAndStatus";
             this.Text = "Form1";
             this.tbLayout.ResumeLayout(false);

@@ -58,8 +58,14 @@ namespace EquipmentBorrowingSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Director director = Director.GetInstance();
+
+            //Director.GetInstance().ShowDisplay(Director.GetInstance().ViolationManagementController.DisplayViolation(0));
+            //return;
+
             string selection = JHelper.InputString("Enter `A` for Staff. Enter Anything else for Borrower", toUpper: true);
 
+
+            
             if (selection == "A")
             {
                 Director.GetInstance().ShowDisplay(Director.GetInstance().StaffAccountController.Login());

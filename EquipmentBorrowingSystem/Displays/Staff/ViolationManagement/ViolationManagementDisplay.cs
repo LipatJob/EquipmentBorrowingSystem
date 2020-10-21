@@ -31,13 +31,29 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
 
         private void AddViolation(ListView listView, BorrowerViolation violation)
         {
-            listView.Items.Add(new ListViewItem(new[] {
+            var item = new ListViewItem(new[] {
                 violation.EquipmentRequest.Borrower.Email,
                 violation.Violation.name,
                 violation.EquipmentRequest.Equipment.Name,
                 violation.AmountCharged.ToString(),
                 violation.Resolved.ToString()
-            }));
+            });
+            item.Tag = violation.Id;
+            listView.Items.Add(item);
+        }
+
+        private void SelectedItem(object sender, EventArgs e)
+        {
+            ListView listView = (ListView)sender;
+
+            if (listView.SelectedItems.Count == 0) { return; }
+            ListViewItem item = listView.SelectedItems[0];
+
+            int id = (int)item.Tag;
+
+            this.Hide();
+            this.Close();
+            Director.ShowDisplay(Director.ViolationManagementController.DisplayViolation(id));
         }
 
         private ListView CreateList()
@@ -49,8 +65,11 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
                 new ColumnHeader{ Text = "Request ID" , TextAlign = HorizontalAlignment.Left, Width = 100},
                 new ColumnHeader{ Text = "Amount Charged" , TextAlign = HorizontalAlignment.Left, Width = 100},
                 new ColumnHeader{ Text = "Resolved" , TextAlign = HorizontalAlignment.Left, Width = 100}});
+            list.DoubleClick += new EventHandler(SelectedItem);
             return list;
         }
+
+
 
         TabControl tabs;
 
@@ -63,9 +82,6 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
         partial void InitializeComponent()
         {
             Text = "Violations";
-            Width = 600;
-            Height = 300;
-
             tabs = new TabControl { TabIndex = 0, Dock = DockStyle.Fill, Location = new Point(0, 0) };
 
             // Unresolved Violations
@@ -81,7 +97,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
             historyList = CreateList();
             historyTab.Controls.Add(historyList);
 
-            Controls.Add(tabs);
+            itemPanel.Controls.Add(tabs);
 
             BindModelToView();
         }

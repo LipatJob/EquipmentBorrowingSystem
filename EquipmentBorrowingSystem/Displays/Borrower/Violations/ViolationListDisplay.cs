@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
 {
-    partial class ViolationsDisplay
+    partial class ViolationListDisplay
     {
         public override void BindModelToView()
         {
@@ -80,7 +80,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
             historyList = CreateList();
             historyTab.Controls.Add(historyList);
 
-            Controls.Add(tabs);
+            itemPanel.Controls.Add(tabs);
 
             BindModelToView();
         }
@@ -90,21 +90,22 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
 
     //   Replace with class name              Replace with model class
     //   VVVVVVVVVVVVVVV                      VVVVVV
-    partial class ViolationsDisplay : GuiDisplay<IEnumerable<BorrowerViolation>>
+    partial class ViolationListDisplay : GuiDisplay<IEnumerable<BorrowerViolation>>
     {
         //   Replace with class name      
         //   VVVVVVVVVVVVVVV                 
-        public ViolationsDisplay(IEnumerable<BorrowerViolation> model) // <<< Replace with model class
+        public ViolationListDisplay(IEnumerable<BorrowerViolation> model) // <<< Replace with model class
             : base(model)
         {
             InitializeComponent();
         }
 
-        public ViolationsDisplay()
+        public ViolationListDisplay()
         {
         }
 
         partial void InitializeComponent();
 
     }
+
 }

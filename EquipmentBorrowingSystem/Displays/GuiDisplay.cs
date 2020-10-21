@@ -18,6 +18,8 @@ namespace EquipmentBorrowingSystem.Displays
 
         }
 
+        public Panel itemPanel;
+
         public GuiDisplay(BaseModel model)
         {
             BackColor = Color.White;
@@ -46,8 +48,15 @@ namespace EquipmentBorrowingSystem.Displays
             };
 
             titlePl.Controls.Add(mclLb);
-
-            Controls.Add(titlePl);
+            itemPanel = new Panel() { Dock = DockStyle.Fill };
+            var layout = new TableLayoutPanel() { Dock = DockStyle.Fill };
+            layout.Location = new Point(0, 0);
+            layout.RowCount = 2;
+            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
+            layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            layout.Controls.Add(titlePl, 0, 0);
+            layout.Controls.Add(itemPanel, 0, 1);
+            Controls.Add(layout);
         }
         
         public void ShowDisplay()
