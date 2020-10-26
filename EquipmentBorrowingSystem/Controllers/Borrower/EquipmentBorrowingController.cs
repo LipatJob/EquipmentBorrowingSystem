@@ -1,6 +1,7 @@
 ﻿using EquipmentBorrowingSystem.Backend.Logic;
 using EquipmentBorrowingSystem.Backend.Models;
 using EquipmentBorrowingSystem.Displays;
+using EquipmentBorrowingSystem.Displays.Borrower.BorrowerAccount;
 using EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing;
 using EquipmentBorrowingSystem.Displays.Template;
 using System;
@@ -34,7 +35,7 @@ namespace EquipmentBorrowingSystem.Controllers
         //RequestToBorrow View
         public Display RequestToBorrow()
         {
-            return new RequestToBorrowGuiDisplay(new EquipmentRequest());
+            return new BorrowRequestGuiDisplay(new EquipmentRequest());
         }
 
         //Response of Inputs from View
@@ -56,9 +57,9 @@ namespace EquipmentBorrowingSystem.Controllers
             return new ReturnEquipment(new EquipmentRequest());
         }
 
-        public Display SeeCurrentRequests()
+        public Display SeeCurrentRequest()
         {
-            return new SeeInfoAndStatus(Logic.SeeCurrentRequests());
+            return new SeeInfoAndStatusDisplay(Logic.SeeCurrentRequests().Last());
         }
 
         public int GetEquipmentCount(EquipmentType equipmentType)
@@ -75,6 +76,16 @@ namespace EquipmentBorrowingSystem.Controllers
             // subtract total - occurence
             count = equipmentType.Equipments.Count() - occurence;
             return count;
+        }
+
+        public Display SeeBorrowHistory()
+        {
+            return new BorrowerHistoryDisplay(Logic.SeeBorrowHistory());
+        }
+
+        public Display ViewRequest(int id)
+        {
+            return new SeeInfoAndStatusDisplay(Logic.GetEquipmentRequest(id));
         }
 
     }

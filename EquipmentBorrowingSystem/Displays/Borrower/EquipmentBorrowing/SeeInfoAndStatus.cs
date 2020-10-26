@@ -54,11 +54,9 @@ namespace EquipmentBorrowingSystem.Displays.Template
             this.WindowHeader.Click += new System.EventHandler(this.WindowHeader_Click);
 
             this.tbLayout.ColumnCount = 1;
-            this.tbLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tbLayout.Controls.Add(this.MainPanel, 0, 0);
             this.tbLayout.Controls.Add(this.LogPanel, 0, 1);
             this.tbLayout.Location = new System.Drawing.Point(12, 12);
-            this.tbLayout.Name = "tbLayout";
             this.tbLayout.RowCount = 2;
             this.tbLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.08547F));
             this.tbLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.91453F));
@@ -78,7 +76,6 @@ namespace EquipmentBorrowingSystem.Displays.Template
             this.BorrowerLabel.Name = "BorrowerLabel";
             this.BorrowerLabel.Size = new System.Drawing.Size(124, 31);
             this.BorrowerLabel.TabIndex = 2;
-            this.BorrowerLabel.Text = "Borrower";
             this.BorrowerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
  
             this.WindowHeader.AutoSize = true;
@@ -105,7 +102,6 @@ namespace EquipmentBorrowingSystem.Displays.Template
             this.BackButton.UseVisualStyleBackColor = true;
 
             this.CurrentRequests.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.CurrentRequests.HideSelection = false;
             this.CurrentRequests.Location = new System.Drawing.Point(17, 3);
             this.CurrentRequests.MultiSelect = false;
             this.CurrentRequests.Name = "CurrentRequests";

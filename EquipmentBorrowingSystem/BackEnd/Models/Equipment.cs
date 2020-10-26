@@ -20,13 +20,13 @@ namespace EquipmentBorrowingSystem.Backend.Models
             Id = id;
             EquipmentTypeID = equipmentTypeID;
             ConditionID = conditionID;
-            Name = name;
+            Code = name;
         }
 
         public int Id { get; set; }
         public int EquipmentTypeID { get; set; }
         public int ConditionID { get; set; }
-        public string Name { get; set; }
+        public string Code { get; set; }
 
 
         // Foreign Models
@@ -65,7 +65,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
                     item.Id.ToString(), 
                     item.EquipmentTypeID.ToString(), 
                     item.ConditionID.ToString(), 
-                    item.Name
+                    item.Code
                 });
             }
         }

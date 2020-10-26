@@ -29,6 +29,37 @@ namespace EquipmentBorrowingSystem.Misc
             return new Point(X, Y);
         }
 
+        public LocationHandler SetLocation(Point point)
+        {
+            X = point.X;
+            Y = point.Y;
+            return this;
+        }
+
+        public LocationHandler SetX(int value)
+        {
+            X = value;
+            return this;
+        }
+
+        public LocationHandler setY(int value)
+        {
+            Y = value;
+            return this;
+        }
+
+        public LocationHandler AddX(int amount)
+        {
+            X += amount;
+            return this;
+        }
+
+        public LocationHandler AddY(int amount)
+        {
+            Y += amount;
+            return this;
+        }
+
         public LocationHandler Up()
         {
             Y -= AmountY;

@@ -15,7 +15,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
 
     //            Replace with class name              
     //            VVVVVVVVVVVVVVV 
-    partial class RequestToBorrowGuiDisplay
+    partial class BorrowRequestGuiDisplay
     {
 
         public override void BindModelToView()
@@ -214,11 +214,11 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
 
     //   Replace with class name              Replace with model class
     //   VVVVVVVVVVVVVVV                      VVVVVV
-    partial class RequestToBorrowGuiDisplay : GuiDisplay<EquipmentRequest>
+    partial class BorrowRequestGuiDisplay : GuiDisplay<EquipmentRequest>
     {
         //   Replace with class name      
         //   VVVVVVVVVVVVVVV                 
-        public RequestToBorrowGuiDisplay(EquipmentRequest model) // <<< Replace with model class
+        public BorrowRequestGuiDisplay(EquipmentRequest model) // <<< Replace with model class
             : base(model)
         {
             // The GUI Stuff must be implemented in the partial class below
@@ -228,7 +228,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
 
         //   Replace with class name              
         //   VVVVVVVVVVVVVVV                      
-        public RequestToBorrowGuiDisplay()
+        public BorrowRequestGuiDisplay()
         {
             // This Constructor allows you to use the designer. 
         }

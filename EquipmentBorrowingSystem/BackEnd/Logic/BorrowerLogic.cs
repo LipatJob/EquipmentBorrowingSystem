@@ -28,6 +28,11 @@ namespace EquipmentBorrowingSystem.Backend.Logic
             return ApplicationState.EquipmentRequests.Values.Where(e => e.BorrowerID == ApplicationState.LoggedInUser.Id);
         }
 
+        public EquipmentRequest GetEquipmentRequest(int id)
+        {
+            return ApplicationState.EquipmentRequests[id];
+        }
+
 
         public Response ChangePassword(string newPassword)
         {

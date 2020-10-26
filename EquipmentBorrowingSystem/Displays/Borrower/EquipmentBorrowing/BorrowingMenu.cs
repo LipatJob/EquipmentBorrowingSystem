@@ -1,4 +1,5 @@
 ﻿using EquipmentBorrowingSystem.Backend.Models;
+using JobLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,18 +17,23 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
         }
         public override void ShowDisplay()
         {
-            Console.Clear();
-            Console.WriteLine(
-                "A. Request to Borrow Equipment\n" +
-                "B. See Infomartion and Status (Current Request)\n" +
-                "C. Return Equipment");
+            while(true)
+            {
+                Console.Clear();
+                Console.WriteLine(
+                    "------Manage and View Borrowed Equipment------\n" +
+                    "A. Request to Borrow Equipment\n" +
+                    "B. See Information and Status (Current Request)\n" +
+                    "C. See Borrow History\n" + 
+                    "X. Back");
+                string choice = JHelper.InputString("Enter a Selection: ", toUpper: true, validator: e => JHelper.In(e, "A", "B", "C", "X"));
 
-            Console.WriteLine("Enter your choice: ");
-            string choice = Console.ReadLine();
+                if (choice.ToUpper() == "A") { Director.ShowDisplay(Director.EquipmentBorrowingController.RequestToBorrow()); }
+                else if (choice.ToUpper() == "B") { Director.ShowDisplay(Director.EquipmentBorrowingController.SeeCurrentRequest()); }
+                else if (choice.ToUpper() == "C") { Director.ShowDisplay(Director.EquipmentBorrowingController.SeeBorrowHistory()); }
+                else if (choice.ToUpper() == "X") { break; }
+            }
 
-            if (choice.ToUpper() == "A") { Director.ShowDisplay(Director.EquipmentBorrowingController.RequestToBorrow()); }
-            else if (choice.ToUpper() == "B") { Director.ShowDisplay(Director.EquipmentBorrowingController.SeeCurrentRequests()); }
-            else if (choice.ToUpper() == "C") { Director.ShowDisplay(Director.EquipmentBorrowingController.ReturnEquipment()); }
         }
     }
 }

@@ -27,7 +27,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
             int i = 1;
             Console.WriteLine("---- Select Equipment ----");
             List<Equipment> equipments = ApplicationState.GetInstance().Equipments.Values.ToList();
-            foreach (Equipment equipment in equipments) { Console.WriteLine($"{i}. {equipment.Name}"); i++; }
+            foreach (Equipment equipment in equipments) { Console.WriteLine($"{i}. {equipment.Code}"); i++; }
             //Model.EquipmentID = equipments[JHelper.InputInt("Enter Selection: ", validator: e => InRange(e, 1, equipments.Count)) - 1].Id;
 
             Model.ExpectedReturnDate = DateTime.Parse(JHelper.InputString("\nEnter Expected Return Date: ", validator: ValidateReturnDate));

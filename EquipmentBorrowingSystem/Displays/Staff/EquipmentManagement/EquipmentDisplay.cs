@@ -64,7 +64,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
         private void DisplayEquipment()
         {
             Console.WriteLine("" +
-                $"Name: {Model.Name}\n" +
+                $"Name: {Model.Code}\n" +
                 $"Equipment Type: {Model.EquipmentType.Name}\n" +
                 $"Condition: {Model.EquipmentCondition.Name}");
         }
@@ -77,7 +77,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
 
             // Enter Equipment Name
             Console.WriteLine("Select Equipment Name");
-            equipment.Name = JHelper.InputString("Enter New Name: ", validator: ValidateName);
+            equipment.Code = JHelper.InputString("Enter New Name: ", validator: ValidateName);
 
             // Enter Equipment Type
             int i = 1;
@@ -120,7 +120,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
                 if (selection == "A")
                 {
                     // Edit Equipment Name
-                    Model.Name = JHelper.InputString("Enter New Name: ", validator: ValidateName);
+                    Model.Code = JHelper.InputString("Enter New Name: ", validator: ValidateName);
                 }
                 else if (selection == "B")
                 {

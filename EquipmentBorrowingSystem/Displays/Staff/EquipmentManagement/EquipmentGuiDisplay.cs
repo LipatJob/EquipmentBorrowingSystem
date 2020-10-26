@@ -20,7 +20,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
         {
             
             idTb.Text = Model.Id.ToString();
-            nameTb.Text = Model.Name.ToString();
+            nameTb.Text = Model.Code.ToString();
             
             typeCb.SelectedItem = Model.EquipmentType.Name;
             conditionCb.SelectedItem = Model.EquipmentCondition.Name;
@@ -28,7 +28,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
 
         public override void BindViewToModel()
         {
-            Model.Name = nameTb.Text;
+            Model.Code = nameTb.Text;
             Model.EquipmentTypeID = (int)typeCb.SelectedValue;
             Model.ConditionID = (int)typeCb.SelectedValue;
         }

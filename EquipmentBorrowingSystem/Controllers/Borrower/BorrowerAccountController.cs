@@ -49,10 +49,7 @@ namespace EquipmentBorrowingSystem.Controllers.Borrower
             return new Response(true, "User now logged in");
         }
 
-        public Display SeeBorrowHistory()
-        {
-            return new BorrowerHistoryDisplay(Logic.SeeBorrowHistory());
-        }
+       
 
         public Display SampleDisplayFunction()
         {

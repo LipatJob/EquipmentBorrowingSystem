@@ -21,7 +21,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             {
                 Console.WriteLine("" +
                 $"Id: {equipment.Id}\n"+
-                $"Name: {equipment.Name}\n" +
+                $"Name: {equipment.Code}\n" +
                 $"Equipment Type: {ApplicationState.GetInstance().EquipmentTypes[equipment.EquipmentTypeID].Name}\n" +
                 $"Condition: {ApplicationState.GetInstance().EquipmentConditions[equipment.ConditionID].Name}");
                 Console.WriteLine();
