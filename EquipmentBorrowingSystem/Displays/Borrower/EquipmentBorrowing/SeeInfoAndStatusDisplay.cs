@@ -23,6 +23,22 @@ namespace EquipmentBorrowingSystem.Displays.Template
             expectedReturnDateTb.Text = Model.ExpectedReturnDate.ToString();
             reasonRTB.Text = Model.Reason;
 
+            string statusName = Model.RequestStatus.Name;
+            if (statusName == "Active")
+            {
+                dateReturnedTb.Text = "Not Returned";
+            }
+            else if (statusName == "Denied" || statusName == "Pending")
+            {
+                dateReturnedTb.Text = "Not Borrowed";
+            }
+            else
+            {
+                dateReturnedTb.Text = Model.DateReturned.ToString();
+            }
+
+
+
             foreach (var equipment in Model.Equipments)
             {
                 equipmentBorrowedLV.Items.Add(
@@ -37,6 +53,7 @@ namespace EquipmentBorrowingSystem.Displays.Template
         TextBox statusTb;
         TextBox dateBorrowedTb;
         TextBox expectedReturnDateTb;
+        TextBox dateReturnedTb;
         RichTextBox reasonRTB;
         ListView equipmentBorrowedLV;
         partial void InitializeComponent()
@@ -46,15 +63,19 @@ namespace EquipmentBorrowingSystem.Displays.Template
             var statusLb = new Label() { Text = "Status", AutoSize = true };
             var dateBorrowedLb = new Label() { Text = "Date Borrowed", AutoSize = true };
             var expectedReturnDateLb = new Label() { Text = "Expected Return Date", AutoSize = true };
+            var dateReturnedLb = new Label() { Text = "Date Returned", AutoSize = true };
             var reasonLb = new Label() { Text = "Reason", AutoSize = true };
             var equipmentBorrowedLb = new Label() { Text = "Equipment Borrowed", AutoSize = true};
+
+            LocationHandler handler = new LocationHandler(0, 0, 125, 30);
 
             borrowerTb = new TextBox() { Width = 150};
             statusTb = new TextBox() { Width = 150 };
             dateBorrowedTb = new TextBox() { Width = 150 };
             expectedReturnDateTb = new TextBox() { Width = 150 };
+            dateReturnedTb = new TextBox() { Width = 150 };
             reasonRTB = new RichTextBox() { Size = new Size(550, 100) };
-            equipmentBorrowedLV = new ListView() { Size = new Size(260, 90), View = View.Details};
+            equipmentBorrowedLV = new ListView() { Size = new Size(260, handler.AmountY * 4), View = View.Details};
 
 
             // Initialize List View
@@ -63,7 +84,6 @@ namespace EquipmentBorrowingSystem.Displays.Template
                 new ColumnHeader{ Text = "Type" , TextAlign = HorizontalAlignment.Left, Width = 100},
                 new ColumnHeader{ Text = "Code" , TextAlign = HorizontalAlignment.Left, Width = 100} });
 
-            LocationHandler handler = new LocationHandler(0, 0, 125, 30);
 
             // Layout Items
             titleLb.Location = handler.GetPosition();
@@ -80,14 +100,18 @@ namespace EquipmentBorrowingSystem.Displays.Template
             dateBorrowedTb.Location = handler.Right().GetPosition();
             expectedReturnDateLb.Location = handler.Down().Left().GetPosition();
             expectedReturnDateTb.Location = handler.Right().GetPosition();
+            dateReturnedLb.Location = handler.Down().Left().GetPosition();
+            dateReturnedTb.Location = handler.Right().GetPosition();
             reasonLb.Location = handler.Down().Left().GetPosition();
             reasonRTB.Location = handler.AddY(20).GetPosition();
 
 
             itemPanel.Controls.AddRange(new Control[] {
                 titleLb,
-                borrowerLb, dateBorrowedLb, expectedReturnDateLb, equipmentBorrowedLb,  reasonLb, statusLb,
-                borrowerTb, dateBorrowedTb, expectedReturnDateTb, equipmentBorrowedLV, reasonRTB, statusTb });
+                borrowerLb, dateBorrowedLb, expectedReturnDateLb, dateReturnedLb, equipmentBorrowedLb,  reasonLb, statusLb,
+                borrowerTb, dateBorrowedTb, expectedReturnDateTb, dateReturnedTb, equipmentBorrowedLV, reasonRTB, statusTb });
+
+            Height += 30;
         }
 
     }

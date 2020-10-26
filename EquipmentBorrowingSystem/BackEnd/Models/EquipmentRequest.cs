@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EquipmentBorrowingSystem.Backend.Models
 {
@@ -89,7 +90,8 @@ namespace EquipmentBorrowingSystem.Backend.Models
                     DateTime.ParseExact(values[4], "yyyyMMdd-HHmmss", CultureInfo.InvariantCulture),
                     DateTime.ParseExact(values[5], "yyyyMMdd-HHmmss", CultureInfo.InvariantCulture),
                     values[6].Replace("\\n", "\n"),
-                    ids);
+                    ids
+                    );
             }
 
             public override string ToSerializable(EquipmentRequest item)
@@ -102,7 +104,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
                     item.DateBorrowed.ToString("yyyyMMdd-HHmmss"),
                     item.DateReturned.ToString("yyyyMMdd-HHmmss"),
                     item.Reason.Replace("\n", "\\n"),
-                    string.Join(",",item.EquipmentIds.Select(e=>e.ToString()).ToHashSet())
+                    string.Join(",",item.EquipmentIds.Select(e=>e.ToString()).ToHashSet()),
                 });
             }
         }
