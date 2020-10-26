@@ -37,7 +37,13 @@ namespace EquipmentBorrowingSystem.Misc
             users.Add(new User(1, 1, "borrower@mcl.edu.ph", "qwerty"));
 
             var equipmentTypes = new SerializedList<EquipmentType>(ModelValues.EQUIPMENT_TYPES_FILE_NAME, EquipmentType.GetSerializer());
-            equipmentTypes.Add(new EquipmentType(0, "Chair", 100));
+            equipmentTypes.Add(new EquipmentType(0, "Chair", 1));
+            equipmentTypes.Add(new EquipmentType(1, "Table", 1));
+            equipmentTypes.Add(new EquipmentType(2, "Arnis", 2));
+            equipmentTypes.Add(new EquipmentType(3, "Volleyball", 1));
+            equipmentTypes.Add(new EquipmentType(4, "Soccer Ball", 1));
+            equipmentTypes.Add(new EquipmentType(5, "Basketball", 1));
+
 
             var equipmentConditions = new SerializedList<EquipmentCondition>(ModelValues.EQUIPMENT_CONDITIONS_FILE_NAME, EquipmentCondition.GetSerializer());
             equipmentConditions.Add(new EquipmentCondition(0, "Ok"));
@@ -52,13 +58,6 @@ namespace EquipmentBorrowingSystem.Misc
             equipments.Add(new Equipment(5, 0, 0, "Chair 6"));
 
 
-            var equipmentRequets = new SerializedList<EquipmentRequest>(ModelValues.EQUIPMENT_REQUESTS_FILE_NAME, EquipmentRequest.GetSerializer());
-            equipmentRequets.Add(new EquipmentRequest(0, 1, 0, 0,DateTime.Now, DateTime.Now, DateTime.Now, "Hello World"));
-            equipmentRequets.Add(new EquipmentRequest(1, 1, 1, 0, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World"));
-            equipmentRequets.Add(new EquipmentRequest(2, 1, 2, 0, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World"));
-            equipmentRequets.Add(new EquipmentRequest(3, 1, 3, 0, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World"));
-            equipmentRequets.Add(new EquipmentRequest(4, 1, 4, 0, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World"));
-
 
             var requestStatuses = new SerializedList<RequestStatus>(ModelValues.EQUIPMENT_STATUSES_FILE_NAME, RequestStatus.GetSerializer());
             requestStatuses.Add(new RequestStatus(0, "Pending"));
@@ -69,6 +68,13 @@ namespace EquipmentBorrowingSystem.Misc
             var violations = new SerializedList<Violation>(ModelValues.VIOLATIONS_FILE_NAME, Violation.GetSerializer());
             violations.Add(new Violation(0, "Overdue"));
             violations.Add(new Violation(1, "Broken"));
+
+            var equipmentRequets = new SerializedList<EquipmentRequest>(ModelValues.EQUIPMENT_REQUESTS_FILE_NAME, EquipmentRequest.GetSerializer());
+            equipmentRequets.Add(new EquipmentRequest(0, 1, 0, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World", new[] { 1 }.ToList()));
+            equipmentRequets.Add(new EquipmentRequest(1, 1, 1, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World", new[] { 2 }.ToList()));
+            equipmentRequets.Add(new EquipmentRequest(2, 1, 2, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World", new[] { 3 }.ToList()));
+            equipmentRequets.Add(new EquipmentRequest(3, 1, 3, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World", new[] { 4, 5 }.ToList()));
+
 
             var borrowerViolations = new SerializedList<BorrowerViolation>(ModelValues.BORROWER_VIOLATIONS_FILE_NAME, BorrowerViolation.GetSerializer());
             borrowerViolations.Add(new BorrowerViolation(0, 0, 0, 0, false));

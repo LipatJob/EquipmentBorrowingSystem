@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -56,6 +57,45 @@ namespace EquipmentBorrowingSystem.Backend.Logic
             return new Response(true, "Success");
         }
 
+        internal Response RequestToBorrowEquipment(EquipmentRequest request, IDictionary<EquipmentType, int> count)
+        {
+            int id = 0;
+            if (ApplicationState.EquipmentRequests.Count() != 0)
+            {
+                id = ApplicationState.EquipmentRequests.Keys.Max() + 1;
+            }
+
+            int pendingId = ApplicationState.RequestStatuses.Values.Where(e => e.Name == "Pending").First().Id;
+            request.Id = id;
+            request.BorrowerID = ApplicationState.LoggedInUser.Id;
+            request.RequestStatusID = pendingId;
+            //temp var
+            request.DateReturned = DateTime.Now;
+            request.DateBorrowed = DateTime.Now;
+            request.ExpectedReturnDate = request.ExpectedReturnDate;
+
+            // Get Equipment Ids
+            List<int> equipmentIds = new List<int>();
+
+            foreach (var item in count)
+            {
+                if(item.Value > 0)
+                {
+                    equipmentIds.AddRange(item.Key.Equipments
+                        .Where(e => e.EquipmentRequests.Count() == 0 
+                            || (e.EquipmentRequests.LastOrDefault().RequestStatus.Name != "Active" 
+                                &&  e.EquipmentRequests.LastOrDefault().RequestStatus.Name != "Pending"))
+                        .Take(item.Value)
+                        .Select(e=>e.Id));
+                }
+            }
+            request.EquipmentIds = equipmentIds;
+
+            ApplicationState.EquipmentRequests[id] = request;
+            ApplicationState.EquipmentRequests.SaveState();
+            return new Response(true, "Success");
+        }
+
         public IEnumerable<EquipmentRequest> SeeCurrentRequests()
         {
             int pendingId = ApplicationState.RequestStatuses.Values.Where(e => e.Name == "Pending").First().Id;
@@ -76,11 +116,12 @@ namespace EquipmentBorrowingSystem.Backend.Logic
             ApplicationState.EquipmentRequests.SaveState();
 
             double daysBorrowed = (DateTime.Now - request.DateBorrowed).TotalHours;
-            Equipment equipment = ApplicationState.Equipments[request.EquipmentID];
-            int maximumBorrowHours = ApplicationState.EquipmentTypes[equipment.EquipmentTypeID].MaximumBorrowDurationHours;
+            int maximumBorrowHours = request.Equipments.Min(e => e.EquipmentType.MaximumBorrowDurationDays);
+
             if (daysBorrowed > maximumBorrowHours)
             {
-                int borrowerViolationId = ApplicationState.BorrowerViolations.Keys.Max() + 1;
+                int borrowerViolationId = 0; 
+                if(ApplicationState.BorrowerViolations.Count > 0) { borrowerViolationId = ApplicationState.BorrowerViolations.Keys.Max() + 1; }
                 int lateViolationId = ApplicationState.Violations
                     .Values
                     .Where(e => e.name == "Overdue")

@@ -18,7 +18,7 @@ namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
 
         private void AddItem(ListView listView, EquipmentRequest request)
         {
-            var item = new ListViewItem(new string[] { request.RequestStatus.Name, request.Borrower.Email, request.Equipment.Name, request.Equipment.EquipmentCondition.Name, 
+            var item = new ListViewItem(new string[] { request.RequestStatus.Name, request.Borrower.Email, 
                 request.Reason, request.DateBorrowed.ToString(), request.DateReturned.ToString(), request.ExpectedReturnDate.ToString() });
             item.Tag = request.Id;
             listView.Items.Add(item);
@@ -31,8 +31,6 @@ namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
             list.Columns.AddRange(new[]{
                  new ColumnHeader{ Text = "Status" , TextAlign = HorizontalAlignment.Left, Width = 150},
                 new ColumnHeader{ Text = "Borrower" , TextAlign = HorizontalAlignment.Left, Width = 100},
-                new ColumnHeader{ Text = "Equipment" , TextAlign = HorizontalAlignment.Left, Width = 100},
-                new ColumnHeader{ Text = "Condition" , TextAlign = HorizontalAlignment.Left, Width = 100},
                 new ColumnHeader{ Text = "Reason" , TextAlign = HorizontalAlignment.Left, Width = 100},
                 new ColumnHeader{ Text = "Date Borrowed" , TextAlign = HorizontalAlignment.Left, Width = 100},
                 new ColumnHeader{ Text = "Date Returned" , TextAlign = HorizontalAlignment.Left, Width = 100},

@@ -29,7 +29,7 @@ namespace EquipmentBorrowingSystem.Displays.Template
 
             foreach (EquipmentRequest request in Model.ToList())
             {
-                CurrentRequests.Items.Add(new ListViewItem(new string[] { request.RequestStatus.Name, request.Equipment.Name, request.DateBorrowed.ToString()}));
+                CurrentRequests.Items.Add(new ListViewItem(new string[] { request.RequestStatus.Name, request.DateBorrowed.ToString()}));
             }
         }
 

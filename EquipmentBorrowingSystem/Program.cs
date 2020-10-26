@@ -65,7 +65,6 @@ namespace EquipmentBorrowingSystem
             string selection = JHelper.InputString("Enter `A` for Staff. Enter Anything else for Borrower", toUpper: true);
 
 
-            
             if (selection == "A")
             {
                 Director.GetInstance().ShowDisplay(Director.GetInstance().StaffAccountController.Login());

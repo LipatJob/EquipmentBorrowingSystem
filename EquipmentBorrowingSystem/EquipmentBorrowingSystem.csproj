@@ -61,6 +61,9 @@
     <Compile Include="Displays\Borrower\BorrowerAccount\BorrowerLoginDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Displays\Borrower\EquipmentBorrowing\RequestToBorrowGuiDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Displays\Borrower\EquipmentBorrowing\SeeInfoAndStatus.cs">
       <SubType>Form</SubType>
     </Compile>

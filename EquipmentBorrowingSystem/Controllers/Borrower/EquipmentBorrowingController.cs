@@ -34,13 +34,20 @@ namespace EquipmentBorrowingSystem.Controllers
         //RequestToBorrow View
         public Display RequestToBorrow()
         {
-            return new RequestToBorrow(new EquipmentRequest());
+            return new RequestToBorrowGuiDisplay(new EquipmentRequest());
         }
 
         //Response of Inputs from View
         public Response RequestToBorrow(EquipmentRequest request)
         {
             return Logic.RequestToBorrowEquipment(request);
+        }
+
+        //Response of Inputs from View
+        public Response RequestToBorrow(EquipmentRequest request, IDictionary<EquipmentType, int> count)
+        {
+
+            return Logic.RequestToBorrowEquipment(request, count);
         }
 
         //temporary (ReturnEquipment View)
@@ -53,5 +60,22 @@ namespace EquipmentBorrowingSystem.Controllers
         {
             return new SeeInfoAndStatus(Logic.SeeCurrentRequests());
         }
+
+        public int GetEquipmentCount(EquipmentType equipmentType)
+        {
+            int count = 0;
+            // Get Active Requests
+            var activeRequests = ApplicationState.GetInstance().EquipmentRequests.Values.Where(e => e.RequestStatus.Name == "Active" || e.RequestStatus.Name == "Pending");
+            // Count occurence of ID
+            int occurence = 0;
+            foreach (var request in activeRequests)
+            {
+                occurence += request.Equipments.Count(e => e.EquipmentTypeID == equipmentType.Id);
+            }
+            // subtract total - occurence
+            count = equipmentType.Equipments.Count() - occurence;
+            return count;
+        }
+
     }
 }

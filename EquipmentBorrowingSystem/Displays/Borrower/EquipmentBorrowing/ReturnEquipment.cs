@@ -25,7 +25,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
             int i = 1;
             Console.WriteLine("Enter Equipment ID: ");
             List<Equipment> equipments = ApplicationState.GetInstance().Equipments.Values.ToList();
-            Model.EquipmentID = equipments[JHelper.InputInt("Enter Selection: ", validator: e => InRange(e, 1, equipments.Count)) - 1].Id;
+            //Model.EquipmentID = equipments[JHelper.InputInt("Enter Selection: ", validator: e => InRange(e, 1, equipments.Count)) - 1].Id;
 
             //go to Response (Controller)
             Director.EquipmentBorrowingController.RequestToBorrow(Model);

@@ -34,7 +34,7 @@ namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
 
             foreach (EquipmentRequest request in Model.ToList())
             {                
-                RequestLog.Items.Add(new ListViewItem(new string[] { request.RequestStatus.Name, request.Borrower.Email, request.Equipment.Name, request.Equipment.EquipmentCondition.Name, request.Reason, request.DateBorrowed.ToString(), request.DateReturned.ToString(), request.ExpectedReturnDate.ToString()}));
+                RequestLog.Items.Add(new ListViewItem(new string[] { request.RequestStatus.Name, request.Borrower.Email, request.Reason, request.DateBorrowed.ToString(), request.DateReturned.ToString(), request.ExpectedReturnDate.ToString()}));
                 
             }            
             

@@ -20,12 +20,12 @@ namespace EquipmentBorrowingSystem.Backend.Models
         {
             Id = id;
             Name = name;
-            MaximumBorrowDurationHours = maximumBorrowDurationHours;
+            MaximumBorrowDurationDays = maximumBorrowDurationHours;
         }
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public int MaximumBorrowDurationHours {get;set;}
+        public int MaximumBorrowDurationDays {get;set;}
 
         // Reference Models
         public IEnumerable<Equipment> Equipments
@@ -59,7 +59,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
                 return string.Join(ModelValues.DELIMITER, new string[] {
                     item.Id.ToString(),
                     item.Name,
-                    item.MaximumBorrowDurationHours.ToString()
+                    item.MaximumBorrowDurationDays.ToString()
                 });
             }
         }

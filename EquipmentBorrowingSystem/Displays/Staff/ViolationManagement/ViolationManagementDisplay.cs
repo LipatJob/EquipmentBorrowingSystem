@@ -34,7 +34,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
             var item = new ListViewItem(new[] {
                 violation.EquipmentRequest.Borrower.Email,
                 violation.Violation.name,
-                violation.EquipmentRequest.Equipment.Name,
+                string.Join(", ", violation.EquipmentRequest.Equipments.SelectMany(e=>e.EquipmentType.Name)),
                 violation.AmountCharged.ToString(),
                 violation.Resolved.ToString()
             });

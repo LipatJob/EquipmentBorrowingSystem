@@ -118,7 +118,7 @@ namespace EquipmentBorrowingSystem.Backend.Logic
             int activeId = ApplicationState.RequestStatuses.Values.Where(e => e.Name == "Active").First().Id;
             DateTime currentDay = DateTime.Now;
             return ApplicationState.EquipmentRequests.Values.Where(e => e.RequestStatusID == activeId && 
-            (currentDay - e.ExpectedReturnDate).TotalDays > ApplicationState.EquipmentTypes[ApplicationState.Equipments[e.EquipmentID].EquipmentTypeID].MaximumBorrowDurationHours);
+            (currentDay - e.ExpectedReturnDate).TotalDays > e.Equipments.Min(f => f.EquipmentType.MaximumBorrowDurationDays));
         }
 
         public EquipmentRequest SeeRequestInformation(int id)

@@ -33,7 +33,6 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
         {
             listView.Items.Add(new ListViewItem(new[] {
                 violation.Violation.name,
-                violation.EquipmentRequest.Equipment.Name,
                 violation.AmountCharged.ToString(),
                 violation.Resolved.ToString()
             }));

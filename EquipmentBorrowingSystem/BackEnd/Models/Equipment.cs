@@ -35,7 +35,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
 
         // Reference Models
         public IEnumerable<EquipmentRequest> EquipmentRequests
-            { get { return ApplicationState.GetInstance().EquipmentRequests.Values.Where(e => e.EquipmentID == Id); } }
+            { get { return ApplicationState.GetInstance().EquipmentRequests.Values.Where(e => e.EquipmentIds.Contains(Id)); } }
 
         public int GetKey()
         {

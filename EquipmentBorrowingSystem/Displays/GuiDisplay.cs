@@ -19,6 +19,7 @@ namespace EquipmentBorrowingSystem.Displays
         }
 
         public Panel itemPanel;
+        public Panel titlePl;
 
         public GuiDisplay(BaseModel model)
         {
@@ -30,7 +31,7 @@ namespace EquipmentBorrowingSystem.Displays
             Width = 600;
 
             int tempWidth = Width;
-            var titlePl = new Panel()
+            titlePl = new Panel()
             {
                 Dock = DockStyle.Top,
                 Width = tempWidth,

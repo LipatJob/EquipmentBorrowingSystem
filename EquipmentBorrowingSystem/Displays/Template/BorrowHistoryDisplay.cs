@@ -20,10 +20,9 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.BorrowerAccount
             {
                 borrowHistory.Items.Add(new ListViewItem(new[]{
                     request.Id.ToString(),
-                    request.Equipment.Name,
                     request.RequestStatus.Name,
-                    request.Equipment.EquipmentType.Name,
-                    request.DateBorrowed.ToString()}));
+                    string.Join(", ", request.Equipments.SelectMany(e=>e.EquipmentType.Name)),
+                    request.DateBorrowed.ToString()}));;
             }
         }
 
