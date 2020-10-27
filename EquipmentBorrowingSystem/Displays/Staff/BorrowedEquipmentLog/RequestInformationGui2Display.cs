@@ -20,6 +20,8 @@ namespace EquipmentBorrowingSystem.Displays.Template
             var actionPanel = new Panel() { Dock = DockStyle.Bottom, Padding = new Padding(0, 10, 30, 10), Height = 50 };
             ApproveButton = new Button() { Text = "Approve", Dock = DockStyle.Right, Enabled = false};
             DenyButton = new Button() { Text = "Deny", Dock = DockStyle.Right, Enabled = false};
+            ApproveButton.Click += ApproveRequest;
+            DenyButton.Click += DenyRequest;
 
             if(request.RequestStatus.Name == "Pending")
             {
