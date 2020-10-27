@@ -27,7 +27,12 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
                 Console.WriteLine();
             }
 
-            int id = JHelper.InputInt("Enter Id of equipment to select: ", validator: e => ApplicationState.GetInstance().Equipments.ContainsKey(e));
+            int id = JHelper.InputInt("Enter Id of equipment to select(-1 to go back): ", validator: e => e == -1 || ApplicationState.GetInstance().Equipments.ContainsKey(e));
+
+            if(id == -1)
+            {
+                return;
+            }
 
             Director.ShowDisplay(Director.EquipmentManagementController.ViewEquipment(id));
         }

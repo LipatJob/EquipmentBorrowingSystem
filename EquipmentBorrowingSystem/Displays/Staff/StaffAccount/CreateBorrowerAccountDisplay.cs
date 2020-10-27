@@ -71,69 +71,76 @@ namespace EquipmentBorrowingSystem.Displays.Staff.StaffAccount
         Button createButton;
         partial void InitializeComponent()
         {
-
+            int tbWidth = 100;
+            LocationHandler handler = new LocationHandler(0, 0, tbWidth, 30);
+            var defaultFont = new Label().Font;
             titleLb = new Label()
             {
                 Text = "Create Borrower Account",
-                Font = new Font(FontFamily.GenericSansSerif, 14),
-                Location = new Point(0, 0),
-                Size = new Size(400, 40)
-
+                Font = new Font(defaultFont.Name, 12),
+                Location = handler.GetPosition(),
+                AutoSize = true,
             };
 
             emailLb = new Label()
             {
                 Text = "Email",
-                Location = new Point(0, 40),
-                Font = new Font(FontFamily.GenericSansSerif, 12)
+                Width = tbWidth,
+                Location = handler.AddX(30).Down().GetPosition(),
+                Font = defaultFont
             };
 
             passwordLb = new Label()
             {
                 Text = "Password",
-                Location = new Point(0, 80),
-                Font = new Font(FontFamily.GenericSansSerif, 12)
+                Width = tbWidth,
+                Location = handler.Down().GetPosition(),
+                Font = defaultFont
             };
 
             passwordConfirmLb = new Label()
             {
                 Text = "Confirm Password",
-                Location = new Point(0, 120),
+                Width = tbWidth,
+                Location = handler.Down().GetPosition(),
                 AutoSize = true,
-                Font = new Font(FontFamily.GenericSansSerif, 12)
+                Font = defaultFont
             };
+
+            handler.Up().Up().Up().Right();
 
             emailTb = new TextBox()
             {
-                Location = new Point(170, 40),
-                Size = new Size(259, 30),
-                Font = new Font(FontFamily.GenericSansSerif, 12)
+                Location = handler.Down().GetPosition(),
+                Width = 200,
+                Font = defaultFont
             };
 
             passwordTb = new TextBox()
             {
-                Location = new Point(170, 80),
-                Size = new Size(259, 30),
-                Font = new Font(FontFamily.GenericSansSerif, 12)
+                Location = handler.Down().GetPosition(),
+                Width = 200,
+                Font = defaultFont
             };
 
             passwordConfirmTb = new TextBox()
             {
-                Location = new Point(170, 120),
-                Size = new Size(259, 30),
-                Font = new Font(FontFamily.GenericSansSerif, 12)
+                Location = handler.Down().GetPosition(),
+                Width = 200,
+                Font = defaultFont
             };
 
             createButton = new Button()
             {
-                Text = "Login",
-                Size = new Size(100, 35),
-                Location = new Point(200, 160),
-                Font = new Font(FontFamily.GenericSansSerif, 12)
+                Text = "Create Account",
+                Location = handler.Down().GetPosition(),
+                Font = defaultFont,
+                AutoSize = true
             };
 
-            itemPanel.Controls.AddRange(new Control[] { titleLb, emailLb, passwordLb, emailTb, passwordTb, passwordConfirmLb, passwordConfirmTb, createButton });
-
+            var tempPanel = new Panel() { Location = new Point(100,0), AutoSize = true};
+            tempPanel.Controls.AddRange(new Control[] { titleLb, emailLb, passwordLb, emailTb, passwordTb, passwordConfirmLb, passwordConfirmTb, createButton });
+            itemPanel.Controls.Add(tempPanel);
             passwordTb.PasswordChar = '*';
             passwordConfirmTb.PasswordChar = '*';
 

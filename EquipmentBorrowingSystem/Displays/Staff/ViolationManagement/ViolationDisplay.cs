@@ -214,7 +214,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
 
             requestIdLb = new Label() {
                 Text = "Request ID",
-                Location = handler.Down().GetPosition(),
+                Location = handler.AddX(30).Down().GetPosition(),
                 Font = defaultFont,
                 Width = labelWidth,
             };
@@ -222,7 +222,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
             viewRequestBtn = new Button()
             {
                 Text = "View Request",
-                Location = new Point(labelWidth + 75 + 30, handler.Y),
+                Location = new Point(labelWidth + 75 + 60, handler.Y),
                 Size = new Size(150, 25),
                 Font = defaultFont
             };
@@ -272,10 +272,11 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
                 Location = handler.Down().GetPosition(),
                 Width = 250,
                 Font = defaultFont,
-                DataSource = ApplicationState.GetInstance().Violations.Values.ToList(),
                 ValueMember = "Id",
                 DisplayMember = "name"
             };
+
+            violationCb.Items.AddRange(ApplicationState.GetInstance().Violations.Values.ToArray());
             amountChargedTb = new TextBox()
             {
                 Location = handler.Down().GetPosition(),
@@ -343,6 +344,8 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
             {
                 ViewMode();
             }
+
+            Width = 500;
         }
     }
 

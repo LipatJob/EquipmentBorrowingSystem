@@ -56,6 +56,7 @@ namespace EquipmentBorrowingSystem.Displays
             layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             layout.Controls.Add(titlePl, 0, 0);
             layout.Controls.Add(itemPanel, 0, 1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Controls.Add(layout);
         }
         

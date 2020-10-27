@@ -22,8 +22,8 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             idTb.Text = Model.Id.ToString();
             codeTb.Text = Model.Code.ToString();
             
-            typeCb.SelectedIndex = typeCb.Items.IndexOf(Model.EquipmentType);
-            conditionCb.SelectedIndex = conditionCb.Items.IndexOf(Model.EquipmentCondition);
+            typeCb.SelectedItem = Model.EquipmentType;
+            conditionCb.SelectedItem = Model.EquipmentCondition;
         }
 
         public override void BindViewToModel()
@@ -180,10 +180,12 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
 
             // Initialize Values
             typeCb.Items.AddRange(types.ToArray());
+            typeCb.SelectedIndex = 0;
             typeCb.ValueMember = "Id";
             typeCb.DisplayMember = "Name";
 
             conditionCb.Items.AddRange(conditions.ToArray());
+            conditionCb.SelectedIndex = 0;
             conditionCb.ValueMember = "Id";
             conditionCb.DisplayMember = "Name";
 
