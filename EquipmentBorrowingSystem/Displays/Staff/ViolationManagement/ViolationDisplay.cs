@@ -77,6 +77,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
             resolvedGroup.Enabled = true;
             amountChargedTb.Enabled = true;
             saveBtn.Enabled = true;
+            deleteBtn.Enabled = false;
             saveBtn.Click += new EventHandler(AddAction);
             BindModelToView();
         }
