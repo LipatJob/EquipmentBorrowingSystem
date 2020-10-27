@@ -22,16 +22,15 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             idTb.Text = Model.Id.ToString();
             codeTb.Text = Model.Code.ToString();
             
-            typeCb.SelectedItem = Model.EquipmentType.Name;
-            conditionCb.SelectedItem = Model.EquipmentCondition.Name;
+            typeCb.SelectedIndex = typeCb.Items.IndexOf(Model.EquipmentType);
+            conditionCb.SelectedIndex = conditionCb.Items.IndexOf(Model.EquipmentCondition);
         }
 
         public override void BindViewToModel()
         {
-            Model.EquipmentTypeID = (int)typeCb.SelectedValue;
-            Model.ConditionID = (int)typeCb.SelectedValue;
+            Model.EquipmentTypeID = ((EquipmentType)typeCb.SelectedItem).Id;
+            Model.ConditionID = ((EquipmentCondition)conditionCb.SelectedItem).Id;
         }
-
 
         private void SetAddMode()
         {
@@ -48,7 +47,6 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
         private void SetViewMode()
         {
             BindModelToView();
-            titleLb.Text = "View Equipment";
             idTb.Enabled = false;
             codeTb.Enabled = false;
             typeCb.Enabled = false;
@@ -60,7 +58,6 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
 
         private void SetEditMode()
         {
-            titleLb.Text = "Edit Equipment";
             idTb.Enabled = false;
             codeTb.Enabled = false;
             typeCb.Enabled = true;
@@ -90,7 +87,6 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
                 MessageBox.Show("Equipment has been deleted", "Delete Success");
                 this.Hide();
                 this.Close();
-                Director.ShowDisplay(Director.EquipmentManagementController.EquipmentMenu());
             }
             else
             {
@@ -108,7 +104,6 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
                 MessageBox.Show("Add Equipment Success", "Equipment has been Added");
                 this.Hide();
                 this.Close();
-                Director.ShowDisplay(Director.EquipmentManagementController.EquipmentMenu());
             }
             else
             {
@@ -132,7 +127,6 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
                 MessageBox.Show("Equipment has been edited", "Edit Success");
                 this.Hide();
                 this.Close();
-                Director.ShowDisplay(Director.EquipmentManagementController.EquipmentMenu());
             }
             else
             {
@@ -163,11 +157,11 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             // Initialize Components
             int tbWidth = 190;
             int lbWidth = 100;
-            Font font = new Font(FontFamily.GenericSansSerif, 10);
+            Font font = new Label().Font;
             types = ApplicationState.GetInstance().EquipmentTypes.Values.ToList();
             conditions = ApplicationState.GetInstance().EquipmentConditions.Values.ToList();
 
-            titleLb = new Label { Text = "Add Equipment", Width = 260, Font = new Font(FontFamily.GenericSansSerif, 14) };
+            titleLb = new Label { Text = "Equipment Description", Width = 260, Font = new Font(FontFamily.GenericSansSerif, 12) };
             idLb = new Label { Text = "ID", Width = lbWidth, Font = font};
             nameLb = new Label { Text = "Code", Width = lbWidth, Font = font };
             typeLb = new Label { Text = "Type", Width = lbWidth, Font = font };
@@ -176,8 +170,8 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
 
             idTb = new TextBox { Font = font, Width = tbWidth};
             codeTb = new TextBox { Font = font, Width = tbWidth };
-            typeCb = new ComboBox { Font = font, Width = tbWidth };
-            conditionCb = new ComboBox { Font = font, Width = tbWidth };
+            typeCb = new ComboBox { Font = font, Width = tbWidth, DropDownStyle = ComboBoxStyle.DropDownList };
+            conditionCb = new ComboBox { Font = font, Width = tbWidth, DropDownStyle = ComboBoxStyle.DropDownList};
 
             saveBtn = new Button { Font = font, Text = "Save", Size = new Size(75, 30) };
             editBtn = new Button { Font = font, Text = "Edit", Size = new Size(75, 30) };
@@ -185,11 +179,11 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
 
 
             // Initialize Values
-            typeCb.DataSource = types;
+            typeCb.Items.AddRange(types.ToArray());
             typeCb.ValueMember = "Id";
             typeCb.DisplayMember = "Name";
 
-            conditionCb.DataSource = conditions;
+            conditionCb.Items.AddRange(conditions.ToArray());
             conditionCb.ValueMember = "Id";
             conditionCb.DisplayMember = "Name";
 
@@ -198,9 +192,9 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             else if (mode == ViewMode.VIEW) { SetViewMode(); }
 
             // Layout Components
-            LocationHandler handler = new LocationHandler(0, 0, lbWidth, 40);
+            LocationHandler handler = new LocationHandler(0, 0, lbWidth, 30);
             titleLb.Location = handler.GetPosition();
-            idLb.Location           = handler.Down().GetPosition();
+            idLb.Location           = handler.AddX(30).Down().GetPosition();
             nameLb.Location         = handler.Down().GetPosition();
             typeLb.Location         = handler.Down().GetPosition();
             conditionLb.Location    = handler.Down().GetPosition();
@@ -213,15 +207,15 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             typeCb.Location         = handler.Down().GetPosition();
             conditionCb.Location    = handler.Down().GetPosition();
 
-            handler.X = 0;
-            handler.AmountX = 80;
-            handler.AmountY += 10;
-            deleteBtn.Location = handler.Down().GetPosition();
-            editBtn.Location = handler.Right().Right().GetPosition();
-            saveBtn.Location = handler.Right().GetPosition();
-            itemPanel.Controls.AddRange(new Control[] { codeTb, typeCb, conditionCb, nameLb, typeLb, conditionLb, idTb, idLb, saveBtn, deleteBtn, editBtn , titleLb});
+            var actionPl = new Panel() { Dock = DockStyle.Bottom, Padding = new Padding(10, 10, 30, 10), Height = 50, Width = 400 };
+            deleteBtn.Dock = DockStyle.Left;
+            editBtn.Dock = DockStyle.Right;
+            saveBtn.Dock = DockStyle.Right;
+            actionPl.Controls.AddRange(new Control[] {  deleteBtn, editBtn, saveBtn });
+            itemPanel.Controls.AddRange(new Control[] { codeTb, typeCb, conditionCb, nameLb, typeLb, conditionLb, idTb, idLb, titleLb, actionPl });
 
-            Height = 500;
+            Height = handler.Down().Y + titlePl.Height + actionPl.Height + 50;
+            Width = 400;
         }
 
 

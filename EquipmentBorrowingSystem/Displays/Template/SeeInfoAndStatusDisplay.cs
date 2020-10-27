@@ -38,13 +38,13 @@ namespace EquipmentBorrowingSystem.Displays.Template
             }
 
 
-
             foreach (var equipment in Model.Equipments)
             {
-                equipmentBorrowedLV.Items.Add(
-                    new ListViewItem(new[] {
+                var item = new ListViewItem(new[] {
                     equipment.EquipmentType.Name,
-                    equipment.Code}));
+                    equipment.Code});
+                item.Tag = equipment.Id;
+                equipmentBorrowedLV.Items.Add(item);
             }
         }
 
@@ -55,7 +55,7 @@ namespace EquipmentBorrowingSystem.Displays.Template
         TextBox expectedReturnDateTb;
         TextBox dateReturnedTb;
         RichTextBox reasonRTB;
-        ListView equipmentBorrowedLV;
+        protected ListView equipmentBorrowedLV;
         partial void InitializeComponent()
         {
             var titleLb = new Label() { Text = "Equipment Request", AutoSize = true, Font = new Font(FontFamily.GenericSansSerif, 12)};
@@ -75,7 +75,7 @@ namespace EquipmentBorrowingSystem.Displays.Template
             expectedReturnDateTb = new TextBox() { Width = 150, Enabled = false };
             dateReturnedTb = new TextBox() { Width = 150, Enabled = false };
             reasonRTB = new RichTextBox() { Size = new Size(550, 100), Enabled = false };
-            equipmentBorrowedLV = new ListView() { Size = new Size(260, handler.AmountY * 4), View = View.Details};
+            equipmentBorrowedLV = new ListView() { Size = new Size(260, handler.AmountY * 4), View = View.Details, FullRowSelect = true, MultiSelect = false};
 
 
             // Initialize List View

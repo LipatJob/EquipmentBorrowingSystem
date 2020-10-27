@@ -16,17 +16,20 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
         }
         public override void ShowDisplay()
         {
-            Console.Clear();
-            Console.WriteLine(
-                "A. View/Edit/Delete Equipment\n" +
-                "B. Add Equipment\n" +
-                "X. Exit");
+            while(true)
+            {
+                Console.Clear();
+                Console.WriteLine(
+                    "A. View/Edit/Delete Equipment\n" +
+                    "B. Add Equipment\n" +
+                    "X. Exit");
 
-            string selection = JHelper.InputString("Enter a Selection: ", toUpper: true, validator: e => JHelper.In(e, "A", "B", "X"));
+                string selection = JHelper.InputString("Enter a Selection: ", toUpper: true, validator: e => JHelper.In(e, "A", "B", "X"));
 
-                 if (selection == "A") { Director.ShowDisplay(Director.EquipmentManagementController.EquipmentList()); }
-            else if (selection == "B") { Director.ShowDisplay(Director.EquipmentManagementController.AddEquipment()); }
-            else if (selection == "X") { JHelper.ExitPrompt(); }
+                if (selection == "A") { Director.ShowDisplay(Director.EquipmentManagementController.EquipmentList()); }
+                else if (selection == "B") { Director.ShowDisplay(Director.EquipmentManagementController.AddEquipment()); }
+                else if (selection == "X") { break; }
+            }
         }
     }
 }

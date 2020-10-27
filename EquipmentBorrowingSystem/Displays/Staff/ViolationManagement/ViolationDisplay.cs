@@ -32,6 +32,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
 
         public override void BindViewToModel()
         {
+            Model.ViolationId =  ((Violation) violationCb.SelectedItem).Id;
             Model.AmountCharged = int.Parse(amountChargedTb.Text);
             if(resolvedYes.Checked)
             {
@@ -52,6 +53,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
             amountChargedTb.Enabled = false;
             saveBtn.Enabled = false;
             deleteBtn.Enabled = false;
+            editBtn.Enabled = true;
             editBtn.Click += new EventHandler(EditClick);
             BindModelToView();
         }
@@ -65,6 +67,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
             amountChargedTb.Enabled = true;
             saveBtn.Enabled = true;
             deleteBtn.Enabled = true;
+            editBtn.Enabled = false;
             deleteBtn.Click += new EventHandler(DeleteAction);
             saveBtn.Click += new EventHandler(EditAction);
         }
@@ -78,6 +81,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
             amountChargedTb.Enabled = true;
             saveBtn.Enabled = true;
             deleteBtn.Enabled = false;
+            editBtn.Enabled = false;
             saveBtn.Click += new EventHandler(AddAction);
             BindModelToView();
         }
@@ -102,7 +106,6 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
                 MessageBox.Show("Violation has been deleted", "Delete Success");
                 this.Hide();
                 this.Close();
-                Director.ShowDisplay(Director.ViolationManagementController.SeeViolations());
             }
             else
             {
@@ -113,43 +116,64 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
 
         private void AddAction(object sender, EventArgs e)
         {
+            if (!ValidateViolation() || !ValidateAmount()) { return; }
             BindViewToModel();
             Response response = Director.ViolationManagementController.AddViolation(Model);
 
             if (response.Success)
             {
-                MessageBox.Show("Add Violation Success", "Violation has been Added");
+                MessageBox.Show("Violation has been Added", "Add Violation Success");
                 this.Hide();
                 this.Close();
-                Director.ShowDisplay(Director.ViolationManagementController.SeeViolations());
             }
             else
             {
-                MessageBox.Show("Add Violation Failed", "Something went wrong Please try again.");
+                MessageBox.Show("Something went wrong. Please try again.", "Add Violation Failed");
             }
         }
 
         private void EditAction(object sender, EventArgs e)
         {
+            if (!ValidateViolation() || !ValidateAmount()) { return; }
             BindViewToModel();
             Response response = Director.ViolationManagementController.EditViolation(Model);
 
             if (response.Success)
             {
-                MessageBox.Show("Add Violation Success", "Violation has been Added");
+                MessageBox.Show("Violation has been edited", "Edit Violation Success");
                 this.Hide();
                 this.Close();
-                Director.ShowDisplay(Director.ViolationManagementController.SeeViolations());
             }
             else
             {
-                MessageBox.Show("Add Violation Failed", "Something went wrong Please try again.");
+                MessageBox.Show("Something went wrong. Please try again.", "Edit Violation Failed");
             }
         }
 
         private void ViewRequestAction(object sender, EventArgs e)
         {
             Director.ShowDisplay(Director.BorrowedEquipmentLogController.RequestInformation(Model.RequestId));
+        }
+
+        private bool ValidateViolation()
+        {
+            if(violationCb.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a valid violation.", "Invalid Violation");
+                return false;
+            }
+            return true;
+        }
+
+        private bool ValidateAmount()
+        {
+            double value = 0;
+            if (!double.TryParse(amountChargedTb.Text, out value))
+            {
+                MessageBox.Show("Amount may only contain numbers.", "Invalid Amount");
+                return false;
+            }
+            return true;
         }
 
 
@@ -187,8 +211,6 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
                 Font = new Font(defaultFont.Name, 12),
                 AutoSize = true
             };
-
-            handler.X = 20;
 
             requestIdLb = new Label() {
                 Text = "Request ID",
@@ -310,7 +332,6 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
                 viewRequestBtn, actionsPl, resolvedGroup, violationCb, violationLb});
 
             Height = handler.Down().Y + actionsPl.Height +titlePl.Height + 50;
-
 
             viewRequestBtn.Click += new EventHandler(ViewRequestAction);
 

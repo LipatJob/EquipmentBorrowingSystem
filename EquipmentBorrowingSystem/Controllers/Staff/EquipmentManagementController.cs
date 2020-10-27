@@ -48,14 +48,13 @@ namespace EquipmentBorrowingSystem.Controllers
 
         public Response EditEquipment(Equipment equipment)
         {
-            Logic.EditEquipment(equipment);
-            return new Response(true, "Equipment Edited", null);
+            return Logic.EditEquipment(equipment);
         }
 
         public Response DeleteEquipment(int id)
         {
-            Logic.DeleteEquipment(id);
-            return new Response(true, "Equipment Edited", null);
+            ;
+            return Logic.DeleteEquipment(id);
         }
     }
 }

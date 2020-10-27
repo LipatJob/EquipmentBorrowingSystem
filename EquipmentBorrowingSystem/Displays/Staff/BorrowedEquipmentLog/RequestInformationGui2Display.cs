@@ -50,7 +50,23 @@ namespace EquipmentBorrowingSystem.Displays.Template
             itemPanel.Controls.Add(AddViolationButton);
             Height += 50;
 
+            equipmentBorrowedLV.DoubleClick += new EventHandler(SeeEquipment);
         }
+
+        private void SeeEquipment(object sender, EventArgs e)
+        {
+            ListView listView = (ListView)sender;
+
+            if (listView.SelectedItems.Count == 0) { return; }
+            ListViewItem item = listView.SelectedItems[0];
+
+            int id = (int)item.Tag;
+
+            this.Hide();
+            Director.ShowDisplay(Director.EquipmentManagementController.ViewEquipment(id));
+            this.Show();
+        }
+
 
         //Latest Edit: Mark Anthony Mamauag
         //Description: Added Button Events, regarding requst approval and denial
@@ -74,7 +90,6 @@ namespace EquipmentBorrowingSystem.Displays.Template
                 int idVal = Model.Id;
                 this.Hide();
                 Director.BorrowedEquipmentLogController.ApproveRequest(idVal);
-                Director.ShowDisplay(Director.StaffMainController.StaffMenu());
             }
         }
         void DenyRequest(object sender, EventArgs e)
@@ -88,7 +103,6 @@ namespace EquipmentBorrowingSystem.Displays.Template
                 int idVal = Model.Id;
                 this.Hide();
                 Director.BorrowedEquipmentLogController.DenyRequest(idVal);
-                Director.ShowDisplay(Director.StaffMainController.StaffMenu());
             }
         }
 
@@ -103,7 +117,6 @@ namespace EquipmentBorrowingSystem.Displays.Template
                 int idVal = Model.Id;
                 this.Hide();
                 Director.BorrowedEquipmentLogController.AccomplishRequest(idVal);
-                Director.ShowDisplay(Director.StaffMainController.StaffMenu());
 
             }
         }

@@ -32,6 +32,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
         private void AddViolation(ListView listView, BorrowerViolation violation)
         {
             var item = new ListViewItem(new[] {
+                violation.Id.ToString(),
                 violation.EquipmentRequest.Borrower.Email,
                 violation.Violation.name,
                 string.Join(", ", violation.EquipmentRequest.Equipments.Select(e=>e.Code)),
@@ -54,12 +55,14 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
             this.Hide();
             this.Close();
             Director.ShowDisplay(Director.ViolationManagementController.DisplayViolation(id));
+            Director.ShowDisplay(Director.ViolationManagementController.SeeViolations());
         }
 
         private ListView CreateList()
         {
             var list = new ListView { Dock = DockStyle.Fill, View = View.Details, FullRowSelect = true, MultiSelect = false};
             list.Columns.AddRange(new[]{
+                new ColumnHeader{ Text = "ID" , TextAlign = HorizontalAlignment.Left, Width = 40},
                 new ColumnHeader{ Text = "Email" , TextAlign = HorizontalAlignment.Left, Width = 150},
                 new ColumnHeader{ Text = "Violation" , TextAlign = HorizontalAlignment.Left, Width = 100},
                 new ColumnHeader{ Text = "Request ID" , TextAlign = HorizontalAlignment.Left, Width = 100},

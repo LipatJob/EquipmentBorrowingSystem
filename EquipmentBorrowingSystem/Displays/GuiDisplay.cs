@@ -34,7 +34,6 @@ namespace EquipmentBorrowingSystem.Displays
             titlePl = new Panel()
             {
                 Dock = DockStyle.Top,
-                Width = tempWidth,
                 Height = 80,
                 BackColor = Color.FromArgb(0, 33, 78),
             };

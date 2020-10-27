@@ -13,13 +13,15 @@ namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
     partial class BorrowedEquipmentLog2GuiDisplay
     {
 
-        
-
-
         private void AddItem(ListView listView, EquipmentRequest request)
         {
-            var item = new ListViewItem(new string[] { request.RequestStatus.Name, request.Borrower.Email, 
-                request.Reason, request.DateBorrowed.ToString(), request.ExpectedReturnDate.ToString() });
+            var item = new ListViewItem(new string[] { 
+                request.Id.ToString(),
+                request.RequestStatus.Name, 
+                request.Borrower.Email, 
+                request.Reason, 
+                request.DateBorrowed.ToString(), 
+                request.ExpectedReturnDate.ToString() });
             item.Tag = request.Id;
             listView.Items.Add(item);
         }
@@ -29,11 +31,12 @@ namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
         {
             var list = new ListView { Dock = DockStyle.Fill, View = View.Details, MultiSelect = false, FullRowSelect = true};
             list.Columns.AddRange(new[]{
-                 new ColumnHeader{ Text = "Status" , TextAlign = HorizontalAlignment.Left, Width = 150},
-                new ColumnHeader{ Text = "Borrower" , TextAlign = HorizontalAlignment.Left, Width = 100},
-                new ColumnHeader{ Text = "Reason" , TextAlign = HorizontalAlignment.Left, Width = 100},
-                new ColumnHeader{ Text = "Date Borrowed" , TextAlign = HorizontalAlignment.Left, Width = 100},
-                new ColumnHeader{ Text = "Expected Return Date" , TextAlign = HorizontalAlignment.Left, Width = 100},
+                 new ColumnHeader{ Text = "Id" , TextAlign = HorizontalAlignment.Left, Width = 40},
+                 new ColumnHeader{ Text = "Status" , TextAlign = HorizontalAlignment.Left, Width = 80},
+                    new ColumnHeader{ Text = "Borrower" , TextAlign = HorizontalAlignment.Left, Width = 100},
+                    new ColumnHeader{ Text = "Reason" , TextAlign = HorizontalAlignment.Left, Width = 100},
+                    new ColumnHeader{ Text = "Date Borrowed" , TextAlign = HorizontalAlignment.Left, Width = 100},
+                    new ColumnHeader{ Text = "Expected Return Date" , TextAlign = HorizontalAlignment.Left, Width = 100},
             });
 
             list.DoubleClick += new EventHandler(SelectedItem);
