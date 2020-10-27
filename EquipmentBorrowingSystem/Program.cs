@@ -62,7 +62,7 @@ namespace EquipmentBorrowingSystem
             //Director.GetInstance().ShowDisplay(Director.GetInstance().ViolationManagementController.DisplayViolation(0));
             //return;
 
-            string selection = JHelper.InputString("Enter `A` for Staff. Enter Anything else for Borrower", toUpper: true);
+            string selection = JHelper.InputString("Enter [A] for Staff. Enter Anything else for Borrower: ", toUpper: true);
 
 
             if (selection == "A")

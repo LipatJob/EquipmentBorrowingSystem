@@ -22,6 +22,7 @@ namespace EquipmentBorrowingSystem.Displays.Template
         private Button CancelButton;
         private Button ApproveButton;
         private Button DenyButton;
+        private Button AddViolationButton;
 
         public void BindModelToView()
         {
@@ -47,19 +48,27 @@ namespace EquipmentBorrowingSystem.Displays.Template
             this.CancelButton = new System.Windows.Forms.Button();
             this.ApproveButton = new System.Windows.Forms.Button();
             this.DenyButton = new System.Windows.Forms.Button();
+            this.AddViolationButton = new System.Windows.Forms.Button();
+
 
             //Event Methods
             this.CancelButton.Click += GoToMenu;
+            this.AddViolationButton.Click += AddViolation;
             this.ApproveButton.Click += ApproveRequest;
-            this.DenyButton.Click += DenyRequest;
+            this.DenyButton.Click += ApproveRequest;
             this.SuspendLayout();
+
+            //AddViolation
+            this.AddViolationButton.Location = new System.Drawing.Point(150, 120);
+            this.AddViolationButton.Name = "Add Violation";
+            this.AddViolationButton.Size = new System.Drawing.Size(85, 23);
+            this.AddViolationButton.Text = "Add Violation";
 
             //NameTextBox
             this.NameTextBox.Enabled = false;
             this.NameTextBox.Location = new System.Drawing.Point(162, 42);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(179, 20);
- 
             //ReturnDateTextBox 
             this.ReturnDateTextBox.Enabled = false;
             this.ReturnDateTextBox.Location = new System.Drawing.Point(162, 81);
@@ -138,6 +147,7 @@ namespace EquipmentBorrowingSystem.Displays.Template
             this.itemPanel.Controls.Add(this.ReturnDateTextBox);
             this.itemPanel.Controls.Add(this.BorrowedDateTextBox);
             this.itemPanel.Controls.Add(this.ReasonTextBox);
+            this.itemPanel.Controls.Add(this.AddViolationButton);
             this.Name = "RequestInformationGuiDisplay";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -146,12 +156,21 @@ namespace EquipmentBorrowingSystem.Displays.Template
 
         //Latest Edit: Mark Anthony Mamauag
         //Description: Added Button Events, regarding requst approval and denial
+        
 
         void GoToMenu(object sender, EventArgs e)
         {
             this.Hide();
             Director.ShowDisplay(Director.BorrowedEquipmentLogController.RequestsMenu());
         }
+        void AddViolation(object sender, EventArgs e)
+        {
+            int idVal = Model.Id;
+            this.Hide();
+            Director.ViolationManagementController.AddViolation(Model.BorrowerID, Model.Id);
+            Director.ShowDisplay(Director.ViolationManagementController.AddViolation(Model.BorrowerID, Model.Id));
+        }
+
         void ApproveRequest(object sender, EventArgs e)
         {
             string message = "Approve this request?";
