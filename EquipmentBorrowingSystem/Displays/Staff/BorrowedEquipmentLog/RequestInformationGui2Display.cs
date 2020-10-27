@@ -20,6 +20,8 @@ namespace EquipmentBorrowingSystem.Displays.Template
             var actionPanel = new Panel() { Dock = DockStyle.Bottom, Padding = new Padding(0, 10, 30, 10), Height = 50 };
             ApproveButton = new Button() { Text = "Approve", Dock = DockStyle.Right, Enabled = false};
             DenyButton = new Button() { Text = "Deny", Dock = DockStyle.Right, Enabled = false};
+            ApproveButton.Click += ApproveRequest;
+            DenyButton.Click += DenyRequest;
 
             if(request.RequestStatus.Name == "Pending")
             {
@@ -47,7 +49,7 @@ namespace EquipmentBorrowingSystem.Displays.Template
                 int idVal = Model.Id;
                 this.Hide();
                 Director.BorrowedEquipmentLogController.ApproveRequest(idVal);
-                Director.ShowDisplay(Director.BorrowedEquipmentLogController.RequestsMenu());
+                Director.ShowDisplay(Director.StaffMainController.StaffMenu());
             }
         }
         void DenyRequest(object sender, EventArgs e)
@@ -61,7 +63,7 @@ namespace EquipmentBorrowingSystem.Displays.Template
                 int idVal = Model.Id;
                 this.Hide();
                 Director.BorrowedEquipmentLogController.DenyRequest(idVal);
-                Director.ShowDisplay(Director.BorrowedEquipmentLogController.RequestsMenu());
+                Director.ShowDisplay(Director.StaffMainController.StaffMenu());
             }
         }
     }
