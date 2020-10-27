@@ -58,7 +58,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
 
         private ListView CreateList()
         {
-            var list = new ListView { Dock = DockStyle.Fill, View = View.Details };
+            var list = new ListView { Dock = DockStyle.Fill, View = View.Details, FullRowSelect = true, MultiSelect = false};
             list.Columns.AddRange(new[]{
                 new ColumnHeader{ Text = "Email" , TextAlign = HorizontalAlignment.Left, Width = 150},
                 new ColumnHeader{ Text = "Violation" , TextAlign = HorizontalAlignment.Left, Width = 100},

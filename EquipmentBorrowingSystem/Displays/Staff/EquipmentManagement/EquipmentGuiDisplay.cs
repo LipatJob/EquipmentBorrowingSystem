@@ -20,7 +20,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
         {
             
             idTb.Text = Model.Id.ToString();
-            nameTb.Text = Model.Code.ToString();
+            codeTb.Text = Model.Code.ToString();
             
             typeCb.SelectedItem = Model.EquipmentType.Name;
             conditionCb.SelectedItem = Model.EquipmentCondition.Name;
@@ -28,7 +28,6 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
 
         public override void BindViewToModel()
         {
-            Model.Code = nameTb.Text;
             Model.EquipmentTypeID = (int)typeCb.SelectedValue;
             Model.ConditionID = (int)typeCb.SelectedValue;
         }
@@ -38,7 +37,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
         {
             titleLb.Text = "Add Equipment";
             idTb.Enabled = false;
-            nameTb.Enabled = true;
+            codeTb.Enabled = false;
             typeCb.Enabled = true;
             conditionCb.Enabled = true;
             saveBtn.Enabled = true;
@@ -51,7 +50,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             BindModelToView();
             titleLb.Text = "View Equipment";
             idTb.Enabled = false;
-            nameTb.Enabled = false;
+            codeTb.Enabled = false;
             typeCb.Enabled = false;
             conditionCb.Enabled = false;
             saveBtn.Enabled = false;
@@ -63,7 +62,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
         {
             titleLb.Text = "Edit Equipment";
             idTb.Enabled = false;
-            nameTb.Enabled = true;
+            codeTb.Enabled = false;
             typeCb.Enabled = true;
             conditionCb.Enabled = true;
             saveBtn.Enabled = true;
@@ -119,7 +118,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
 
         private void SaveAction(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(nameTb.Text))
+            if(string.IsNullOrWhiteSpace(codeTb.Text))
             {
                 MessageBox.Show("Name must Not be empty", "Save Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -148,7 +147,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
         Label conditionLb;
 
         TextBox idTb;
-        TextBox nameTb;
+        TextBox codeTb;
         ComboBox typeCb;
         ComboBox conditionCb;
 
@@ -170,13 +169,13 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
 
             titleLb = new Label { Text = "Add Equipment", Width = 260, Font = new Font(FontFamily.GenericSansSerif, 14) };
             idLb = new Label { Text = "ID", Width = lbWidth, Font = font};
-            nameLb = new Label { Text = "Name", Width = lbWidth, Font = font };
+            nameLb = new Label { Text = "Code", Width = lbWidth, Font = font };
             typeLb = new Label { Text = "Type", Width = lbWidth, Font = font };
             conditionLb = new Label { Text = "Condition", Width = lbWidth, Font = font };
 
 
             idTb = new TextBox { Font = font, Width = tbWidth};
-            nameTb = new TextBox { Font = font, Width = tbWidth };
+            codeTb = new TextBox { Font = font, Width = tbWidth };
             typeCb = new ComboBox { Font = font, Width = tbWidth };
             conditionCb = new ComboBox { Font = font, Width = tbWidth };
 
@@ -210,7 +209,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             handler.AmountX = tbWidth;
 
             idTb.Location           = handler.Down().GetPosition();
-            nameTb.Location         = handler.Down().GetPosition();
+            codeTb.Location         = handler.Down().GetPosition();
             typeCb.Location         = handler.Down().GetPosition();
             conditionCb.Location    = handler.Down().GetPosition();
 
@@ -220,7 +219,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
             deleteBtn.Location = handler.Down().GetPosition();
             editBtn.Location = handler.Right().Right().GetPosition();
             saveBtn.Location = handler.Right().GetPosition();
-            itemPanel.Controls.AddRange(new Control[] { nameTb, typeCb, conditionCb, nameLb, typeLb, conditionLb, idTb, idLb, saveBtn, deleteBtn, editBtn , titleLb});
+            itemPanel.Controls.AddRange(new Control[] { codeTb, typeCb, conditionCb, nameLb, typeLb, conditionLb, idTb, idLb, saveBtn, deleteBtn, editBtn , titleLb});
 
             Height = 500;
         }

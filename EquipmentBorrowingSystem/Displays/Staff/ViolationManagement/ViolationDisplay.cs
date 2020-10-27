@@ -177,10 +177,20 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
             var temp = new Label();
             Font defaultFont = temp.Font;
             int labelWidth = 140;
-            LocationHandler handler = new LocationHandler(0, 0, labelWidth, 35);
+            LocationHandler handler = new LocationHandler(0, 0, labelWidth, 30);
+
+            var titleLb = new Label() {
+                Text = "Borrower Violation",
+                Location = handler.GetPosition(),
+                Font = new Font(defaultFont.Name, 12),
+                AutoSize = true
+            };
+
+            handler.X = 20;
+
             requestIdLb = new Label() {
                 Text = "Request ID",
-                Location = handler.GetPosition(),
+                Location = handler.Down().GetPosition(),
                 Font = defaultFont,
                 Width = labelWidth,
             };
@@ -188,8 +198,8 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
             viewRequestBtn = new Button()
             {
                 Text = "View Request",
-                Location = new Point(labelWidth + 75 + 25),
-                Size = new Size(150, 30),
+                Location = new Point(labelWidth + 75 + 30, handler.Y),
+                Size = new Size(150, 25),
                 Font = defaultFont
             };
 
@@ -263,8 +273,6 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
                 
             };
 
-            handler.Left().Down();
-
 
             var actionsPl = new Panel {  Dock = DockStyle.Bottom, Padding = new Padding(0, 10, 30, 10), Height = 50};
 
@@ -293,10 +301,13 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
             
             resolvedGroup.Controls.AddRange(new Control[] { resolvedNo, resolvedYes });
 
-            this.itemPanel.Controls.AddRange(new Control[] { 
+            this.itemPanel.Controls.AddRange(new Control[] {
+                titleLb,
                 requestIdLb, borrowerEmailLb, resolvedLb, amountChargedLb,
                 requestIdTb, borrowerEmailTb, amountChargedTb, 
                 viewRequestBtn, actionsPl, resolvedGroup, violationCb, violationLb});
+
+            Height = handler.Down().Y + actionsPl.Height +titlePl.Height + 50;
 
 
             viewRequestBtn.Click += new EventHandler(ViewRequestAction);

@@ -50,12 +50,12 @@ namespace EquipmentBorrowingSystem.Misc
             equipmentConditions.Add(new EquipmentCondition(1, "Broken"));
 
             var equipments = new SerializedList<Equipment>(ModelValues.EQUIPMENTS_FILE_NAME, Equipment.GetSerializer());
-            equipments.Add(new Equipment(0, 0, 0, "Chair 1"));
-            equipments.Add(new Equipment(1, 0, 0, "Chair 2"));
-            equipments.Add(new Equipment(2, 0, 0, "Chair 3"));
-            equipments.Add(new Equipment(3, 0, 0, "Chair 4"));
-            equipments.Add(new Equipment(4, 0, 0, "Chair 5"));
-            equipments.Add(new Equipment(5, 0, 0, "Chair 6"));
+            equipments.Add(new Equipment(0, 0, 0));
+            equipments.Add(new Equipment(1, 0, 0));
+            equipments.Add(new Equipment(2, 0, 0));
+            equipments.Add(new Equipment(3, 0, 0));
+            equipments.Add(new Equipment(4, 0, 0));
+            equipments.Add(new Equipment(5, 0, 0));
 
 
 

@@ -73,11 +73,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
         {
             Console.Clear();
             // Create Empty Equipment to be filled out later
-            Equipment equipment = new Equipment(0, 0, 0, "");
-
-            // Enter Equipment Name
-            Console.WriteLine("Select Equipment Name");
-            equipment.Code = JHelper.InputString("Enter New Name: ", validator: ValidateName);
+            Equipment equipment = new Equipment(0, 0, 0);
 
             // Enter Equipment Type
             int i = 1;
@@ -120,7 +116,6 @@ namespace EquipmentBorrowingSystem.Displays.Staff.EquipmentManagement
                 if (selection == "A")
                 {
                     // Edit Equipment Name
-                    Model.Code = JHelper.InputString("Enter New Name: ", validator: ValidateName);
                 }
                 else if (selection == "B")
                 {

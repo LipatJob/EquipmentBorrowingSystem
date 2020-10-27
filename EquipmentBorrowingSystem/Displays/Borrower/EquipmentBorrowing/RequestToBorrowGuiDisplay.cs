@@ -149,7 +149,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
             {
                 values.Add(i.ToString());
             }
-            var quantity = new DomainUpDown() { Width = 50, Tag = equipmentType};
+            var quantity = new DomainUpDown() { Width = 50, Tag = equipmentType, ReadOnly = true };
             quantity.Items.AddRange(values);
             quantity.SelectedItem = "0";
 

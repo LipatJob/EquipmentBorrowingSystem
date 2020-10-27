@@ -15,18 +15,17 @@ namespace EquipmentBorrowingSystem.Backend.Models
     class Equipment : Model, Keyed<int>
     {
         public Equipment() { }
-        public Equipment(int id, int equipmentTypeID, int conditionID, string name)
+        public Equipment(int id, int equipmentTypeID, int conditionID)
         {
             Id = id;
             EquipmentTypeID = equipmentTypeID;
             ConditionID = conditionID;
-            Code = name;
         }
 
         public int Id { get; set; }
         public int EquipmentTypeID { get; set; }
         public int ConditionID { get; set; }
-        public string Code { get; set; }
+        public string Code { get { return EquipmentType.Name + "-" + Id;  } }
 
 
         // Foreign Models
@@ -54,8 +53,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
                 return new Equipment(
                     int.Parse(values[0]),
                     int.Parse(values[1]),
-                    int.Parse(values[2]),
-                    values[3]
+                    int.Parse(values[2])
                     );
             }
 
@@ -65,7 +63,6 @@ namespace EquipmentBorrowingSystem.Backend.Models
                     item.Id.ToString(), 
                     item.EquipmentTypeID.ToString(), 
                     item.ConditionID.ToString(), 
-                    item.Code
                 });
             }
         }
