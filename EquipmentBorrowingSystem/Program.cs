@@ -51,8 +51,8 @@ namespace EquipmentBorrowingSystem
             string flag = ApplicationResources.ResourceManager.GetString("InitializeData");
             if (flag == "true")
             {
-                DataInitialization scaffold = new DataInitialization();
-                scaffold.Run();
+                //DataInitialization scaffold = new DataInitialization();
+                //scaffold.Run();
             }
 
             Application.EnableVisualStyles();
