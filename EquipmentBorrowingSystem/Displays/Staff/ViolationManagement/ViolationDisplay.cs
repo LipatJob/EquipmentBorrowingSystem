@@ -78,6 +78,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
             amountChargedTb.Enabled = true;
             saveBtn.Enabled = true;
             saveBtn.Click += new EventHandler(AddAction);
+            BindModelToView();
         }
 
         private void EditClick(object sender, EventArgs e)

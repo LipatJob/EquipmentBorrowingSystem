@@ -14,6 +14,7 @@ namespace EquipmentBorrowingSystem.Displays.Template
     {
         private Button ApproveButton;
         private Button DenyButton;
+        private Button AddViolationButton;
         private Button ReturnButton;
 
         public RequestInformationGui2Display(EquipmentRequest request) : base(request)
@@ -26,7 +27,13 @@ namespace EquipmentBorrowingSystem.Displays.Template
             ApproveButton.Click += ApproveRequest;
             DenyButton.Click += DenyRequest;
 
-            if(request.RequestStatus.Name == "Pending")
+            
+            AddViolationButton = new Button() { Text = "Add Violation", Location = new System.Drawing.Point(480, 0), Enabled = true, AutoSize=true };
+            AddViolationButton.Click += AddViolation;
+            
+
+
+            if (request.RequestStatus.Name == "Pending")
             {
                 ApproveButton.Enabled = true;
                 DenyButton.Enabled = true;
@@ -40,12 +47,21 @@ namespace EquipmentBorrowingSystem.Displays.Template
             actionPanel.Controls.Add(DenyButton);
             actionPanel.Controls.Add(ApproveButton);
             itemPanel.Controls.Add(actionPanel);
+            itemPanel.Controls.Add(AddViolationButton);
             Height += 50;
 
         }
 
         //Latest Edit: Mark Anthony Mamauag
         //Description: Added Button Events, regarding requst approval and denial
+
+        void AddViolation(object sender, EventArgs e)
+        {
+            int idVal = Model.Id;
+            this.Hide();
+            Director.ViolationManagementController.AddViolation(Model.BorrowerID, Model.Id);
+            Director.ShowDisplay(Director.ViolationManagementController.AddViolation(Model.BorrowerID, Model.Id));
+        }
 
         void ApproveRequest(object sender, EventArgs e)
         {

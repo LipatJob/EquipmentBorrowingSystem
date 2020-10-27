@@ -30,7 +30,8 @@ namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
             RequestLog.Columns.Add("Reason", 200);
             RequestLog.Columns.Add("Date Borrowed", 150);
             RequestLog.Columns.Add("Date Returned", 150);            
-            RequestLog.Columns.Add("Expected Return Date", 150);            
+            RequestLog.Columns.Add("Expected Return Date", 150);
+            
 
             foreach (EquipmentRequest request in Model.ToList())
             {                
