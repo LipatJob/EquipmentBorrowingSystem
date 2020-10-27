@@ -62,10 +62,8 @@ namespace EquipmentBorrowingSystem
             //Director.GetInstance().ShowDisplay(Director.GetInstance().ViolationManagementController.DisplayViolation(0));
             //return;
 
-            string selection = JHelper.InputString("Enter [A] for Staff. Enter Anything else for Borrower: ", toUpper: true);
 
-
-            if (selection == "A")
+            if (DialogResult.Yes != MessageBox.Show("Start Application as borrower?", "Starting Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
                 Director.GetInstance().ShowDisplay(Director.GetInstance().StaffAccountController.Login());
             }

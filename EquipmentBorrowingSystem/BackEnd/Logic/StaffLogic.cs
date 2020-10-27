@@ -84,6 +84,14 @@ namespace EquipmentBorrowingSystem.Backend.Logic
             return new Response(true, "Success");
         }
 
+        internal Response AccomplishRequest(int idVal)
+        {
+            int completeId = ApplicationState.RequestStatuses.Values.Where(e => e.Name == "Complete").First().Id;
+            ApplicationState.EquipmentRequests[idVal].RequestStatusID = completeId;
+            ApplicationState.EquipmentRequests.SaveState();
+            return new Response(true, "Success");
+        }
+
         public IEnumerable<EquipmentRequest> SeeAllRequests()
         {
             return ApplicationState.EquipmentRequests.Values;
