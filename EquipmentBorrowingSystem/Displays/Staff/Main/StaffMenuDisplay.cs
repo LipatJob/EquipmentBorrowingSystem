@@ -31,7 +31,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.Main
 
                 string selection = JHelper.InputString("Enter a Selection: ", toUpper: true, validator: e => JHelper.In(e, "A", "B", "C", "D", "X"));
 
-                if (selection == "A") { Director.ShowDisplay(Director.BorrowedEquipmentLogController.RequestsMenu()); }
+                if (selection == "A") { Director.ShowDisplay(Director.BorrowedEquipmentLogController.AllRequests()); }
                 else if (selection == "B") { Director.ShowDisplay(Director.ViolationManagementController.SeeViolations()); } // TODO
                 else if (selection == "C") { Director.ShowDisplay(Director.EquipmentManagementController.EquipmentMenu()); }
                 else if (selection == "D") { Director.ShowDisplay(Director.StaffAccountController.AccountMenu()); } // TODO

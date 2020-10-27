@@ -69,12 +69,12 @@ namespace EquipmentBorrowingSystem.Displays.Template
 
             LocationHandler handler = new LocationHandler(0, 0, 125, 30);
 
-            borrowerTb = new TextBox() { Width = 150};
-            statusTb = new TextBox() { Width = 150 };
-            dateBorrowedTb = new TextBox() { Width = 150 };
-            expectedReturnDateTb = new TextBox() { Width = 150 };
-            dateReturnedTb = new TextBox() { Width = 150 };
-            reasonRTB = new RichTextBox() { Size = new Size(550, 100) };
+            borrowerTb = new TextBox() { Width = 150, Enabled = false};
+            statusTb = new TextBox() { Width = 150, Enabled = false };
+            dateBorrowedTb = new TextBox() { Width = 150, Enabled = false };
+            expectedReturnDateTb = new TextBox() { Width = 150, Enabled = false };
+            dateReturnedTb = new TextBox() { Width = 150, Enabled = false };
+            reasonRTB = new RichTextBox() { Size = new Size(550, 100), Enabled = false };
             equipmentBorrowedLV = new ListView() { Size = new Size(260, handler.AmountY * 4), View = View.Details};
 
 

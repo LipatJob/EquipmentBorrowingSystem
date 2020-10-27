@@ -63,7 +63,7 @@ namespace EquipmentBorrowingSystem.Controllers
 
         public Display RequestInformation(int id)
         {
-            return new RequestInformationGuiDisplay(Logic.SeeRequestInformation(id));
+            return new RequestInformationGui2Display(Logic.SeeRequestInformation(id));
         }
 
         public Response ApproveRequest(int id)

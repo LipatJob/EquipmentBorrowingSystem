@@ -72,7 +72,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
         public void AddMode()
         {
             requestIdTb.Enabled = false;
-            borrowerEmailTb.Enabled = true;
+            borrowerEmailTb.Enabled = false;
             violationCb.Enabled = true;
             resolvedGroup.Enabled = true;
             amountChargedTb.Enabled = true;
@@ -174,7 +174,8 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
         partial void InitializeComponent()
         {
             int fontSize = 12;
-            Font defaultFont = Font = new Font(FontFamily.GenericSansSerif, fontSize);
+            var temp = new Label();
+            Font defaultFont = temp.Font;
             int labelWidth = 140;
             LocationHandler handler = new LocationHandler(0, 0, labelWidth, 35);
             requestIdLb = new Label() {

@@ -33,6 +33,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
         {
             listView.Items.Add(new ListViewItem(new[] {
                 violation.Violation.name,
+                violation.RequestId.ToString(),
                 violation.AmountCharged.ToString(),
                 violation.Resolved.ToString()
             }));
@@ -40,7 +41,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
 
         private ListView CreateList()
         {
-            var list = new ListView { Dock = DockStyle.Fill, View = View.Details };
+            var list = new ListView { Dock = DockStyle.Fill, View = View.Details, FullRowSelect = true, MultiSelect = false};
             list.Columns.AddRange(new[]{
                 new ColumnHeader{ Text = "Violation" , TextAlign = HorizontalAlignment.Left, Width = 100},
                 new ColumnHeader{ Text = "Request ID" , TextAlign = HorizontalAlignment.Left, Width = 100},

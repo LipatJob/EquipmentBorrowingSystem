@@ -27,7 +27,7 @@ namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
 
         private ListView CreateList()
         {
-            var list = new ListView { Dock = DockStyle.Fill, View = View.Details, MultiSelect = false};
+            var list = new ListView { Dock = DockStyle.Fill, View = View.Details, MultiSelect = false, FullRowSelect = true};
             list.Columns.AddRange(new[]{
                  new ColumnHeader{ Text = "Status" , TextAlign = HorizontalAlignment.Left, Width = 150},
                 new ColumnHeader{ Text = "Borrower" , TextAlign = HorizontalAlignment.Left, Width = 100},

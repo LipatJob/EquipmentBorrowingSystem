@@ -25,11 +25,12 @@ namespace EquipmentBorrowingSystem.Displays.Staff.StaffAccount
 
         public override void ShowDisplay()
         {
+            Console.Clear();
             while(true)
             {
                 int i = 1;
                 Console.WriteLine();
-                Console.WriteLine("Select Borrower):");
+                Console.WriteLine("Select Borrower:");
                 foreach (User user in Model) { Console.WriteLine($"{i}. {user.Email}"); i++; }
                 int selection = JHelper.InputInt("Enter Selection(-1 to Go Back): ", validator: e => e == -1 || InRange(e, 1, Model.Count()));
                 if (selection == -1) { break; }

@@ -20,17 +20,21 @@ namespace EquipmentBorrowingSystem.Displays.Staff.StaffAccount
 
         public override void ShowDisplay()
         {
-            Console.Clear();
-            Console.WriteLine(
-                "A. Create Borrower Account\n" +
-                "B. See Borrower List\n" +
-                "X. Exit");
+            while(true)
+            {
+                Console.Clear();
+                Console.WriteLine(
+                    "A. Create Borrower Account\n" +
+                    "B. See Borrower History\n" +
+                    "X. Back");
 
-            string selection = JHelper.InputString("Enter a Selection: ", toUpper: true, validator: e => JHelper.In(e, "A", "B", "X"));
+                string selection = JHelper.InputString("Enter a Selection: ", toUpper: true, validator: e => JHelper.In(e, "A", "B", "X"));
 
-            if (selection == "A") { Director.ShowDisplay(Director.StaffAccountController.CreateBorrowerAccount()); }
-            else if (selection == "B") { Director.ShowDisplay(Director.StaffAccountController.SeeBorrowerList()); } // TODO
-            else if (selection == "X") { JHelper.ExitPrompt(); }
+                if (selection == "A") { Director.ShowDisplay(Director.StaffAccountController.CreateBorrowerAccount()); }
+                else if (selection == "B") { Director.ShowDisplay(Director.StaffAccountController.SeeBorrowerList()); } // TODO
+                else if (selection == "X") { break; }
+            }
+            
         }
 
     }
