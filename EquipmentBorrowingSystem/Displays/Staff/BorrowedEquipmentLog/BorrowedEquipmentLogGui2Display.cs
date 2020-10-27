@@ -19,7 +19,7 @@ namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
         private void AddItem(ListView listView, EquipmentRequest request)
         {
             var item = new ListViewItem(new string[] { request.RequestStatus.Name, request.Borrower.Email, 
-                request.Reason, request.DateBorrowed.ToString(), request.DateReturned.ToString(), request.ExpectedReturnDate.ToString() });
+                request.Reason, request.DateBorrowed.ToString(), request.ExpectedReturnDate.ToString() });
             item.Tag = request.Id;
             listView.Items.Add(item);
         }
@@ -33,7 +33,6 @@ namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
                 new ColumnHeader{ Text = "Borrower" , TextAlign = HorizontalAlignment.Left, Width = 100},
                 new ColumnHeader{ Text = "Reason" , TextAlign = HorizontalAlignment.Left, Width = 100},
                 new ColumnHeader{ Text = "Date Borrowed" , TextAlign = HorizontalAlignment.Left, Width = 100},
-                new ColumnHeader{ Text = "Date Returned" , TextAlign = HorizontalAlignment.Left, Width = 100},
                 new ColumnHeader{ Text = "Expected Return Date" , TextAlign = HorizontalAlignment.Left, Width = 100},
             });
 
@@ -54,6 +53,7 @@ namespace EquipmentBorrowingSystem.Views.Staff.BorrowedEquipmentLog
             this.Hide();
             this.Close();
             Director.ShowDisplay(Director.BorrowedEquipmentLogController.RequestInformation(id));
+            Director.ShowDisplay(Director.BorrowedEquipmentLogController.AllRequests());
         }
 
         public override void BindModelToView()

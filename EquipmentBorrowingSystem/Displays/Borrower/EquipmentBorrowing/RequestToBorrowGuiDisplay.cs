@@ -145,13 +145,15 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
         {
             var values = new List<string>();
             int count = Director.EquipmentBorrowingController.GetEquipmentCount(equipmentType);
-            for (int i = count; i >= 0; i--)
+            for (int i = count; i >= 0; i--)    
             {
                 values.Add(i.ToString());
             }
             var quantity = new DomainUpDown() { Width = 50, Tag = equipmentType, ReadOnly = true };
             quantity.Items.AddRange(values);
             quantity.SelectedItem = "0";
+
+            ApplicationState.GetInstance().Equipments.Values.Where(e => e.EquipmentRequests.Count() < 1 || (e.EquipmentRequests.Last().RequestStatus.Name != "Active" && e.EquipmentRequests.Last().RequestStatus.Name != "Pending"));
 
             return quantity;
         }
