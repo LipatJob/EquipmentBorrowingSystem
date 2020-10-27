@@ -26,6 +26,7 @@ namespace EquipmentBorrowingSystem.Controllers
             Logic = new BorrowerLogic(ApplicationState.GetInstance());
         }
 
+     
         //Borrowing Menu
         public Display BorrowingMenu()
         {
@@ -86,6 +87,11 @@ namespace EquipmentBorrowingSystem.Controllers
         public Display ViewRequest(int id)
         {
             return new SeeInfoAndStatusDisplay(Logic.GetEquipmentRequest(id));
+        }
+
+        public Response CanBorrow()
+        {
+            return Logic.CanBorrow();
         }
 
     }

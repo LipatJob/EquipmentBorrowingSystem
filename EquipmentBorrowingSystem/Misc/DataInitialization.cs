@@ -70,10 +70,10 @@ namespace EquipmentBorrowingSystem.Misc
             violations.Add(new Violation(1, "Broken"));
 
             var equipmentRequets = new SerializedList<EquipmentRequest>(ModelValues.EQUIPMENT_REQUESTS_FILE_NAME, EquipmentRequest.GetSerializer());
-            equipmentRequets.Add(new EquipmentRequest(0, 1, 0, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World", new[] { 1 }.ToList()));
-            equipmentRequets.Add(new EquipmentRequest(1, 1, 1, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World", new[] { 2 }.ToList()));
-            equipmentRequets.Add(new EquipmentRequest(2, 1, 2, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World", new[] { 3 }.ToList()));
-            equipmentRequets.Add(new EquipmentRequest(3, 1, 3, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World", new[] { 4, 5 }.ToList()));
+            equipmentRequets.Add(new EquipmentRequest(0, 1, 0, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World 1", new[] { 1 }.ToList()));
+            equipmentRequets.Add(new EquipmentRequest(1, 1, 1, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World 2", new[] { 2 }.ToList()));
+            equipmentRequets.Add(new EquipmentRequest(2, 1, 3, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World 3", new[] { 3 }.ToList()));
+            equipmentRequets.Add(new EquipmentRequest(3, 1, 2, DateTime.Now, DateTime.Now.AddMinutes(5), DateTime.Now, "Hello World 4", new[] { 4, 5 }.ToList()));
 
 
             var borrowerViolations = new SerializedList<BorrowerViolation>(ModelValues.BORROWER_VIOLATIONS_FILE_NAME, BorrowerViolation.GetSerializer());

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
 {
@@ -28,7 +29,13 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
                     "X. Back");
                 string choice = JHelper.InputString("Enter a Selection: ", toUpper: true, validator: e => JHelper.In(e, "A", "B", "C", "X"));
 
-                if (choice.ToUpper() == "A") { Director.ShowDisplay(Director.EquipmentBorrowingController.RequestToBorrow()); }
+                if (choice.ToUpper() == "A") { 
+                    if (!Director.EquipmentBorrowingController.CanBorrow().Success)
+                    {
+                        MessageBox.Show("Please return equipment first before borrowing", "Cannot Borrow");
+                        continue;
+                    }
+                    Director.ShowDisplay(Director.EquipmentBorrowingController.RequestToBorrow()); }
                 else if (choice.ToUpper() == "B") { Director.ShowDisplay(Director.EquipmentBorrowingController.SeeCurrentRequest()); }
                 else if (choice.ToUpper() == "C") { Director.ShowDisplay(Director.EquipmentBorrowingController.SeeBorrowHistory()); }
                 else if (choice.ToUpper() == "X") { break; }

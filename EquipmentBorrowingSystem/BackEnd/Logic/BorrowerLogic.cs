@@ -101,6 +101,21 @@ namespace EquipmentBorrowingSystem.Backend.Logic
             return new Response(true, "Success");
         }
 
+        internal Response CanBorrow()
+        {
+            var last = ApplicationState.LoggedInUser.EquipmentRequests.OrderBy(e=>e.DateBorrowed).LastOrDefault();
+            if(last == null)
+            {
+                return new Response(true, "User can borrow");
+            }
+
+            if(last.RequestStatus.Name != "Active")
+            {
+                return new Response(true, "User can borrow");
+            }
+            return new Response(false, "User has existing request");
+        }
+
         public IEnumerable<EquipmentRequest> SeeCurrentRequests()
         {
             int pendingId = ApplicationState.RequestStatuses.Values.Where(e => e.Name == "Pending").First().Id;

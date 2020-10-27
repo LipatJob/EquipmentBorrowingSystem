@@ -225,6 +225,8 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
         {
             // The GUI Stuff must be implemented in the partial class below
             // Fold this Class after initializing
+            
+
             InitializeComponent();
         }
 
