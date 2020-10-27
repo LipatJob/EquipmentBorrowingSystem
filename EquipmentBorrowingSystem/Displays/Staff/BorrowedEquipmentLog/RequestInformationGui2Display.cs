@@ -49,7 +49,7 @@ namespace EquipmentBorrowingSystem.Displays.Template
                 int idVal = Model.Id;
                 this.Hide();
                 Director.BorrowedEquipmentLogController.ApproveRequest(idVal);
-                Director.ShowDisplay(Director.BorrowedEquipmentLogController.RequestsMenu());
+                Director.ShowDisplay(Director.StaffMainController.StaffMenu());
             }
         }
         void DenyRequest(object sender, EventArgs e)
@@ -63,7 +63,7 @@ namespace EquipmentBorrowingSystem.Displays.Template
                 int idVal = Model.Id;
                 this.Hide();
                 Director.BorrowedEquipmentLogController.DenyRequest(idVal);
-                Director.ShowDisplay(Director.BorrowedEquipmentLogController.RequestsMenu());
+                Director.ShowDisplay(Director.StaffMainController.StaffMenu());
             }
         }
     }
