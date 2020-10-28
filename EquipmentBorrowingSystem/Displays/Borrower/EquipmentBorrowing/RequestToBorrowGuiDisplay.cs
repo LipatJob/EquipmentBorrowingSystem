@@ -29,10 +29,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
 
         public override void BindViewToModel()
         {
-            // Validate
-
-            //
-            Model.ExpectedReturnDate = expectedReturnDateDTP.Value;
+            Model.ExpectedReturnDate = expectedReturnDateDTP.Value.Date + expectedReturnTimeDTP.Value.TimeOfDay;
             Model.Reason = reasonRtb.Text;
 
             
@@ -43,6 +40,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
         ICollection<Label> TypLbs;
 
         DateTimePicker expectedReturnDateDTP;
+        DateTimePicker expectedReturnTimeDTP;
         RichTextBox reasonRtb;
 
         Button submitButton;
@@ -56,8 +54,9 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
             handler.X = 20;
 
             var expectedReturnDateLb = new Label() { Text = "Return Date", Location = handler.Down().GetPosition() };
-            expectedReturnDateDTP = new DateTimePicker() { Location = handler.Right().GetPosition()};
-            handler.Left();
+            expectedReturnDateDTP = new DateTimePicker() { Location = handler.Right().GetPosition(), Format = DateTimePickerFormat.Custom , CustomFormat = "MM/dd/yyyy", Width = 100};
+            expectedReturnTimeDTP = new DateTimePicker() { Location = handler.Right().AddX(30).GetPosition(), Format = DateTimePickerFormat.Time, ShowUpDown = true, Width = 100};
+            handler.Left().Left().AddX(-30);
 
             // Equipment Type
             var typesLabel = new Label() { Text = "Quantity", Location = handler.Down().GetPosition() };
@@ -97,7 +96,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
             submitButton = new Button() { Text = "Submit", Location = handler.Down().GetPosition()};
             submitButton.Click += SubmitAction;
 
-            itemPanel.Controls.AddRange(new Control[] { titleLb, typesLabel, expectedReturnDateLb, expectedReturnDateDTP, reasonRtb, reasonLabel, typesPanel, submitButton});
+            itemPanel.Controls.AddRange(new Control[] { titleLb, typesLabel, expectedReturnDateLb, expectedReturnDateDTP, expectedReturnTimeDTP, reasonRtb, reasonLabel, typesPanel, submitButton});
             
             Height = submitButton.Location.Y + 80 + titlePl.Height;
 
@@ -175,7 +174,8 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
 
         private bool ValidateDate()
         {
-            if(expectedReturnDateDTP.Value.CompareTo(DateTime.Now) < 0)
+            var date = expectedReturnDateDTP.Value.Date + expectedReturnTimeDTP.Value.TimeOfDay;
+            if (date.CompareTo(DateTime.Now) < 0)
             {
                 MessageBox.Show("Return Date must be in the future", "Invalid Return Date");
                 return false;
@@ -186,10 +186,10 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
                 {
                     var item = (EquipmentType)typeUD.Tag;
                     DateTime maximumDuration = DateTime.Now;
-                    maximumDuration = maximumDuration.AddDays(item.MaximumBorrowDurationDays).AddHours(1);
-                    if (expectedReturnDateDTP.Value.CompareTo(maximumDuration) > 0)
+                    maximumDuration = maximumDuration.AddDays(item.MaximumBorrowDurationDays);
+                    if (date.CompareTo(maximumDuration) > 0)
                     {
-                        MessageBox.Show($"Return Date must not exceed {maximumDuration.ToShortDateString()}", "Invalid Return Date");
+                        MessageBox.Show($"Return Date must not exceed {maximumDuration.ToShortDateString()} {maximumDuration.ToShortTimeString()}", "Invalid Return Date");
                         return false;
                     }
 

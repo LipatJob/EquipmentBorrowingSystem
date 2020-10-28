@@ -33,7 +33,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
         public override void BindViewToModel()
         {
             Model.ViolationId =  ((Violation) violationCb.SelectedItem).Id;
-            Model.AmountCharged = int.Parse(amountChargedTb.Text);
+            Model.AmountCharged = decimal.Parse(amountChargedTb.Text);
             if(resolvedYes.Checked)
             {
                 Model.Resolved = true;

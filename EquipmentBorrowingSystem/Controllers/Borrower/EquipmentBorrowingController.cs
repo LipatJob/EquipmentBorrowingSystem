@@ -72,7 +72,7 @@ namespace EquipmentBorrowingSystem.Controllers
             int occurence = 0;
             foreach (var request in activeRequests)
             {
-                occurence += request.Equipments.Count(e => e.EquipmentTypeID == equipmentType.Id);
+                occurence += request.Equipments.Count(e => e.EquipmentTypeID == equipmentType.Id && e.EquipmentCondition.Name == "Ok");
             }
             // subtract total - occurence
             count = equipmentType.Equipments.Count() - occurence;

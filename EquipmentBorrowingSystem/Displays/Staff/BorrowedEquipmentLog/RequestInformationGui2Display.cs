@@ -63,8 +63,9 @@ namespace EquipmentBorrowingSystem.Displays.Template
             int id = (int)item.Tag;
 
             this.Hide();
+            this.Close();
             Director.ShowDisplay(Director.EquipmentManagementController.ViewEquipment(id));
-            this.Show();
+            Director.ShowDisplay(Director.EquipmentManagementController.ViewEquipment(Model.Id));
         }
 
 

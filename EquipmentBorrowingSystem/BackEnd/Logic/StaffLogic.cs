@@ -73,8 +73,8 @@ namespace EquipmentBorrowingSystem.Backend.Logic
 
         public Response AddViolation(BorrowerViolation model)
         {
-            int id = JHelper.GetNewKey(ApplicationState.BorrowerViolations.Keys) + 1;
-            ApplicationState.BorrowerViolations[id] = model;
+            model.Id = JHelper.GetNewKey(ApplicationState.BorrowerViolations.Keys);
+            ApplicationState.BorrowerViolations[model.Id] = model;
             return new Response(true, "Success");
         }
 

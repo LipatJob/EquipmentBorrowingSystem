@@ -87,9 +87,10 @@ namespace EquipmentBorrowingSystem.Backend.Logic
                 if(item.Value > 0)
                 {
                     equipmentIds.AddRange(item.Key.Equipments
-                        .Where(e => e.EquipmentRequests.Count() == 0 
-                            || (e.EquipmentRequests.LastOrDefault().RequestStatus.Name != "Active" 
-                                &&  e.EquipmentRequests.LastOrDefault().RequestStatus.Name != "Pending"))
+                        .Where(e => e.EquipmentCondition.Name == "Ok"
+                            && (e.EquipmentRequests.Count() == 0 
+                                || (e.EquipmentRequests.OrderBy(f => f.DateBorrowed).LastOrDefault().RequestStatus.Name != "Active" 
+                                    &&  e.EquipmentRequests.OrderBy(f => f.DateBorrowed).LastOrDefault().RequestStatus.Name != "Pending")))
                         .Take(item.Value)
                         .Select(e=>e.Id));
                 }

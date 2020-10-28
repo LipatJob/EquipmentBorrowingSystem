@@ -37,7 +37,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
                 violation.Violation.name,
                 string.Join(", ", violation.EquipmentRequest.Equipments.Select(e=>e.Code)),
                 violation.AmountCharged.ToString(),
-                violation.Resolved.ToString()
+                violation.Resolved ? "Yes" : "No"
             });
             item.Tag = violation.Id;
             listView.Items.Add(item);
@@ -65,7 +65,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
                 new ColumnHeader{ Text = "ID" , TextAlign = HorizontalAlignment.Left, Width = 40},
                 new ColumnHeader{ Text = "Email" , TextAlign = HorizontalAlignment.Left, Width = 150},
                 new ColumnHeader{ Text = "Violation" , TextAlign = HorizontalAlignment.Left, Width = 100},
-                new ColumnHeader{ Text = "Request ID" , TextAlign = HorizontalAlignment.Left, Width = 100},
+                new ColumnHeader{ Text = "Equipment Borrowed" , TextAlign = HorizontalAlignment.Left, Width = 100},
                 new ColumnHeader{ Text = "Amount Charged" , TextAlign = HorizontalAlignment.Left, Width = 100},
                 new ColumnHeader{ Text = "Resolved" , TextAlign = HorizontalAlignment.Left, Width = 100}});
             list.DoubleClick += new EventHandler(SelectedItem);

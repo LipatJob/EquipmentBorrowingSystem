@@ -22,7 +22,7 @@ namespace JobLib
             {
                 return 0;
             }
-            return dict.Max();
+            return dict.Max() + 1;
         }
 
         public static int InputInt(string prompt = "", string parseErrorMessage = "> Please enter a valid value", Func<int, bool> validator = null)
