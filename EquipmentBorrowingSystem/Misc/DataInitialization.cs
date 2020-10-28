@@ -34,20 +34,34 @@ namespace EquipmentBorrowingSystem.Misc
 
             var users = new SerializedList<User>(ModelValues.ACCOUNT_FILE_NAME, User.GetSerializer());
             users.Add(new User(0, 0, "staff@mcl.edu.ph", "qwerty"));
-            users.Add(new User(1, 1, "borrower@mcl.edu.ph", "qwerty"));
+            users.Add(new User(1, 0, "csorisantos@mcl.edu.ph", "qwerty"));
+            users.Add(new User(2, 0, "kgkikuchi@mcl.edu.ph", "qwerty"));
+            users.Add(new User(3, 0, "alilao.edu.ph", "qwerty"));
+            users.Add(new User(4, 0, "danielmanaay@mcl.edu.ph", "qwerty"));
+            users.Add(new User(5, 1, "borrower@mcl.edu.ph", "qwerty"));
+            users.Add(new User(6, 1, "magmamauag@mcl.edu.ph", "qwerty"));
+            users.Add(new User(7, 1, "jjlipat@mcl.edu.ph", "qwerty"));
+            users.Add(new User(8, 1, "vedelica@mcl.edu.ph", "qwerty"));
+            users.Add(new User(9, 1, "demmanaay@mcl.edu.ph", "qwerty"));
+            users.Add(new User(10, 1, "cjjmoleno@mcl.edu.ph", "qwerty"));
 
             var equipmentTypes = new SerializedList<EquipmentType>(ModelValues.EQUIPMENT_TYPES_FILE_NAME, EquipmentType.GetSerializer());
-            equipmentTypes.Add(new EquipmentType(0, "Chair", 1));
-            equipmentTypes.Add(new EquipmentType(1, "Table", 1));
-            equipmentTypes.Add(new EquipmentType(2, "Arnis", 2));
+            equipmentTypes.Add(new EquipmentType(0, "Chair", 2));
+            equipmentTypes.Add(new EquipmentType(1, "Table", 5));
+            equipmentTypes.Add(new EquipmentType(2, "Arnis", 1));
             equipmentTypes.Add(new EquipmentType(3, "Volleyball", 1));
-            equipmentTypes.Add(new EquipmentType(4, "Soccer Ball", 1));
-            equipmentTypes.Add(new EquipmentType(5, "Basketball", 1));
-
+            equipmentTypes.Add(new EquipmentType(4, "Soccer Ball", 3));
+            equipmentTypes.Add(new EquipmentType(5, "Basketball", 4));
+            equipmentTypes.Add(new EquipmentType(6, "Badminton Racket", 2));
+            equipmentTypes.Add(new EquipmentType(7, "Ping Pong Ball", 1));
+            equipmentTypes.Add(new EquipmentType(8, "Yoga Mat", 2));
+            equipmentTypes.Add(new EquipmentType(9, "CD Player", 3));
+            equipmentTypes.Add(new EquipmentType(10, "Test Tube", 4));
 
             var equipmentConditions = new SerializedList<EquipmentCondition>(ModelValues.EQUIPMENT_CONDITIONS_FILE_NAME, EquipmentCondition.GetSerializer());
             equipmentConditions.Add(new EquipmentCondition(0, "Ok"));
             equipmentConditions.Add(new EquipmentCondition(1, "Broken"));
+            equipmentConditions.Add(new EquipmentCondition(2, "Lost"));
 
             var equipments = new SerializedList<Equipment>(ModelValues.EQUIPMENTS_FILE_NAME, Equipment.GetSerializer());
             equipments.Add(new Equipment(0, 0, 0));
@@ -55,9 +69,18 @@ namespace EquipmentBorrowingSystem.Misc
             equipments.Add(new Equipment(2, 0, 0));
             equipments.Add(new Equipment(3, 0, 0));
             equipments.Add(new Equipment(4, 0, 0));
-            equipments.Add(new Equipment(5, 0, 0));
-
-
+            equipments.Add(new Equipment(5, 3, 0));
+            equipments.Add(new Equipment(6, 7, 0));
+            equipments.Add(new Equipment(7, 5, 0));
+            equipments.Add(new Equipment(8, 5, 0));
+            equipments.Add(new Equipment(9, 2, 0));
+            equipments.Add(new Equipment(10, 1, 0));
+            equipments.Add(new Equipment(11, 1, 0));
+            equipments.Add(new Equipment(12, 1, 0));
+            equipments.Add(new Equipment(13, 8, 0));
+            equipments.Add(new Equipment(14, 9, 0));
+            equipments.Add(new Equipment(15, 7, 0));
+            equipments.Add(new Equipment(16, 6, 0));
 
             var requestStatuses = new SerializedList<RequestStatus>(ModelValues.EQUIPMENT_STATUSES_FILE_NAME, RequestStatus.GetSerializer());
             requestStatuses.Add(new RequestStatus(0, "Pending"));
@@ -68,6 +91,7 @@ namespace EquipmentBorrowingSystem.Misc
             var violations = new SerializedList<Violation>(ModelValues.VIOLATIONS_FILE_NAME, Violation.GetSerializer());
             violations.Add(new Violation(0, "Overdue"));
             violations.Add(new Violation(1, "Broken"));
+            violations.Add(new Violation(2, "Lost"));
 
             var equipmentRequets = new SerializedList<EquipmentRequest>(ModelValues.EQUIPMENT_REQUESTS_FILE_NAME, EquipmentRequest.GetSerializer());
             equipmentRequets.Add(new EquipmentRequest(0, 1, 0, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World 1", new[] { 1 }.ToList()));
@@ -75,14 +99,11 @@ namespace EquipmentBorrowingSystem.Misc
             equipmentRequets.Add(new EquipmentRequest(2, 1, 3, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World 3", new[] { 3 }.ToList()));
             equipmentRequets.Add(new EquipmentRequest(3, 1, 2, DateTime.Now, DateTime.Now.AddMinutes(5), DateTime.Now, "Hello World 4", new[] { 4, 5 }.ToList()));
 
-
             var borrowerViolations = new SerializedList<BorrowerViolation>(ModelValues.BORROWER_VIOLATIONS_FILE_NAME, BorrowerViolation.GetSerializer());
             borrowerViolations.Add(new BorrowerViolation(0, 0, 0, 0, false));
             borrowerViolations.Add(new BorrowerViolation(1, 1, 0, 0, false));
             borrowerViolations.Add(new BorrowerViolation(2, 2, 1, 0, true));
             borrowerViolations.Add(new BorrowerViolation(3, 3, 1, 0, false));
-
-
 
         }
     }
