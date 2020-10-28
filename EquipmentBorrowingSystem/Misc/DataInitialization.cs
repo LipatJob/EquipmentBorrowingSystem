@@ -111,10 +111,10 @@ namespace EquipmentBorrowingSystem.Misc
             equipmentRequests.Add(new EquipmentRequest(3, 1, COMPLETE_STATUS, DateTime.Now, DateTime.Now.AddMinutes(5), DateTime.Now, "Hello World 4", new[] { 4, 5 }.ToList()));
 
             var borrowerViolations = new SerializedList<BorrowerViolation>(ModelValues.BORROWER_VIOLATIONS_FILE_NAME, BorrowerViolation.GetSerializer());
-            borrowerViolations.Add(new BorrowerViolation(0, 0, 0, 0, false));
-            borrowerViolations.Add(new BorrowerViolation(1, 1, 0, 0, false));
-            borrowerViolations.Add(new BorrowerViolation(2, 2, 1, 0, true));
-            borrowerViolations.Add(new BorrowerViolation(3, 3, 1, 0, false));
+            borrowerViolations.Add(new BorrowerViolation(0, 0, OVERDUE_VIOLATION, 0, false));
+            borrowerViolations.Add(new BorrowerViolation(1, 1, OVERDUE_VIOLATION, 0, false));
+            borrowerViolations.Add(new BorrowerViolation(2, 2, BROKEN_VIOLATION, 0, true));
+            borrowerViolations.Add(new BorrowerViolation(3, 3, BROKEN_VIOLATION, 0, false));
 
         }
     }
