@@ -20,6 +20,8 @@ namespace EquipmentBorrowingSystem.Misc
             DirectoryInfo di = new DirectoryInfo(ModelValues.ROOT_FOLDER);
             if(di.Exists)
             {
+                return;
+
                 foreach (FileInfo file in di.GetFiles())
                 {
                     file.Delete();
