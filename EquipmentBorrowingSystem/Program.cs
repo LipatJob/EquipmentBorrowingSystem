@@ -52,7 +52,7 @@ namespace EquipmentBorrowingSystem
             if (flag == "true")
             {
                 DataInitialization scaffold = new DataInitialization();
-                scaffold.Run();
+                //scaffold.Run();
             }
 
             Application.EnableVisualStyles();
@@ -61,7 +61,6 @@ namespace EquipmentBorrowingSystem
 
             //Director.GetInstance().ShowDisplay(Director.GetInstance().ViolationManagementController.DisplayViolation(0));
             //return;
-
 
             if (DialogResult.Yes != MessageBox.Show("Start Application as borrower?", "Starting Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
