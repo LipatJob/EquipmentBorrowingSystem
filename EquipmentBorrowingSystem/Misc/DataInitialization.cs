@@ -105,16 +105,20 @@ namespace EquipmentBorrowingSystem.Misc
             violations.Add(new Violation(2, "Lost"));
 
             var equipmentRequests = new SerializedList<EquipmentRequest>(ModelValues.EQUIPMENT_REQUESTS_FILE_NAME, EquipmentRequest.GetSerializer());
-            equipmentRequests.Add(new EquipmentRequest(0, 1, PENDING_STATUS, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World 1", new[] { 1 }.ToList()));
-            equipmentRequests.Add(new EquipmentRequest(1, 1, DENIED_STATUS, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World 2", new[] { 2 }.ToList()));
-            equipmentRequests.Add(new EquipmentRequest(2, 1, ACTIVE_STATUS, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World 3", new[] { 3 }.ToList()));
-            equipmentRequests.Add(new EquipmentRequest(3, 1, COMPLETE_STATUS, DateTime.Now, DateTime.Now.AddMinutes(5), DateTime.Now, "Hello World 4", new[] { 4, 5 }.ToList()));
+            equipmentRequests.Add(new EquipmentRequest(0, 1, PENDING_STATUS, DateTime.Now, DateTime.Now, DateTime.Now, "Would like to borrow a table for a project presentation later for CS102-1", new[] { 1 }.ToList()));
+            equipmentRequests.Add(new EquipmentRequest(1, 1, DENIED_STATUS, DateTime.Now, DateTime.Now, DateTime.Now, "To use for costume purposes", new[] { 2 }.ToList()));
+            equipmentRequests.Add(new EquipmentRequest(2, 1, ACTIVE_STATUS, DateTime.Now, DateTime.Now, DateTime.Now, "For P.E. practical exam", new[] { 3 }.ToList()));
+            equipmentRequests.Add(new EquipmentRequest(3, 1, COMPLETE_STATUS, DateTime.Now, DateTime.Now.AddMinutes(5), DateTime.Now, "Borrow for sports fest competition", new[] { 4, 5 }.ToList()));
+            equipmentRequests.Add(new EquipmentRequest(4, 1, DENIED_STATUS, DateTime.Now, DateTime.Now, DateTime.Now, "The Yoga Mat would be used asa a prop for a video", new[] { 9 }.ToList()));
+            equipmentRequests.Add(new EquipmentRequest(5, 1, PENDING_STATUS, DateTime.Now, DateTime.Now, DateTime.Now, "Basketball varsity training", new[] { 6 }.ToList()));
 
             var borrowerViolations = new SerializedList<BorrowerViolation>(ModelValues.BORROWER_VIOLATIONS_FILE_NAME, BorrowerViolation.GetSerializer());
             borrowerViolations.Add(new BorrowerViolation(0, 0, OVERDUE_VIOLATION, 0, false));
             borrowerViolations.Add(new BorrowerViolation(1, 1, OVERDUE_VIOLATION, 0, false));
             borrowerViolations.Add(new BorrowerViolation(2, 2, BROKEN_VIOLATION, 0, true));
             borrowerViolations.Add(new BorrowerViolation(3, 3, BROKEN_VIOLATION, 0, false));
+            borrowerViolations.Add(new BorrowerViolation(4, 4, LOST_VIOLATION, 0, false));
+            borrowerViolations.Add(new BorrowerViolation(5, 5, LOST_VIOLATION, 0, false));
 
         }
     }
