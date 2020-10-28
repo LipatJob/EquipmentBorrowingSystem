@@ -25,7 +25,7 @@ namespace EquipmentBorrowingSystem.Backend.Logic
 
         public IEnumerable<EquipmentRequest> SeeBorrowHistory()
         {
-            return ApplicationState.EquipmentRequests.Values.Where(e => e.BorrowerID == ApplicationState.LoggedInUser.Id);
+            return ApplicationState.EquipmentRequests.Values.Where(e => e.BorrowerID == ApplicationState.LoggedInUser.Id).OrderByDescending(e=>e.DateBorrowed);
         }
 
         public EquipmentRequest GetEquipmentRequest(int id)
@@ -110,7 +110,7 @@ namespace EquipmentBorrowingSystem.Backend.Logic
                 return new Response(true, "User can borrow");
             }
 
-            if((last.RequestStatus.Name == "Active" || last.RequestStatus.Name == "Pending"))
+            if(!(last.RequestStatus.Name == "Active" || last.RequestStatus.Name == "Pending"))
             {
                 return new Response(true, "User can borrow");
             }
@@ -143,7 +143,7 @@ namespace EquipmentBorrowingSystem.Backend.Logic
                 if(ApplicationState.BorrowerViolations.Count > 0) { borrowerViolationId = ApplicationState.BorrowerViolations.Keys.Max() + 1; }
                 int lateViolationId = ApplicationState.Violations
                     .Values
-                    .Where(e => e.name == "Overdue")
+                    .Where(e => e.Name == "Overdue")
                     .First()
                     .Id;
                 ApplicationState.BorrowerViolations[id] = new BorrowerViolation(
@@ -160,14 +160,14 @@ namespace EquipmentBorrowingSystem.Backend.Logic
         {
             return ApplicationState.BorrowerViolations.Values
                 .Where(e => !e.Resolved && ApplicationState.EquipmentRequests.Values
-                    .Any(f => f.BorrowerID == ApplicationState.LoggedInUser.Id && f.Id == e.RequestId));
+                    .Any(f => f.BorrowerID == ApplicationState.LoggedInUser.Id && f.Id == e.RequestId)).OrderByDescending(e => e.EquipmentRequest.DateBorrowed);
         }
 
         public IEnumerable<BorrowerViolation> SeeViolationHistory()
         {
             return ApplicationState.BorrowerViolations.Values
                 .Where(e => ApplicationState.EquipmentRequests.Values
-                    .Any(f => f.BorrowerID == ApplicationState.LoggedInUser.Id && f.Id == e.RequestId));
+                    .Any(f => f.BorrowerID == ApplicationState.LoggedInUser.Id && f.Id == e.RequestId)).OrderByDescending(e=>e.EquipmentRequest.DateBorrowed);
         }
 
     }

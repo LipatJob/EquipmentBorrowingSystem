@@ -51,6 +51,11 @@ namespace EquipmentBorrowingSystem.Controllers.Staff
             return new ViolationDisplay(new BorrowerViolation(borrowerId, requestId, 0, 0, false), ViolationDisplay.Modes.ADD);
         }
 
+        public Display AddOverdueViolation(int borrowerId, int requestId)
+        {
+            return new ViolationDisplay(new BorrowerViolation(borrowerId, requestId, ApplicationState.GetInstance().Violations.Values.Where(e=>e.Name == "Overdue").FirstOrDefault().Id, 0, false), ViolationDisplay.Modes.ADD);
+        }
+
         public Response AddViolation(BorrowerViolation model)
         {
             return Logic.AddViolation(model);

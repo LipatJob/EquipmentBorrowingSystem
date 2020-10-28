@@ -87,5 +87,10 @@ namespace EquipmentBorrowingSystem.Controllers
         {
             return Logic.AccomplishRequest(idVal);
         }
+
+        public Response IsRequestOverdue(int id)
+        {
+            return Logic.IsRequestOverdue(id);
+        }
     }
 }

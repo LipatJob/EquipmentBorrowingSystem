@@ -90,6 +90,7 @@ namespace EquipmentBorrowingSystem.Displays.Template
                 //Approve the Requst
                 int idVal = Model.Id;
                 this.Hide();
+                this.Close();
                 Director.BorrowedEquipmentLogController.ApproveRequest(idVal);
             }
         }
@@ -103,6 +104,7 @@ namespace EquipmentBorrowingSystem.Displays.Template
                 //Deny the Request
                 int idVal = Model.Id;
                 this.Hide();
+                this.Close();
                 Director.BorrowedEquipmentLogController.DenyRequest(idVal);
             }
         }
@@ -114,11 +116,14 @@ namespace EquipmentBorrowingSystem.Displays.Template
             DialogResult confirm = MessageBox.Show(message, "Accomplish Request", choice);
             if (confirm == DialogResult.Yes)
             {
-                //Deny the Request
                 int idVal = Model.Id;
                 this.Hide();
+                this.Close();
+                if(Director.BorrowedEquipmentLogController.IsRequestOverdue(idVal).Success)
+                {
+                    Director.ShowDisplay(Director.ViolationManagementController.AddOverdueViolation(Model.BorrowerID, Model.Id));
+                }
                 Director.BorrowedEquipmentLogController.AccomplishRequest(idVal);
-
             }
         }
 

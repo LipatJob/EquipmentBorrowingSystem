@@ -44,12 +44,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
         public User Borrower { get { return ApplicationState.GetInstance().Users[BorrowerID]; } }
         public RequestStatus RequestStatus { get { return ApplicationState.GetInstance().RequestStatuses[RequestStatusID]; } }
         public IEnumerable<Equipment> Equipments { get {
-                List<Equipment> equipments = new List<Equipment>();
-                foreach(int id in EquipmentIds)
-                {
-                    equipments.Add(ApplicationState.GetInstance().Equipments[id]);
-                }
-                return equipments;
+                return EquipmentIds.Select( e=> ApplicationState.GetInstance().Equipments[e]);
             } }
 
         // Reference Models
@@ -80,6 +75,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
                 foreach(string sid in sids)
                 {
                     ids[i] = int.Parse(sid);
+                    i++;
                 }
 
                 return new EquipmentRequest(
@@ -104,7 +100,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
                     item.DateBorrowed.ToString("yyyyMMdd-HHmmss"),
                     item.DateReturned.ToString("yyyyMMdd-HHmmss"),
                     item.Reason.Replace("\n", "\\n"),
-                    string.Join(",",item.EquipmentIds.Select(e=>e.ToString()).ToHashSet()),
+                    string.Join(",",item.EquipmentIds.Select(e=>e.ToString())),
                 });
             }
         }

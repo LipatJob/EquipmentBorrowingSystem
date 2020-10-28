@@ -18,11 +18,11 @@ namespace EquipmentBorrowingSystem.Backend.Models
         public Violation(int id, string name)
         {
             Id = id;
-            this.name = name;
+            this.Name = name;
         }
 
         public int Id { get; set; }
-        public string name { get; set; }
+        public string Name { get; set; }
 
 
         // Reference Models
@@ -54,7 +54,7 @@ namespace EquipmentBorrowingSystem.Backend.Models
             {
                 return string.Join(ModelValues.DELIMITER, new string[] {
                     item.Id.ToString(),
-                    item.name
+                    item.Name
                 });
             }
         }

@@ -101,6 +101,7 @@ namespace EquipmentBorrowingSystem.Displays.Template
             {
                 Hide();
                 Close();
+                MessageBox.Show("You are now logged in", "Login Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 NextAction();
                 return;
             }

@@ -48,26 +48,23 @@ namespace EquipmentBorrowingSystem
         [STAThread]
         static void Main(string[] args)
         {
-            // FALSE TO STOP INITIALIZATION
-            bool flag = false;
             //========================================
-
+            bool flag = true;
+            bool reset = false;
+            //========================================
 
             if (flag)
             {
                 DataInitialization scaffold = new DataInitialization();
-                scaffold.Run();
+                scaffold.Run(reset);
             }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Director director = Director.GetInstance();
 
-            //Director.GetInstance().ShowDisplay(Director.GetInstance().ViolationManagementController.DisplayViolation(0));
-            //return;
-
-            string initialize = flag ? "Yes" : "No"; 
-            if (DialogResult.Yes != MessageBox.Show($"Start Application as borrower? DEBUG: Scaffold {initialize}", "Starting Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            string initialize = flag ? "Yes" : "No";
+            string res = reset ? "Yes" : "No";
+            if (DialogResult.Yes != MessageBox.Show($"Start application as borrower?\nDEBUG:\nScaffold - {initialize}\nReset - {res}", "Starting Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
                 Director.GetInstance().ShowDisplay(Director.GetInstance().StaffAccountController.Login());
             }

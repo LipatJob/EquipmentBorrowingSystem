@@ -32,7 +32,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.Violations
         private void AddViolation(ListView listView, BorrowerViolation violation)
         {
             listView.Items.Add(new ListViewItem(new[] {
-                violation.Violation.name,
+                violation.Violation.Name,
                 violation.RequestId.ToString(),
                 violation.AmountCharged.ToString(),
                 violation.Resolved.ToString()

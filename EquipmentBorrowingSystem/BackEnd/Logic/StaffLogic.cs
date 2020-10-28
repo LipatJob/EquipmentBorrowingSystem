@@ -92,9 +92,19 @@ namespace EquipmentBorrowingSystem.Backend.Logic
             return new Response(true, "Success");
         }
 
+        internal Response IsRequestOverdue(int id)
+        {
+            int activeId = ApplicationState.RequestStatuses.Values.Where(e => e.Name == "Active").First().Id;
+            DateTime currentDay = DateTime.Now;
+            bool isOverdue = ApplicationState.EquipmentRequests.Values.Where(e => e.RequestStatusID == activeId &&
+            e.DateBorrowed > e.ExpectedReturnDate).Any(e=>e.Id == id);
+
+            return new Response(isOverdue, "Success");
+        }
+
         public IEnumerable<EquipmentRequest> SeeAllRequests()
         {
-            return ApplicationState.EquipmentRequests.Values;
+            return ApplicationState.EquipmentRequests.Values.OrderByDescending(e=>e.DateBorrowed);
         }
 
         public IEnumerable<EquipmentRequest> SeeAllPendingRequests()
@@ -125,8 +135,8 @@ namespace EquipmentBorrowingSystem.Backend.Logic
         {
             int activeId = ApplicationState.RequestStatuses.Values.Where(e => e.Name == "Active").First().Id;
             DateTime currentDay = DateTime.Now;
-            return ApplicationState.EquipmentRequests.Values.Where(e => e.RequestStatusID == activeId && 
-            (currentDay - e.ExpectedReturnDate).TotalDays > e.Equipments.Min(f => f.EquipmentType.MaximumBorrowDurationDays));
+            return ApplicationState.EquipmentRequests.Values.Where(e => e.RequestStatusID == activeId &&
+            e.DateBorrowed > e.ExpectedReturnDate);
         }
 
         public EquipmentRequest SeeRequestInformation(int id)
@@ -165,17 +175,17 @@ namespace EquipmentBorrowingSystem.Backend.Logic
 
         public IEnumerable<EquipmentRequest> SeeBorrowHistory(int id)
         {
-            return ApplicationState.EquipmentRequests.Values.Where(e => e.BorrowerID == id);
+            return ApplicationState.EquipmentRequests.Values.Where(e => e.BorrowerID == id).OrderByDescending(e => e.DateBorrowed);
         }
 
         public IEnumerable<BorrowerViolation> SeeUnresolvedViolations()
         {
-            return ApplicationState.BorrowerViolations.Values.Where(e => !e.Resolved);
+            return ApplicationState.BorrowerViolations.Values.Where(e => !e.Resolved).OrderByDescending(e => e.EquipmentRequest.DateBorrowed);
         }
 
         public IEnumerable<BorrowerViolation> SeeAllViolations()
         {
-            return ApplicationState.BorrowerViolations.Values;
+            return ApplicationState.BorrowerViolations.Values.OrderByDescending(e=>e.EquipmentRequest.DateBorrowed);
         }
 
         public IEnumerable<User> SeeBorrowersList()

@@ -158,7 +158,7 @@ namespace EquipmentBorrowingSystem.Displays.Staff.StaffAccount
             Response response = Director.StaffAccountController.CreateBorrowerAccount(Model);
             if (response.Success)
             {
-                MessageBox.Show("Borrower Account Created", "Success" , MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Borrower Account Created", "Success" , MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Hide();
                 Close();
                 return;

@@ -17,8 +17,8 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.BorrowerAccount
     {
         public BorrowerLoginDisplay(User model):base(model)
         {
-            emailTb.Text = "borrower@mcl.edu.ph";
-            passwordTb.Text = "qwerty";
+            // emailTb.Text = "borrower@mcl.edu.ph";
+            // passwordTb.Text = "qwerty";
         }
         public override void NextAction()
         {
