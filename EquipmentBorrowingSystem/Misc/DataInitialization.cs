@@ -59,6 +59,7 @@ namespace EquipmentBorrowingSystem.Misc
             users.Add(new User(8, 1, "vedelica@mcl.edu.ph", "qwerty"));
             users.Add(new User(9, 1, "demmanaay@mcl.edu.ph", "qwerty"));
             users.Add(new User(10, 1, "cjjmoleno@mcl.edu.ph", "qwerty"));
+            users.Add(new User(11, 1, "vlnuevaesp@mcl.edu.ph", "qwerty"));
 
             var equipmentTypes = new SerializedList<EquipmentType>(ModelValues.EQUIPMENT_TYPES_FILE_NAME, EquipmentType.GetSerializer());
             equipmentTypes.Add(new EquipmentType(0, "Chair", 2));
