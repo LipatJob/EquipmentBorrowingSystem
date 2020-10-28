@@ -110,18 +110,16 @@ namespace EquipmentBorrowingSystem.Backend.Logic
                 return new Response(true, "User can borrow");
             }
 
-            if(last.RequestStatus.Name != "Active")
+            if((last.RequestStatus.Name == "Active" || last.RequestStatus.Name == "Pending"))
             {
                 return new Response(true, "User can borrow");
             }
             return new Response(false, "User has existing request");
         }
 
-        public IEnumerable<EquipmentRequest> SeeCurrentRequests()
+        public EquipmentRequest SeeCurrentRequest()
         {
-            int pendingId = ApplicationState.RequestStatuses.Values.Where(e => e.Name == "Pending").First().Id;
-            int activeId = ApplicationState.RequestStatuses.Values.Where(e => e.Name == "Active").First().Id;
-            return ApplicationState.EquipmentRequests.Values.Where(e => e.RequestStatusID == pendingId || e.RequestStatusID == activeId);
+            return ApplicationState.EquipmentRequests.Values.OrderBy(e=>e.DateBorrowed).Where(e => e.BorrowerID == ApplicationState.LoggedInUser.Id).LastOrDefault();
         }
 
         public Response ReturnEquipment(int id)
@@ -162,14 +160,14 @@ namespace EquipmentBorrowingSystem.Backend.Logic
         {
             return ApplicationState.BorrowerViolations.Values
                 .Where(e => !e.Resolved && ApplicationState.EquipmentRequests.Values
-                    .Any(f => f.BorrowerID == ApplicationState.LoggedInUser.Id || f.Id == e.RequestId));
+                    .Any(f => f.BorrowerID == ApplicationState.LoggedInUser.Id && f.Id == e.RequestId));
         }
 
         public IEnumerable<BorrowerViolation> SeeViolationHistory()
         {
             return ApplicationState.BorrowerViolations.Values
                 .Where(e => ApplicationState.EquipmentRequests.Values
-                    .Any(f => f.BorrowerID == ApplicationState.LoggedInUser.Id || f.Id == e.RequestId));
+                    .Any(f => f.BorrowerID == ApplicationState.LoggedInUser.Id && f.Id == e.RequestId));
         }
 
     }

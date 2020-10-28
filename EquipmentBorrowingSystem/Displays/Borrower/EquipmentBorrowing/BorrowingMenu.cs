@@ -30,7 +30,11 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
                 string choice = JHelper.InputString("Enter a Selection: ", toUpper: true, validator: e => JHelper.In(e, "A", "B", "C", "X"));
 
                 if (choice.ToUpper() == "A") { 
-                    
+                    if (!Director.EquipmentBorrowingController.CanBorrow().Success)
+                    {
+                        MessageBox.Show("Cannot request to borrow equipment while a current request is pending or active", "Cannot Borrow");
+                        continue;
+                    }
                     Director.ShowDisplay(Director.EquipmentBorrowingController.RequestToBorrow()); }
                 else if (choice.ToUpper() == "B") { Director.ShowDisplay(Director.EquipmentBorrowingController.SeeCurrentRequest()); }
                 else if (choice.ToUpper() == "C") { Director.ShowDisplay(Director.EquipmentBorrowingController.SeeBorrowHistory()); }

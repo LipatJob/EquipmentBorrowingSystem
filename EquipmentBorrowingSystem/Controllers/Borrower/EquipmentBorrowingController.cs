@@ -60,7 +60,12 @@ namespace EquipmentBorrowingSystem.Controllers
 
         public Display SeeCurrentRequest()
         {
-            return new SeeInfoAndStatusDisplay(Logic.SeeCurrentRequests().Last());
+            var request = Logic.SeeCurrentRequest();
+            if (request == null)
+            {
+                return new MessageCliDisplay("User has not borrowed anything yet");
+            }
+            return new SeeInfoAndStatusDisplay(request);
         }
 
         public int GetEquipmentCount(EquipmentType equipmentType)
@@ -72,10 +77,10 @@ namespace EquipmentBorrowingSystem.Controllers
             int occurence = 0;
             foreach (var request in activeRequests)
             {
-                occurence += request.Equipments.Count(e => e.EquipmentTypeID == equipmentType.Id && e.EquipmentCondition.Name == "Ok");
+                occurence += request.Equipments.Count(e => e.EquipmentTypeID == equipmentType.Id);
             }
             // subtract total - occurence
-            count = equipmentType.Equipments.Count() - occurence;
+            count = equipmentType.Equipments.Count(e=>e.EquipmentCondition.Name == "Ok") - occurence;
             return count;
         }
 

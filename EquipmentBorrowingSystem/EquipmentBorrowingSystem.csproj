@@ -67,6 +67,7 @@
     <Compile Include="Displays\Borrower\EquipmentBorrowing\SeeInfoAndStatus.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Displays\Template\MessageCliDisplay.cs" />
     <Compile Include="Displays\Template\SeeInfoAndStatusDisplay.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -27,6 +27,8 @@ namespace EquipmentBorrowingSystem.Misc
             }
             
 
+
+
             // Build Data
             var userTypes = new SerializedList<UserType>(ModelValues.USER_TYPES_FILE_NAME, UserType.GetSerializer());
             userTypes.Add(new UserType(0, "Staff"));
@@ -65,39 +67,48 @@ namespace EquipmentBorrowingSystem.Misc
 
             var equipments = new SerializedList<Equipment>(ModelValues.EQUIPMENTS_FILE_NAME, Equipment.GetSerializer());
             equipments.Add(new Equipment(0, 0, 0));
-            equipments.Add(new Equipment(1, 0, 0));
-            equipments.Add(new Equipment(2, 0, 0));
+            equipments.Add(new Equipment(1, 0, 1));
+            equipments.Add(new Equipment(2, 0, 1));
             equipments.Add(new Equipment(3, 0, 0));
             equipments.Add(new Equipment(4, 0, 0));
             equipments.Add(new Equipment(5, 3, 0));
-            equipments.Add(new Equipment(6, 7, 0));
+            equipments.Add(new Equipment(6, 7, 1));
             equipments.Add(new Equipment(7, 5, 0));
-            equipments.Add(new Equipment(8, 5, 0));
+            equipments.Add(new Equipment(8, 5, 2));
             equipments.Add(new Equipment(9, 2, 0));
             equipments.Add(new Equipment(10, 1, 0));
             equipments.Add(new Equipment(11, 1, 0));
-            equipments.Add(new Equipment(12, 1, 0));
+            equipments.Add(new Equipment(12, 1, 1));
             equipments.Add(new Equipment(13, 8, 0));
-            equipments.Add(new Equipment(14, 9, 0));
+            equipments.Add(new Equipment(14, 9, 1));
             equipments.Add(new Equipment(15, 7, 0));
             equipments.Add(new Equipment(16, 6, 0));
 
+            int PENDING_STATUS = 0;
+            int DENIED_STATUS = 1;
+            int ACTIVE_STATUS = 2;
+            int COMPLETE_STATUS = 3;
+
             var requestStatuses = new SerializedList<RequestStatus>(ModelValues.EQUIPMENT_STATUSES_FILE_NAME, RequestStatus.GetSerializer());
-            requestStatuses.Add(new RequestStatus(0, "Pending"));
-            requestStatuses.Add(new RequestStatus(1, "Denied"));
-            requestStatuses.Add(new RequestStatus(2, "Active"));
-            requestStatuses.Add(new RequestStatus(3, "Complete"));
+            requestStatuses.Add(new RequestStatus(PENDING_STATUS, "Pending"));
+            requestStatuses.Add(new RequestStatus(DENIED_STATUS, "Denied"));
+            requestStatuses.Add(new RequestStatus(ACTIVE_STATUS, "Active"));
+            requestStatuses.Add(new RequestStatus(COMPLETE_STATUS, "Complete"));
+
+            int OVERDUE_VIOLATION = 0;
+            int BROKEN_VIOLATION = 1;
+            int LOST_VIOLATION = 2;
 
             var violations = new SerializedList<Violation>(ModelValues.VIOLATIONS_FILE_NAME, Violation.GetSerializer());
             violations.Add(new Violation(0, "Overdue"));
             violations.Add(new Violation(1, "Broken"));
             violations.Add(new Violation(2, "Lost"));
 
-            var equipmentRequets = new SerializedList<EquipmentRequest>(ModelValues.EQUIPMENT_REQUESTS_FILE_NAME, EquipmentRequest.GetSerializer());
-            equipmentRequets.Add(new EquipmentRequest(0, 1, 0, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World 1", new[] { 1 }.ToList()));
-            equipmentRequets.Add(new EquipmentRequest(1, 1, 1, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World 2", new[] { 2 }.ToList()));
-            equipmentRequets.Add(new EquipmentRequest(2, 1, 3, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World 3", new[] { 3 }.ToList()));
-            equipmentRequets.Add(new EquipmentRequest(3, 1, 2, DateTime.Now, DateTime.Now.AddMinutes(5), DateTime.Now, "Hello World 4", new[] { 4, 5 }.ToList()));
+            var equipmentRequests = new SerializedList<EquipmentRequest>(ModelValues.EQUIPMENT_REQUESTS_FILE_NAME, EquipmentRequest.GetSerializer());
+            equipmentRequests.Add(new EquipmentRequest(0, 1, PENDING_STATUS, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World 1", new[] { 1 }.ToList()));
+            equipmentRequests.Add(new EquipmentRequest(1, 1, DENIED_STATUS, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World 2", new[] { 2 }.ToList()));
+            equipmentRequests.Add(new EquipmentRequest(2, 1, ACTIVE_STATUS, DateTime.Now, DateTime.Now, DateTime.Now, "Hello World 3", new[] { 3 }.ToList()));
+            equipmentRequests.Add(new EquipmentRequest(3, 1, COMPLETE_STATUS, DateTime.Now, DateTime.Now.AddMinutes(5), DateTime.Now, "Hello World 4", new[] { 4, 5 }.ToList()));
 
             var borrowerViolations = new SerializedList<BorrowerViolation>(ModelValues.BORROWER_VIOLATIONS_FILE_NAME, BorrowerViolation.GetSerializer());
             borrowerViolations.Add(new BorrowerViolation(0, 0, 0, 0, false));

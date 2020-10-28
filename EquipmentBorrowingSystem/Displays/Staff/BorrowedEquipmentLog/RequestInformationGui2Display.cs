@@ -109,9 +109,9 @@ namespace EquipmentBorrowingSystem.Displays.Template
 
         void ReturnRequest(object sender, EventArgs e)
         {
-            string message = "Accomplish Request?";
+            string message = "Accomplish this Request?";
             MessageBoxButtons choice = MessageBoxButtons.YesNo;
-            DialogResult confirm = MessageBox.Show(message, "Approval", choice);
+            DialogResult confirm = MessageBox.Show(message, "Accomplish Request", choice);
             if (confirm == DialogResult.Yes)
             {
                 //Deny the Request

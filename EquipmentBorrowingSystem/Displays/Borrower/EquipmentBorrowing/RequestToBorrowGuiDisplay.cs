@@ -55,8 +55,8 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
 
             var expectedReturnDateLb = new Label() { Text = "Return Date", Location = handler.Down().GetPosition() };
             expectedReturnDateDTP = new DateTimePicker() { Location = handler.Right().GetPosition(), Format = DateTimePickerFormat.Custom , CustomFormat = "MM/dd/yyyy", Width = 100};
-            expectedReturnTimeDTP = new DateTimePicker() { Location = handler.Right().AddX(30).GetPosition(), Format = DateTimePickerFormat.Time, ShowUpDown = true, Width = 100};
-            handler.Left().Left().AddX(-30);
+            expectedReturnTimeDTP = new DateTimePicker() { Location = handler.Right().AddX(10).GetPosition(), Format = DateTimePickerFormat.Time, ShowUpDown = true, Width = 100};
+            handler.Left().Left().AddX(10);
 
             // Equipment Type
             var typesLabel = new Label() { Text = "Quantity", Location = handler.Down().GetPosition() };
@@ -204,7 +204,7 @@ namespace EquipmentBorrowingSystem.Displays.Borrower.EquipmentBorrowing
         {
             if (string.IsNullOrWhiteSpace(reasonRtb.Text))
             {
-                MessageBox.Show("reason must not be empty", "Invalid Reason");
+                MessageBox.Show("Reason must not be empty", "Invalid Reason");
                 return false;
             }
 
